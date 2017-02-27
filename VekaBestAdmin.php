@@ -22,35 +22,20 @@
 </head>
   <body>
     <div class="Fullpage">
-      <form action=VekaBestAdmin.php method=post enctype="multipart/form-data">
-      <table border="0" cellspacing="0" align=center cellpadding="3" bordercolor="#cccccc" align="center">
+      <form action=VekaBestMainPage.php method=post enctype="multipart/form-data">
+      <table border="0" cellspacing="0" align=center cellpadding="3" bordercolor="#cccccc">
       <tr>
-        <td>Foto:</td>
-        <td><input type="file" name="filep" size=45></td>
+      <td>File:</td>
+      <td><input type="file" name="filep" size=45></td>
       </tr>
       <tr>
-        <td>Kosten:</td>
-        <td><input type=text name="boekprijs" placeholder="€"></td>
-      </tr>
-      <tr>
-        <td>Boeknaam: </td>
-        <td><input type="text" name="boeknaam"></td>
-      </tr>
-      <tr>
-        <td>Boeksoort: </td>
-        <td><input type="text" name="boeksoort"></td>
-      </tr>
-      <tr>
-        <td>Boeknummer: </td>
-        <td><input type="text" name="boeksku"</td>
-      </tr>
-      <tr>
-      <td><input type=submit name=action value="Opslaan" ></td>
+      <td colspan=2><p align=center>
+      <input type=submit name=action value="Load">
+      </td>
       </tr>
       </table>
       </form>
       <?php
-
           if ($_POST["action"] == "Load")
           {
             $folder = "vekabestfoto/";
@@ -74,6 +59,11 @@
           mysql_select_db("vekabestwebsite")or die("could not select database");
           $data = mysql_query("SELECT boekafbeelding FROM boeken") or die(mysql_error());
           $file_path = 'http://localhost/vekabest/vekabestfoto';
+
+          // while($row = mysql_fetch_assoc($data)){
+          //   $src = $file_path.$row['URL'];
+          //   echo "<img src=".$src."> <br>";
+          // }
       ?>
         <div class="image"><img src="vekabestfoto/Placeholder.jpg"></img></div>
         <!-- NAVIGATIE BALK -->
