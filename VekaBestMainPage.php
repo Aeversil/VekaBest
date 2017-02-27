@@ -25,18 +25,18 @@
       <form action=VekaBestMainPage.php method=post enctype="multipart/form-data">
       <table border="0" cellspacing="0" align=center cellpadding="3" bordercolor="#cccccc">
       <tr>
-      <td>File:</td>
-      <td><input type="file" name="filep" size=45></td>
+      <td>Foto:</td>
+      <td><input type="file" name="filep" size=45> <input type=submit name=action value="Opslaan"></td>
       </tr>
       <tr>
-      <td colspan=2><p align=center>
-      <input type=submit name=action value="Load">
-      </td>
+      <!-- <td colspan=2><p align=center>
+      <input type=submit name=action value="Opslaan">
+      </td> -->
       </tr>
       </table>
       </form>
       <?php
-        $folder = "";
+
           if ($_POST["action"] == "Load")
           {
             $folder = "vekabestfoto/";
@@ -58,13 +58,13 @@
           }
           mysql_connect("localhost","root") or die ("could not save image name error". mysql_error());
           mysql_select_db("vekabestwebsite")or die("could not select database");
-          $data = mysql_query("SELECT 'URL' FROM boeken") or die(mysql_error());
-          $file_path = "http://localhost/vekabest/vekabestfoto/". $_FILES;
+          $data = mysql_query("SELECT boekafbeelding FROM boeken") or die(mysql_error());
+          $file_path = 'http://localhost/vekabest/vekabestfoto';
 
-          while($row = mysql_fetch_assoc($data)){
-            $src = $file_path . $row[''];
-            echo "<img src=" . $src . ">";
-          }
+          // while($row = mysql_fetch_assoc($data)){
+          //   $src = $file_path.$row['URL'];
+          //   echo "<img src=".$row["boekafbeelding"]."></img>";
+          // }
       ?>
         <div class="image"><img src="vekabestfoto/Placeholder.jpg"></img></div>
         <!-- NAVIGATIE BALK -->
