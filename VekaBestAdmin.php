@@ -22,6 +22,44 @@
 </head>
   <body>
     <div class="Fullpage">
+      <form action=VekaBestAdmin.php method=post enctype="multipart/form-data">
+      <table border="0" cellspacing="0" align=center cellpadding="3" bordercolor="#cccccc">
+      <tr>
+      <td>Foto:</td>
+      <td><input type="file" name="filep" size=45> <input type=submit name=action value="Opslaan"></td>
+      </tr>
+      <tr>
+      <td>Kosten:</td>
+      <td><input type=text name=action></td>
+      </tr>
+      </table>
+      </form>
+      <?php
+
+          if ($_POST["action"] == "Load")
+          {
+            $folder = "vekabestfoto/";
+            move_uploaded_file($_FILES["filep"]["tmp_name"].$_FILES["filep"]["name"]);
+
+            echo "<p align = center>File".$_FILES["filep"]["name"]."loaded...";
+
+            $result = new mysqli($host, $username, $password, $db_name) or die ("Could not save image name Error: " . mysql_error());
+
+            mysql_select_db("vekabestwebsite") or die("Could not select database");
+            mysql_query("INSERT into boeken (boekafbeelding) VALUES('".$_FILES['filep']['name']."')");
+
+            if($result) { echo "Image name saved into database"; }
+            else {
+
+            //Gives and error if its not
+            echo "Sorry, there was a problem uploading your file.";
+            }
+          }
+          mysql_connect("localhost","root") or die ("could not save image name error". mysql_error());
+          mysql_select_db("vekabestwebsite")or die("could not select database");
+          $data = mysql_query("SELECT boekafbeelding FROM boeken") or die(mysql_error());
+          $file_path = 'http://localhost/vekabest/vekabestfoto';
+      ?>
         <div class="image"><img src="vekabestfoto/Placeholder.jpg"></img></div>
         <!-- NAVIGATIE BALK -->
         <div class="navigation">
@@ -74,19 +112,19 @@
         </div>
         <div id="WebShopBrommer" class="pagina">
           <?php
-            $conn = new mysqli($host, $username, $password, $db_name);
-            if($conn->connect_error){
-              die("Connection failed:". $conn->connect_error);
-            }
-            $sql = "SELECT boeksoort, boeksku, boeknaam, boekafbeelding, boekprijs FROM boeken WHERE boeksoort LIKE 'brommer' ORDER BY boeksoort";
-            $result = $conn->query($sql);
-            if($result->num_rows > 0){
-              while ($row = $result->fetch_assoc()){
-                echo "<div class='artikel'><img src='data:image/jpg;base64,".base64_encode($row["boekafbeelding"])."'></img><span>Productnummer: ".$row["boeksku"]. "</span><span>Boek: " .$row["boeknaam"]. "</span><span>Prijs: €" . $row["boekprijs"]."</span></div>";
-              }
-            }else{
-              echo "0 resultaten";
-            }
+            // $conn = new mysqli($host, $username, $password, $db_name);
+            // if($conn->connect_error){
+            //   die("Connection failed:". $conn->connect_error);
+            // }
+            // $sql = "SELECT boeksoort, boeksku, boeknaam, boekafbeelding, boekprijs FROM boeken WHERE boeksoort LIKE 'brommer' ORDER BY boeksoort";
+            // $result = $conn->query($sql);
+            // if($result->num_rows > 0){
+            //   while ($row = $result->fetch_assoc()){
+            //     echo "<div class='artikel'><img src='data:image/jpg;base64,".base64_encode($row["boekafbeelding"])."'></img><span>Productnummer: ".$row["boeksku"]. "</span><span>Boek: " .$row["boeknaam"]. "</span><span>Prijs: €" . $row["boekprijs"]."</span></div>";
+            //   }
+            // }else{
+            //   echo "0 resultaten";
+            // }
           ?>
         </div>
         <div id="WebShopMotor" class="pagina">
