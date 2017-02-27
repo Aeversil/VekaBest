@@ -23,14 +23,29 @@
   <body>
     <div class="Fullpage">
       <form action=VekaBestAdmin.php method=post enctype="multipart/form-data">
-      <table border="0" cellspacing="0" align=center cellpadding="3" bordercolor="#cccccc">
+      <table border="0" cellspacing="0" align=center cellpadding="3" bordercolor="#cccccc" align="center">
       <tr>
-      <td>Foto:</td>
-      <td><input type="file" name="filep" size=45> <input type=submit name=action value="Opslaan"></td>
+        <td>Foto:</td>
+        <td><input type="file" name="filep" size=45></td>
       </tr>
       <tr>
-      <td>Kosten:</td>
-      <td><input type=text name=action></td>
+        <td>Kosten:</td>
+        <td><input type=text name="boekprijs"></td>
+      </tr>
+      <tr>
+        <td>Boeknaam: </td>
+        <td><input type="text" name="boeknaam"></td>
+      </tr>
+      <tr>
+        <td>Boeksoort: </td>
+        <td><input type="text" name="boeksoort"></td>
+      </tr>
+      <tr>
+        <td>boeknummer: </td>
+        <td><input type="text" name="boeksku"</td>
+      </tr>
+      <tr>
+      <td><input type=submit name=action value="Opslaan" ></td>
       </tr>
       </table>
       </form>
