@@ -62,7 +62,7 @@
           $file_path = 'http://localhost/vekabest/vekabestfoto';
 
           while($row = mysql_fetch_assoc($data)){
-            $src = $file_path.$row['URL'];
+            $src = $file_path.$row[''];
             echo "<img src=".$src."> <br>";
           }
       ?>
