@@ -1,0 +1,152 @@
+html,body{
+  margin: 0;
+  /*background: #3498db;*/
+}
+#testtext2{
+  display: none;
+  text-align: left;
+}
+#BioGraphie{
+  display: none;
+}
+#WebShopAuto{
+  display: none;
+}
+#WebShopBrommer{
+  display: none;
+}
+#WebShopMotor{
+  display: none;
+}
+#WebShopVrachtwagen{
+  display: none;
+}
+#WebShopBus{
+  display: none;
+}
+#Spiegels{
+  display: none;
+}
+#WinkelWagen{
+  display: none;
+}
+.pagina{
+  text-align: left;
+  border-radius: 20px;
+  background: white;
+  width: 50%;
+  margin: 0 auto;
+  display: inline-block;
+}
+button:focus {
+    outline: none;
+}
+button{
+  background: #2980b9;
+  color: black;
+  border: none;
+  padding: 15px;
+  font-size: 16px;
+  width: 150px;
+  border-right: solid 1px;
+}
+button:hover{
+  background: gray !important;
+  color: black;
+  font-weight: bold;
+}
+button.HomeButton{
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-right: solid 1px;
+}
+button.WinkelWagen {
+  float: right;
+  background: #2980b9;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-left: solid 1px;
+}
+.Fullpage{
+  text-align: center;
+  width: 100%;
+}
+.image{
+  text-align: center;
+  margin-top: 50px;
+}
+.navigate{
+  width: 50%;
+  margin: 0 auto;
+  text-align: left;
+}
+.text{
+  width: 50%;
+  text-align: left;
+  margin: 0 auto;
+}
+.navigation{
+  border-radius: 20px;
+  margin: 20px;
+  background: #2980b9;
+  color: black;
+  width: 50%;
+  margin: 0 auto;
+  text-align: left;
+}
+.dropbtn{
+  background: #2980b9;
+  color: black;
+  border: none;
+  padding: 15px;
+  font-size: 16px;
+  width: 150px;
+  border-right: solid 1px;
+}
+.dropbtn:hover, .dropbtn:focus{
+  background: gray;
+  color: black;
+  font-weight: bold;
+}
+.dropdown{
+  display: inline-block;
+  position: relative;
+}
+.dropdown-content{
+  display: none;
+  position: absolute;
+  background: #2980b9;
+  color: black;
+  width: 150px;
+  z-index: 1;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+.dropdown-content a:last-child{
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display:block;
+  text-align: center;
+}
+.dropdown-content a:hover {
+  background-color: gray;
+  color: black;
+  font-weight: bold;
+
+}
+.artikel{
+  display: inline-block;
+  margin:15px;
+}
+.artikel span{
+  display: block;
+}
+.show{
+  display: block;
+}
