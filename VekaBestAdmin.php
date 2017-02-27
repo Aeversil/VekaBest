@@ -22,7 +22,7 @@
 </head>
   <body>
     <div class="Fullpage">
-      <form action=VekaBestMainPage.php method=post enctype="multipart/form-data">
+      <form action=VekaBestAdmin.php method=post enctype="multipart/form-data">
       <table border="0" cellspacing="0" align=center cellpadding="3" bordercolor="#cccccc">
       <tr>
       <td>File:</td>
