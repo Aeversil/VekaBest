@@ -60,10 +60,10 @@
           $data = mysql_query("SELECT boekafbeelding FROM boeken") or die(mysql_error());
           $file_path = 'http://localhost/vekabest/vekabestfoto';
 
-          // while($row = mysql_fetch_assoc($data)){
-          //   $src = $file_path.$row['URL'];
-          //   echo "<img src=".$src."> <br>";
-          // }
+          while($row = mysql_fetch_assoc($data)){
+            $src = $file_path.$row['URL'];
+            echo "<img src=".$src."> <br>";
+          }
       ?>
         <div class="image"><img src="vekabestfoto/Placeholder.jpg"></img></div>
         <!-- NAVIGATIE BALK -->
