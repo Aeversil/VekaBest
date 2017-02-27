@@ -22,7 +22,7 @@
 </head>
   <body>
     <div class="Fullpage">
-      <!-- <form action=VekaBestMainPage.php method=post enctype="multipart/form-data">
+      <form action=VekaBestMainPage.php method=post enctype="multipart/form-data">
       <table border="0" cellspacing="0" align=center cellpadding="3" bordercolor="#cccccc">
       <tr>
       <td>File:</td>
@@ -34,36 +34,37 @@
       </td>
       </tr>
       </table>
-      </form> -->
+      </form>
       <?php
-          // if ($_POST["action"] == "Load")
-          // {
-          //   $folder = "vekabestfoto/";
-          //   move_uploaded_file($_FILES["filep"]["tmp_name"].$_FILES["filep"]["name"]);
-          //
-          //   echo "<p align = center>File".$_FILES["filep"]["name"]."loaded...";
-          //
-          //   $result = new mysqli($host, $username, $password, $db_name) or die ("Could not save image name Error: " . mysql_error());
-          //
-          //   mysql_select_db("vekabestwebsite") or die("Could not select database");
-          //   mysql_query("INSERT into boeken (boekafbeelding) VALUES('".$_FILES['filep']['name']."')");
-          //
-          //   if($result) { echo "Image name saved into database"; }
-          //   else {
-          //
-          //   //Gives and error if its not
-          //   echo "Sorry, there was a problem uploading your file.";
-          //   }
-          // }
-          // mysql_connect("localhost","root") or die ("could not save image name error". mysql_error());
-          // mysql_select_db("vekabestwebsite")or die("could not select database");
-          // $data = mysql_query("SELECT 'URL' FROM boeken") or die(mysql_error());
-          // $file_path = 'http://localhost/vekabest/vekabestfoto';
-          //
-          // while($row = mysql_fetch_assoc($data)){
-          //   $src = $file_path.$row['URL'];
-          //   echo "<img src=".$src."> <br>";
-          // }
+        $folder = "";
+          if ($_POST["action"] == "Load")
+          {
+            $folder = "vekabestfoto/";
+            move_uploaded_file($_FILES["filep"]["tmp_name"].$_FILES["filep"]["name"]);
+
+            echo "<p align = center>File".$_FILES["filep"]["name"]."loaded...";
+
+            $result = new mysqli($host, $username, $password, $db_name) or die ("Could not save image name Error: " . mysql_error());
+
+            mysql_select_db("vekabestwebsite") or die("Could not select database");
+            mysql_query("INSERT into boeken (boekafbeelding) VALUES('".$_FILES['filep']['name']."')");
+
+            if($result) { echo "Image name saved into database"; }
+            else {
+
+            //Gives and error if its not
+            echo "Sorry, there was a problem uploading your file.";
+            }
+          }
+          mysql_connect("localhost","root") or die ("could not save image name error". mysql_error());
+          mysql_select_db("vekabestwebsite")or die("could not select database");
+          $data = mysql_query("SELECT 'URL' FROM boeken") or die(mysql_error());
+          $file_path = 'http://localhost/vekabest/vekabestfoto';
+
+          while($row = mysql_fetch_assoc($data)){
+            $src = $file_path.$row['URL'];
+            echo "<img src=".$src."> <br>";
+          }
       ?>
         <div class="image"><img src="vekabestfoto/Placeholder.jpg"></img></div>
         <!-- NAVIGATIE BALK -->
