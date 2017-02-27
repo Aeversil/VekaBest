@@ -30,7 +30,7 @@
       </tr>
       <tr>
         <td>Kosten:</td>
-        <td><input type=text name="boekprijs"></td>
+        <td><input type=text name="boekprijs" placeholder="€"></td>
       </tr>
       <tr>
         <td>Boeknaam: </td>
@@ -41,7 +41,7 @@
         <td><input type="text" name="boeksoort"></td>
       </tr>
       <tr>
-        <td>boeknummer: </td>
+        <td>Boeknummer: </td>
         <td><input type="text" name="boeksku"</td>
       </tr>
       <tr>
