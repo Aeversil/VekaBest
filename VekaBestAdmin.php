@@ -26,7 +26,7 @@
       <table border="0" cellspacing="0" align=center cellpadding="3" bordercolor="#cccccc">
       <tr>
       <td>File:</td>
-      <td><input type="file" name="filep" size=45></td>
+      <td><input type="file" name="boekafbeelding" size=45></td>
       </tr>
       <tr>
       <td colspan=2><p align=center>
@@ -39,14 +39,14 @@
           if ($_POST["action"] == "Load")
           {
             $folder = "vekabestfoto/";
-            move_uploaded_file($_FILES["filep"]["tmp_name"].$_FILES["filep"]["name"]);
+            move_uploaded_file($_FILES["boekafbeelding"]["tmp_name"].$_FILES["boekafbeelding"]["name"]);
 
-            echo "<p align = center>File".$_FILES["filep"]["name"]." loaded...";
+            echo "<p align = center>File".$_FILES["boekafbeelding"]["name"]." loaded...";
 
             $result = new mysqli($host, $username, $password, $db_name) or die ("Could not save image name Error: " . mysql_error());
 
             mysql_select_db("vekabestwebsite") or die("Could not select database");
-            mysql_query("INSERT into boeken (boekafbeelding) VALUES('".$_FILES['filep']['name']."')");
+            mysql_query("INSERT into boeken (boekafbeelding) VALUES('".$_FILES['boekafbeelding']['name']."')");
 
             if($result == TRUE) {
 
@@ -62,7 +62,7 @@
           mysql_select_db("vekabestwebsite")or die("could not select database");
           $data = mysql_query("SELECT boekafbeelding FROM boeken") or die(mysql_error());
           $file_path = 'http://localhost/vekabest/vekabestfoto';
-
+          // $conn->close();
           // while($row = mysql_fetch_assoc($data)){
           //   $src = $file_path.$row['URL'];
           //   echo "<img src=".$src."> <br>";
@@ -151,7 +151,7 @@
           <p>Hier komt te staan wat mensen hebben bestelt </p>
         </div>
         <?php
-          $con->close();
+          $conn->close();
         ?>
     </div>
   </body>
