@@ -41,7 +41,7 @@
             $folder = "vekabestfoto/";
             move_uploaded_file($_FILES["boekafbeelding"]["tmp_name"].$_FILES["boekafbeelding"]["name"]);
 
-            echo "<p align = center>File".$_FILES["boekafbeelding"]["name"]." loaded...";
+            //echo "<p align = center>File".$_FILES["boekafbeelding"]["name"]." loaded...";
 
             $result = new mysqli($host, $username, $password, $db_name) or die ("Could not save image name Error: " . mysql_error());
 
