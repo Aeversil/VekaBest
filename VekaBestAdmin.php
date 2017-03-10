@@ -17,6 +17,7 @@
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
   <body>
+    
     <?php
       $conn = new mysqli($host, $username, $password, $db_name);
       if ($conn->connect_error) {
@@ -32,7 +33,7 @@
               if (isset($_POST['boekprijs']) && ($_POST['boekafbeelding']) && ($_POST['boeknaam']) && ($_POST['boeksoort']) && ($_POST['boeksku'])) {
 
                 $boekprijs = $_POST['boekprijs'];
-                $boekafbeelding = $_POST['boekafbeelding'];
+                $boekafbeelding = $_FILES['boekafbeelding'];
                 $boeknaam = $_POST['boeknaam'];
                 $boeksoort = $_POST['boeksoort'];
                 $boeksku = $_POST['boeksku'];

@@ -150,3 +150,7 @@ button.WinkelWagen {
 .show{
   display: block;
 }
+.image{
+  width: 150px;
+  height: 250px;
+}
