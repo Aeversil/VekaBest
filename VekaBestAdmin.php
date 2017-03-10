@@ -58,10 +58,10 @@
             echo "Sorry, there was a problem uploading your file.";
             }
           }
-          // mysql_connect("localhost","root") or die ("could not save image name error". mysql_error());
-          // mysql_select_db("vekabestwebsite")or die("could not select database");
-          // $data = mysql_query("SELECT boekafbeelding FROM boeken") or die(mysql_error());
-          // $file_path = 'http://localhost/vekabest/vekabestfoto';
+          mysql_connect("localhost","root") or die ("could not save image name error". mysql_error());
+          mysql_select_db("vekabestwebsite")or die("could not select database");
+          $data = mysql_query("SELECT boekafbeelding FROM boeken") or die(mysql_error());
+          $file_path = 'http://localhost/vekabest/vekabestfoto';
 
           // while($row = mysql_fetch_assoc($data)){
           //   $src = $file_path.$row['URL'];
