@@ -4,10 +4,6 @@
   $username="root";
   $password="";
   $db_name="vekabestwebsite";
-
-  mysql_connect($host, $username,$password) or die("database not found");
-  mysql_select_db($db_name) or die ("Couldnt find database");
-  error_reporting('E_ERROR!E_WORNING');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,53 +17,46 @@
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
   <body>
-    <div class="Fullpage">
-      <form action=VekaBestAdmin.php method=post enctype="multipart/form-data">
-      <table border="0" cellspacing="0" align=center cellpadding="3" bordercolor="#cccccc">
-      <tr>
-      <td>File:</td>
-      <td><input type="file" name="boekafbeelding" size=45></td>
-      </tr>
-      <tr>
-      <td colspan=2><p align=center>
-      <input type=submit name=action value="Load">
-      </td>
-      </tr>
-      </table>
-      </form>
-      <?php
-          if ($_POST["action"] == "Load")
-          {
-            $folder = "vekabestfoto/";
-            move_uploaded_file($_FILES["boekafbeelding"]["tmp_name"].$_FILES["boekafbeelding"]["name"]);
-
-            //echo "<p align = center>File".$_FILES["boekafbeelding"]["name"]." loaded...";
-
-            $result = new mysqli($host, $username, $password, $db_name) or die ("Could not save image name Error: " . mysql_error());
-
-            mysql_select_db("vekabestwebsite") or die("Could not select database");
-            mysql_query("INSERT into boeken (boekafbeelding) VALUES('".$_FILES['boekafbeelding']['name']."')");
-
-            if($result == TRUE) {
-
-              echo "Image name saved into database";
-
-            }else {
-
-            //Gives and error if its not
-            echo "Sorry, there was a problem uploading your file.";
-
+    <?php
+      $conn = new mysqli($host, $username, $password, $db_name);
+      if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
             }
-          }
-          mysql_connect("localhost","root") or die ("could not save image name error". mysql_error());
-          mysql_select_db("vekabestwebsite")or die("could not select database");
-          $data = mysql_query("SELECT boekafbeelding FROM boeken") or die(mysql_error());
-          $file_path = 'http://localhost/vekabest/vekabestfoto';
-          // while($row = mysql_fetch_assoc($data)){
-          //   $src = $file_path.$row['URL'];
-          //   echo "<img src=".$src."> <br>";
-          // }
-      ?>
+            $boekprijs = "";
+            $boekafbeelding = "";
+            $boeknaam = "";
+            $boeksoort = "";
+            $boeksku = "";
+
+            if ($_SERVER['REQUEST_METHOD']== "POST"){
+              if (isset($_POST['boekprijs']) && ($_POST['boekafbeelding']) && ($_POST['boeknaam']) && ($_POST['boeksoort']) && ($_POST['boeksku'])) {
+
+                $boekprijs = $_POST['boekprijs'];
+                $boekafbeelding = $_POST['boekafbeelding'];
+                $boeknaam = $_POST['boeknaam'];
+                $boeksoort = $_POST['boeksoort'];
+                $boeksku = $_POST['boeksku'];
+                $sql = "INSERT INTO boeken (boekprijs, boekafbeelding, boeknaam, boeksoort, boeksku) VALUES ($boekprijs, '$boekafbeelding', '$boeknaam', '$boeksoort', $boeksku)";
+
+                if ($conn->query($sql) === TRUE) {
+                  ?>
+                    <strong>SUCCES</strong>
+                  <?php
+                }
+              }
+            }
+            mysqli_close($conn);
+     ?>
+     <form class="form-horizontal" role="form" action="VekaBestAdmin.php" method="post">
+      <input type="VALUES" name="boekprijs" placeholder="boekprijs">
+      <input type="File" name="boekafbeelding" placeholder="boekprijs">
+      <input type="text" name="boeknaam" placeholder="boeknaam">
+      <input type="text" name="boeksoort" placeholder="boeksoort">
+      <input type="VALUES" name="boeksku" placeholder="boeksku">
+      <input type="submit">
+     </form>
+
+    <div class="Fullpage">
         <div class="image"><img src="vekabestfoto/Placeholder.jpg"></img></div>
         <!-- NAVIGATIE BALK -->
         <div class="navigation">
