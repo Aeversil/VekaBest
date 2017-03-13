@@ -71,10 +71,6 @@ button.WinkelWagen {
   text-align: center;
   width: 100%;
 }
-.image{
-  text-align: center;
-  margin-top: 50px;
-}
 .navigate{
   width: 50%;
   margin: 0 auto;
@@ -138,7 +134,6 @@ button.WinkelWagen {
   background-color: gray;
   color: black;
   font-weight: bold;
-
 }
 .artikel{
   display: inline-block;
@@ -149,8 +144,4 @@ button.WinkelWagen {
 }
 .show{
   display: block;
-}
-.image{
-  width: 150px;
-  height: 250px;
 }

@@ -17,11 +17,11 @@
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
   <body>
-    
+
     <?php
       $conn = new mysqli($host, $username, $password, $db_name);
       if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
+            die("Connection failed: " . $conn->connect_error);
             }
             $boekprijs = "";
             $boekafbeelding = "";
