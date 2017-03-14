@@ -4,10 +4,16 @@
   $username="root";
   $password="";
   $db_name="vekabestwebsite";
+
   $dir = dirname(__FILE__);
-  $target = "vekabestfoto";
-  echo  $dir . "\\" . $target;
-  // $target = $target . basename ($_FILES['boekafbeelding']['name']);
+  $target = "fotouploads";
+  $path = $dir . "\\" . $target . "\\";
+  // Create target folder if it doesn't exist yet
+  if(!is_dir($path)){
+    mkdir($path);
+  }else{
+    echo "<br>Directory already exists</br>";
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,15 +45,16 @@
 
                 $boekprijs = $_POST['boekprijs'];
                 // $boekafbeelding = ($_FILES['boekafbeelding']);
-                $target = $dir . "\\" . $target;
-                $file = $_FILES['boekafbeelding']['name'];
+
+                $target =  $path . $_FILES['boekafbeelding']['name'];
+                $file = $_FILES['boekafbeelding'];
                 $boeknaam = $_POST['boeknaam'];
                 $boeksoort = $_POST['boeksoort'];
                 $boeksku = $_POST['boeksku'];
-                echo $file;
-                file_put_contents($target, $file);
 
-                $sql = "INSERT INTO boeken (boekprijs, boekafbeelding, boeknaam, boeksoort, boeksku) VALUES ($boekprijs, '$target', '$boeknaam', '$boeksoort', $boeksku)";
+                file_put_contents($target, $file);
+                $escaped_target = mysql_real_escape_string($target);
+                $sql = "INSERT INTO boeken (boekprijs, boekafbeelding, boeknaam, boeksoort, boeksku) VALUES ($boekprijs, '$escaped_target', '$boeknaam', '$boeksoort', $boeksku)";
                 if (move_uploaded_file($_FILES['boekafbeelding']['tmp_name'], $target)){
                   echo "the file". basename ($_FILES['boekafbeelding']['name']). "has been uploaded";
                 }else{
@@ -78,11 +85,12 @@
      </form>
 
     <div class="Fullpage">
-        <img src="vekabestfoto/Placeholder.jpg"></img>
+        <div class="banner"><img src="stockvekafotos/download.jpg"></img></div>
         <!-- NAVIGATIE BALK -->
         <div class="navigation">
           <button class="HomeButton"onclick="openPage('MainPage')">Home</buttons>
           <button onclick="openPage('BioGraphie')">Biographie</button>
+
           <div class="dropdown">
               <button onclick="dropdownmenu()" class="dropbtn">Webshop</button>
               <div id="mydropdown" class="dropdown-content">
@@ -100,7 +108,8 @@
               <a href="#" onclick="openPage('Spiegels')">Spiegels</a>
             </div>
           </div>
-          <button class="WinkelWagen" onclick="openPage('WinkelWagen')">WinkelWagen</button>
+          <!-- <button class="WinkelWagen" onclick="openPage('WinkelWagen')">WinkelWagen</button> -->
+          <button onclick="openPage('WinkelWagen')">WinkelWagen</button>
         </div>
         <!-- DEZE PAGINA'S WORDT MET JAVASCRIPT UITGEVOERT KIJK IN Teste.js OVER HOE EN WAT -->
         <div id="MainPage" class="pagina">
@@ -130,19 +139,20 @@
         </div>
         <div id="WebShopBrommer" class="pagina">
           <?php
-            // $conn = new mysqli($host, $username, $password, $db_name);
-            // if($conn->connect_error){
-            //   die("Connection failed:". $conn->connect_error);
-            // }
-            // $sql = "SELECT boeksoort, boeksku, boeknaam, boekafbeelding, boekprijs FROM boeken WHERE boeksoort LIKE 'brommer' ORDER BY boeksoort";
-            // $result = $conn->query($sql);
-            // if($result->num_rows > 0){
-            //   while ($row = $result->fetch_assoc()){
-            //     echo "<div class='artikel'><img src='data:image/jpg;base64,".base64_encode($row["boekafbeelding"])."'></img><span>Productnummer: ".$row["boeksku"]. "</span><span>Boek: " .$row["boeknaam"]. "</span><span>Prijs: €" . $row["boekprijs"]."</span></div>";
-            //   }
-            // }else{
-            //   echo "0 resultaten";
-            // }
+          // $conn = new mysqli($host, $username, $password, $db_name);
+          //
+          // if($conn->connect_error){
+          //   die("Connection failed:". $conn->connect_error);
+          // }
+          // $sql = "SELECT boeksoort, boeksku, boeknaam, boekafbeelding, boekprijs FROM boeken WHERE boeksoort LIKE 'brommer' ORDER BY boeksoort";
+          // $result = $conn->query($sql);
+          // if($result->num_rows > 0){
+          //   while ($row = $result->fetch_assoc()){
+          //     echo "<div class='artikel'><img src=".$row["boekafbeelding"]."></img><span>Productnummer: ".$row["boeksku"]. "</span><span>Boek: " .$row["boeknaam"]. "</span><span>Prijs: €" . $row["boekprijs"]."</span></div>";
+          //   }
+          // }else{
+          //   echo "0 resultaten";
+          // }
           ?>
         </div>
         <div id="WebShopMotor" class="pagina">

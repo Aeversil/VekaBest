@@ -1,6 +1,6 @@
 html,body{
   margin: 0;
-  /*background: #3498db;*/
+  background: #3498db;
 }
 #testtext2{
   display: none;
@@ -32,7 +32,7 @@ html,body{
 }
 .pagina{
   text-align: left;
-  border-radius: 20px;
+  /*border-radius: 20px;*/
   background: white;
   width: 50%;
   margin: 0 auto;
@@ -42,12 +42,13 @@ button:focus {
     outline: none;
 }
 button{
+  align-items: center;
   background: #2980b9;
   color: black;
   border: none;
   padding: 15px;
   font-size: 16px;
-  width: 150px;
+  width: 25%;
   border-right: solid 1px;
 }
 button:hover{
@@ -55,40 +56,41 @@ button:hover{
   color: black;
   font-weight: bold;
 }
-button.HomeButton{
+/*button.HomeButton{
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
   border-right: solid 1px;
-}
+}*/
 button.WinkelWagen {
-  float: right;
   background: #2980b9;
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
   border-left: solid 1px;
-}
-.Fullpage{
-  text-align: center;
-  width: 100%;
-}
-.navigate{
-  width: 50%;
-  margin: 0 auto;
-  text-align: left;
-}
-.text{
-  width: 50%;
-  text-align: left;
-  margin: 0 auto;
+  align: left;
 }
 .navigation{
-  border-radius: 20px;
+  /*border-radius: 20px;*/
   margin: 20px;
   background: #2980b9;
   color: black;
   width: 50%;
   margin: 0 auto;
   text-align: left;
+}
+.navigate{
+  width: 50%;
+  height: 25px;
+  margin: 0 auto;
+  text-align: left;
+}
+.Fullpage{
+  text-align: center;
+  width: 100%;
+}
+.text{
+  width: 50%;
+  text-align: left;
+  margin: 0 auto;
 }
 .dropbtn{
   background: #2980b9;
@@ -148,4 +150,8 @@ button.WinkelWagen {
 .artikel img{
   width: 150px;
   height: 250px;
+}
+.banner img{
+  width: 50%;
+  height: 25%;
 }
