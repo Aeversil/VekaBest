@@ -59,6 +59,7 @@ button:hover{
   color: black;
   font-weight: bold;
 }
+
 .navigation{
   font-size: 0;
   margin: 20px;
@@ -92,11 +93,6 @@ button:hover{
   padding: 15px;
   font-size: 16px;
 }
-/*.dropbtn:hover, .dropbtn:focus{
-  background: gray;
-  color: black;
-  font-weight: bold;
-}*/
 .dropdown{
   display: inline-block;
   position: relative;
