@@ -8,6 +8,7 @@
   $dir = dirname(__FILE__);
   $target = "fotouploads";
   $path = $dir . "\\" . $target . "\\";
+  $dbpath = $target . "\\";
   // Create target folder if it doesn't exist yet
   if(!is_dir($path)){
     mkdir($path);
@@ -48,13 +49,14 @@
 
                 $target =  $path . $_FILES['boekafbeelding']['name'];
                 $file = $_FILES['boekafbeelding'];
+                $dbtarget =  mysql_real_escape_string ($dbpath . $_FILES['boekafbeelding']['name']);
                 $boeknaam = $_POST['boeknaam'];
                 $boeksoort = $_POST['boeksoort'];
                 $boeksku = $_POST['boeksku'];
 
                 file_put_contents($target, $file);
-                $escaped_target = mysql_real_escape_string($target);
-                $sql = "INSERT INTO boeken (boekprijs, boekafbeelding, boeknaam, boeksoort, boeksku) VALUES ($boekprijs, '$escaped_target', '$boeknaam', '$boeksoort', $boeksku)";
+                // $escaped_target = mysql_real_escape_string($target);
+                $sql = "INSERT INTO boeken (boekprijs, boekafbeelding, boeknaam, boeksoort, boeksku) VALUES ($boekprijs, '$dbtarget', '$boeknaam', '$boeksoort', $boeksku)";
                 if (move_uploaded_file($_FILES['boekafbeelding']['tmp_name'], $target)){
                   echo "the file". basename ($_FILES['boekafbeelding']['name']). "has been uploaded";
                 }else{
@@ -90,7 +92,6 @@
         <div class="navigation">
           <button class="HomeButton"onclick="openPage('MainPage')">Home</buttons>
           <button onclick="openPage('BioGraphie')">Biographie</button>
-
           <div class="dropdown">
               <button onclick="dropdownmenu()" class="dropbtn">Webshop</button>
               <div id="mydropdown" class="dropdown-content">
