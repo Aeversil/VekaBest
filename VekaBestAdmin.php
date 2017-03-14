@@ -4,7 +4,9 @@
   $username="root";
   $password="";
   $db_name="vekabestwebsite";
-  $target = "C:\XAMPP\htdocs\VekaBest-master";
+  $dir = dirname(__FILE__);
+  $target = "vekabestfoto";
+  echo  $dir . "\\" . $target;
   // $target = $target . basename ($_FILES['boekafbeelding']['name']);
 ?>
 <!DOCTYPE html>
@@ -21,34 +23,40 @@
   <body>
 
     <?php
+      // var_dump ();
       $conn = new mysqli($host, $username, $password, $db_name);
       if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
             }
-            $boekprijs = "";
-            $boekafbeelding = "";
-            $boeknaam = "";
-            $boeksoort = "";
-            $boeksku = "";
+            // $boekprijs = "";
+            // $boekafbeelding = "";
+            // $boeknaam = "";
+            // $boeksoort = "";
+            // $boeksku = "";
 
             if ($_SERVER['REQUEST_METHOD']== "POST"){
               if (isset($_POST['boekprijs']) && ($_FILES['boekafbeelding']) && ($_POST['boeknaam']) && ($_POST['boeksoort']) && ($_POST['boeksku'])) {
 
                 $boekprijs = $_POST['boekprijs'];
                 // $boekafbeelding = ($_FILES['boekafbeelding']);
-                $target = $target . basename ($_FILES['boekafbeelding']['name']);
+                $target = $dir . "\\" . $target;
+                $file = $_FILES['boekafbeelding']['name'];
                 $boeknaam = $_POST['boeknaam'];
                 $boeksoort = $_POST['boeksoort'];
                 $boeksku = $_POST['boeksku'];
+                echo $file;
+                file_put_contents($target, $file);
 
                 $sql = "INSERT INTO boeken (boekprijs, boekafbeelding, boeknaam, boeksoort, boeksku) VALUES ($boekprijs, '$target', '$boeknaam', '$boeksoort', $boeksku)";
                 if (move_uploaded_file($_FILES['boekafbeelding']['tmp_name'], $target)){
                   echo "the file". basename ($_FILES['boekafbeelding']['name']). "has been uploaded";
                 }else{
                   echo "kutzooi";
+
+
                 }
                 if ($conn->query($sql) === TRUE) {
-                  unset($_POST);
+                  // die();
 
                   ?>
                     <strong>SUCCES</strong>
