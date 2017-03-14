@@ -4,6 +4,8 @@
   $username="root";
   $password="";
   $db_name="vekabestwebsite";
+  $target = "C:\XAMPP\htdocs\VekaBest-master";
+  // $target = $target . basename ($_FILES['boekafbeelding']['name']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,16 +32,24 @@
             $boeksku = "";
 
             if ($_SERVER['REQUEST_METHOD']== "POST"){
-              if (isset($_POST['boekprijs']) && ($_POST['boekafbeelding']) && ($_POST['boeknaam']) && ($_POST['boeksoort']) && ($_POST['boeksku'])) {
+              if (isset($_POST['boekprijs']) && ($_FILES['boekafbeelding']) && ($_POST['boeknaam']) && ($_POST['boeksoort']) && ($_POST['boeksku'])) {
 
                 $boekprijs = $_POST['boekprijs'];
-                $boekafbeelding = $_FILES['boekafbeelding'];
+                // $boekafbeelding = ($_FILES['boekafbeelding']);
+                $target = $target . basename ($_FILES['boekafbeelding']['name']);
                 $boeknaam = $_POST['boeknaam'];
                 $boeksoort = $_POST['boeksoort'];
                 $boeksku = $_POST['boeksku'];
-                $sql = "INSERT INTO boeken (boekprijs, boekafbeelding, boeknaam, boeksoort, boeksku) VALUES ($boekprijs, '$boekafbeelding', '$boeknaam', '$boeksoort', $boeksku)";
 
+                $sql = "INSERT INTO boeken (boekprijs, boekafbeelding, boeknaam, boeksoort, boeksku) VALUES ($boekprijs, '$target', '$boeknaam', '$boeksoort', $boeksku)";
+                if (move_uploaded_file($_FILES['boekafbeelding']['tmp_name'], $target)){
+                  echo "the file". basename ($_FILES['boekafbeelding']['name']). "has been uploaded";
+                }else{
+                  echo "kutzooi";
+                }
                 if ($conn->query($sql) === TRUE) {
+                  unset($_POST);
+
                   ?>
                     <strong>SUCCES</strong>
                   <?php
@@ -48,8 +58,10 @@
             }
             mysqli_close($conn);
      ?>
-     <form class="form-horizontal" role="form" action="VekaBestAdmin.php" method="post">
+     <!-- DATABASE UPLOAD FORM -->
+     <form class="form-horizontal" role="form" action="VekaBestAdmin.php" method="post" enctype="multipart/form-data">
       <input type="VALUES" name="boekprijs" placeholder="boekprijs">
+      <input type="hidden" name="size" value="3500000">
       <input type="File" name="boekafbeelding" placeholder="boekprijs">
       <input type="text" name="boeknaam" placeholder="boeknaam">
       <input type="text" name="boeksoort" placeholder="boeksoort">
@@ -58,7 +70,7 @@
      </form>
 
     <div class="Fullpage">
-        <div class="image"><img src="vekabestfoto/Placeholder.jpg"></img></div>
+        <img src="vekabestfoto/Placeholder.jpg"></img>
         <!-- NAVIGATIE BALK -->
         <div class="navigation">
           <button class="HomeButton"onclick="openPage('MainPage')">Home</buttons>

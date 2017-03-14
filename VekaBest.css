@@ -145,3 +145,7 @@ button.WinkelWagen {
 .show{
   display: block;
 }
+.artikel img{
+  width: 150px;
+  height: 250px;
+}
