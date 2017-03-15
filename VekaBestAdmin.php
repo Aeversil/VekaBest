@@ -81,7 +81,7 @@
      </form>
 
     <div class="Fullpage">
-        <div class="banner"><img src="stockvekafotos/download.jpg"></img></div>
+        <div class="banner"><img src="stockvekafotos/busbanner.jpg"></img></div>
         <!-- NAVIGATIE BALK -->
         <div class="navigation">
           <button class="HomeButton"onclick="openPage('MainPage')">Home</buttons>
