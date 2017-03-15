@@ -32,9 +32,6 @@ html,body{
   margin: 0 auto;
   display: inline-block;
 }
-.banner{
-  margin-bottom: 10px;
-}
 button:focus {
     outline: none;
 }
