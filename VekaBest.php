@@ -5,16 +5,9 @@
   $password="";
   $db_name="vekabestwebsite";
 
-  $dir = dirname(__FILE__);
-  $target = "fotouploads";
-  $path = $dir . "\\" . $target . "\\";
-  $dbpath = $target . "\\";
-  // Create target folder if it doesn't exist yet
-  if(!is_dir($path)){
-    mkdir($path);
-  }else{
-    // echo "<br>Directory already exists</br>";
-  }
+  mysql_connect($host, $username,$password) or die("database not found");
+  mysql_select_db($db_name) or die ("Couldnt find database");
+  error_reporting('E_ERROR!E_WORNING');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,60 +21,8 @@
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
   <body>
-
-    <?php
-      // var_dump ();
-      $conn = new mysqli($host, $username, $password, $db_name);
-      if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-            }
-            if ($_SERVER['REQUEST_METHOD']== "POST"){
-              if (isset($_POST['boekprijs']) && ($_FILES['boekafbeelding']) && ($_POST['boeknaam']) && ($_POST['boeksoort']) && ($_POST['boeksku'])) {
-
-                $boekprijs = $_POST['boekprijs'];
-                // $boekafbeelding = ($_FILES['boekafbeelding']);
-
-                $target =  $path . $_FILES['boekafbeelding']['name'];
-                $file = $_FILES['boekafbeelding'];
-                $dbtarget =  mysql_real_escape_string ($dbpath . $_FILES['boekafbeelding']['name']);
-                $boeknaam = $_POST['boeknaam'];
-                $boeksoort = $_POST['boeksoort'];
-                $boeksku = $_POST['boeksku'];
-
-                file_put_contents($target, $file);
-                // $escaped_target = mysql_real_escape_string($target);
-                $sql = "INSERT INTO boeken (boekprijs, boekafbeelding, boeknaam, boeksoort, boeksku) VALUES ($boekprijs, '$dbtarget', '$boeknaam', '$boeksoort', $boeksku)";
-                // if (move_uploaded_file($_FILES['boekafbeelding']['tmp_name'], $target)){
-                //   echo "the file ". basename ($_FILES['boekafbeelding']['name']). "has been uploaded";
-                // }else{
-                //   echo "kutzooi";
-                //
-                //
-                // }
-                if ($conn->query($sql) === TRUE) {
-                  // die();
-
-                  ?>
-                    <strong>SUCCES</strong>
-                  <?php
-                }
-              }
-            }
-            mysqli_close($conn);
-     ?>
-     <!-- DATABASE UPLOAD FORM -->
-     <form class="form-horizontal" role="form" action="VekaBestAdmin.php" method="post" enctype="multipart/form-data">
-      <input type="VALUES" name="boekprijs" placeholder="boekprijs">
-      <input type="hidden" name="size" value="3500000">
-      <input type="File" name="boekafbeelding" placeholder="boekprijs">
-      <input type="text" name="boeknaam" placeholder="boeknaam">
-      <input type="text" name="boeksoort" placeholder="boeksoort">
-      <input type="VALUES" name="boeksku" placeholder="boeksku">
-      <input type="submit">
-     </form>
-
     <div class="Fullpage">
-        <div class="banner"><img src="stockvekafotos/download.jpg"></img></div>
+        <div class="image"><img src="vekabestfoto/Placeholder.jpg"></img></div>
         <!-- NAVIGATIE BALK -->
         <div class="navigation">
           <button class="HomeButton"onclick="openPage('MainPage')">Home</buttons>
@@ -103,8 +44,7 @@
               <a href="#" onclick="openPage('Spiegels')">Spiegels</a>
             </div>
           </div>
-          <!-- <button class="WinkelWagen" onclick="openPage('WinkelWagen')">WinkelWagen</button> -->
-          <button onclick="openPage('WinkelWagen')">WinkelWagen</button>
+          <button class="WinkelWagen" onclick="openPage('WinkelWagen')">WinkelWagen</button>
         </div>
         <!-- DEZE PAGINA'S WORDT MET JAVASCRIPT UITGEVOERT KIJK IN Teste.js OVER HOE EN WAT -->
         <div id="MainPage" class="pagina">
@@ -166,7 +106,7 @@
           <p>Hier komt te staan wat mensen hebben bestelt </p>
         </div>
         <?php
-          $conn->close();
+          $con->close();
         ?>
     </div>
   </body>
