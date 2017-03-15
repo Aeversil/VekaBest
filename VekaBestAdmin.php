@@ -49,13 +49,13 @@
                 file_put_contents($target, $file);
                 $escaped_target = mysql_real_escape_string($target);
                 $sql = "INSERT INTO boeken (boekprijs, boekafbeelding, boeknaam, boeksoort, boeksku) VALUES ($boekprijs, '$dbtarget', '$boeknaam', '$boeksoort', $boeksku)";
-                // if (move_uploaded_file($_FILES['boekafbeelding']['tmp_name'], $target)){
-                //   echo "the file ". basename ($_FILES['boekafbeelding']['name']). "has been uploaded";
-                // }else{
-                //   echo "kutzooi";
-                //
-                //
-                // }
+                if (move_uploaded_file($_FILES['boekafbeelding']['tmp_name'], $target)){
+                  echo "". basename ($_FILES['boekafbeelding']['name']). " nieuw boek is opgeslagen";
+                }else{
+                  echo "kutzooi";
+
+
+                }
                 if ($conn->query($sql) === TRUE) {
                   // die();
 
