@@ -27,10 +27,12 @@ html,body{
 }
 .pagina{
   text-align: left;
-  background: white;
+  background: #2980b9;
   width: 50%;
   margin: 0 auto;
-  display: inline-block;
+  /*display: inline-block;*/
+  border-radius: 10px;
+  margin-top: 10px;
 }
 button:focus {
     outline: none;

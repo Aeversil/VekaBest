@@ -87,6 +87,7 @@
      </form>
 
     <div class="Fullpage">
+      <!-- <div class="linkerbanner"><img src="stockvekafotos/stockbanner.jpg"></img></div> -->
         <div class="banner"><img src="stockvekafotos/busbanner.jpg"></img></div>
         <!-- NAVIGATIE BALK -->
         <div class="navigation">
@@ -110,10 +111,9 @@
               <a href="#" onclick="openPage('Spiegels')">Spiegels</a>
             </div>
           </div>
-
           <button onclick="openPage('WinkelWagen')">WinkelWagen</button>
-
         </div>
+
         <!-- DEZE PAGINA'S WORDT MET JAVASCRIPT UITGEVOERT KIJK IN Teste.js OVER HOE EN WAT -->
         <div id="MainPage" class="pagina">
           <p>VUL HIER TEKST IN</p>
@@ -237,6 +237,7 @@
         <?php
           $conn->close();
         ?>
+        <!-- <div class="rechterbanner"><img src="stockvekafotos/stockbanner.jpg"></img></div> -->
     </div>
   </body>
 </html>
