@@ -4,7 +4,7 @@
   $username="root";
   $password="";
   $db_name="vekabestwebsite";
-
+ // MAKEN EN MOGELIJK Maken VAN HET UPLOADEN VAN FOTO'S \\
   $dir = dirname(__FILE__);
   $target = "fotouploads";
   $path = $dir . "\\" . $target . "\\";
@@ -39,8 +39,6 @@
               if (isset($_POST['boekprijs']) && ($_FILES['boekafbeelding']) && ($_POST['boeknaam']) && ($_POST['boeksoort']) && ($_POST['boeksku'])) {
 
                 $boekprijs = $_POST['boekprijs'];
-                // $boekafbeelding = ($_FILES['boekafbeelding']);
-
                 $target =  $path . $_FILES['boekafbeelding']['name'];
                 $file = $_FILES['boekafbeelding'];
                 $dbtarget =  mysql_real_escape_string ($dbpath . $_FILES['boekafbeelding']['name']);
@@ -75,9 +73,17 @@
       <input type="hidden" name="size" value="3500000">
       <input type="File" name="boekafbeelding" placeholder="boekprijs">
       <input type="text" name="boeknaam" placeholder="boeknaam">
-      <input type="text" name="boeksoort" placeholder="boeksoort">
+      <select name="boeksoort">
+        <option type="text" value="auto">auto</option>
+        <option type="text" value="brommer">brommer</option>
+        <option type="text" value="motor">motor</option>
+        <option type="text" value="vrachtwagen">vrachtwagen</option>
+        <option type="text" value="bus">bus</option>
+        <option type="text" value="spiegels">spiegels</option>
+      <!-- <input type="text" name="boeksoort" placeholder="boeksoort"> -->
+      </select>
       <input type="VALUES" name="boeksku" placeholder="boeksku">
-      <input type="submit">
+      <input type="submit" value="Upload">
      </form>
 
     <div class="Fullpage">
@@ -86,6 +92,7 @@
         <div class="navigation">
           <button class="HomeButton"onclick="openPage('MainPage')">Home</buttons>
           <button onclick="openPage('BioGraphie')">Biographie</button>
+          <!-- DROPDOWN MENU MET EEN SCRIPT -->
           <div class="dropdown">
               <button onclick="dropdownmenu()" class="dropbtn">Webshop</button>
               <div id="mydropdown" class="dropdown-content">
@@ -103,8 +110,9 @@
               <a href="#" onclick="openPage('Spiegels')">Spiegels</a>
             </div>
           </div>
-          <!-- <button class="WinkelWagen" onclick="openPage('WinkelWagen')">WinkelWagen</button> -->
+
           <button onclick="openPage('WinkelWagen')">WinkelWagen</button>
+
         </div>
         <!-- DEZE PAGINA'S WORDT MET JAVASCRIPT UITGEVOERT KIJK IN Teste.js OVER HOE EN WAT -->
         <div id="MainPage" class="pagina">
@@ -116,6 +124,7 @@
         </div>
         <div id="WebShopAuto" class="pagina">
           <?php
+
             $conn = new mysqli($host, $username, $password, $db_name);
 
             if($conn->connect_error){
