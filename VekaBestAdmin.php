@@ -151,16 +151,76 @@
           ?>
         </div>
         <div id="WebShopMotor" class="pagina">
-          <p>Dit is de WebShopMotor pagina</p>
+          <?php
+          $conn = new mysqli($host, $username, $password, $db_name);
+
+          if($conn->connect_error){
+            die("Connection failed:". $conn->connect_error);
+          }
+          $sql = "SELECT boeksoort, boeksku, boeknaam, boekafbeelding, boekprijs FROM boeken WHERE boeksoort LIKE 'motor' ORDER BY boeksoort";
+          $result = $conn->query($sql);
+          if($result->num_rows > 0){
+            while ($row = $result->fetch_assoc()){
+              echo "<div class='artikel'><img src=".$row["boekafbeelding"]."></img><span>Productnummer: ".$row["boeksku"]. "</span><span>Boek: " .$row["boeknaam"]. "</span><span>Prijs: €" . $row["boekprijs"]."</span></div>";
+            }
+          }else{
+            echo "0 resultaten";
+          }
+          ?>
         </div>
         <div id="WebShopVrachtwagen" class="pagina">
-          <p>Dit is de WebShopVrachtwagen pagina</p>
+          <?php
+          $conn = new mysqli($host, $username, $password, $db_name);
+
+          if($conn->connect_error){
+            die("Connection failed:". $conn->connect_error);
+          }
+          $sql = "SELECT boeksoort, boeksku, boeknaam, boekafbeelding, boekprijs FROM boeken WHERE boeksoort LIKE 'vrachtwagen' ORDER BY boeksoort";
+          $result = $conn->query($sql);
+          if($result->num_rows > 0){
+            while ($row = $result->fetch_assoc()){
+              echo "<div class='artikel'><img src=".$row["boekafbeelding"]."></img><span>Productnummer: ".$row["boeksku"]. "</span><span>Boek: " .$row["boeknaam"]. "</span><span>Prijs: €" . $row["boekprijs"]."</span></div>";
+            }
+          }else{
+            echo "0 resultaten";
+          }
+          ?>
         </div>
         <div id="WebShopBus" class="pagina">
-          <p>Dit is de WebShopBus pagina</p>
+          <?php
+          $conn = new mysqli($host, $username, $password, $db_name);
+
+          if($conn->connect_error){
+            die("Connection failed:". $conn->connect_error);
+          }
+          $sql = "SELECT boeksoort, boeksku, boeknaam, boekafbeelding, boekprijs FROM boeken WHERE boeksoort LIKE 'bus' ORDER BY boeksoort";
+          $result = $conn->query($sql);
+          if($result->num_rows > 0){
+            while ($row = $result->fetch_assoc()){
+              echo "<div class='artikel'><img src=".$row["boekafbeelding"]."></img><span>Productnummer: ".$row["boeksku"]. "</span><span>Boek: " .$row["boeknaam"]. "</span><span>Prijs: €" . $row["boekprijs"]."</span></div>";
+            }
+          }else{
+            echo "0 resultaten";
+          }
+          ?>
         </div>
         <div id="Spiegels" class="pagina">
-          <p>Dit is de Spiegels pagina</p>
+          <?php
+          $conn = new mysqli($host, $username, $password, $db_name);
+
+          if($conn->connect_error){
+            die("Connection failed:". $conn->connect_error);
+          }
+          $sql = "SELECT boeksoort, boeksku, boeknaam, boekafbeelding, boekprijs FROM boeken WHERE boeksoort LIKE 'spiegels' ORDER BY boeksoort";
+          $result = $conn->query($sql);
+          if($result->num_rows > 0){
+            while ($row = $result->fetch_assoc()){
+              echo "<div class='artikel'><img src=".$row["boekafbeelding"]."></img><span>Productnummer: ".$row["boeksku"]. "</span><span>Boek: " .$row["boeknaam"]. "</span><span>Prijs: €" . $row["boekprijs"]."</span></div>";
+            }
+          }else{
+            echo "0 resultaten";
+          }
+          ?>
         </div>
         <div id="WinkelWagen" class="pagina">
           <p>Hier komt te staan wat mensen hebben bestelt </p>
