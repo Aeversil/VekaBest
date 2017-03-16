@@ -69,12 +69,12 @@
      ?>
      <!-- DATABASE UPLOAD FORM -->
      <form class="form-horizontal" role="form" action="VekaBestAdmin.php" method="post" enctype="multipart/form-data">
-      <input type="VALUES" name="boekprijs" placeholder="boekprijs">
+      Boekprijs: <input type="VALUES" name="boekprijs" placeholder="boekprijs">
       <input type="hidden" name="size" value="3500000">
-      <input type="File" name="boekafbeelding" placeholder="boekprijs">
-      <input type="text" name="boeknaam" placeholder="boeknaam">
-      <select name="boeksoort">
-        <option type="text" value="auto">auto</option>
+      Foto upload: <input type="File" name="boekafbeelding" placeholder="boekprijs">
+      Boeknaam: <input type="text" name="boeknaam" placeholder="boeknaam">
+      Maak categorie keuze: <select name="boeksoort">
+      <option type="text" value="auto">auto</option>
         <option type="text" value="brommer">brommer</option>
         <option type="text" value="motor">motor</option>
         <option type="text" value="vrachtwagen">vrachtwagen</option>
@@ -82,7 +82,7 @@
         <option type="text" value="spiegels">spiegels</option>
       <!-- <input type="text" name="boeksoort" placeholder="boeksoort"> -->
       </select>
-      <input type="VALUES" name="boeksku" placeholder="boeksku">
+      Boeknummer: <input type="VALUES" name="boeksku" placeholder="boeksku">
       <input type="submit" value="Upload">
      </form>
 
