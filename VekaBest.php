@@ -174,6 +174,7 @@
         </div>
         <div id="WinkelWagen" class="pagina">
           <p>Hier komt te staan wat mensen hebben bestelt </p>
+
         </div>
         <?php
           $conn->close();
