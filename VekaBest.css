@@ -131,6 +131,10 @@ button:hover{
   color: black;
   font-weight: bold;
 }
+input[name="aantal"]{
+  width: 20px !important;
+
+}
 .artikel{
   display: inline-block;
   margin:15px;

@@ -65,7 +65,17 @@
             $result = $conn->query($sql);
             if($result->num_rows > 0){
               while ($row = $result->fetch_assoc()){
-                echo "<div class='artikel'><img src=".$row["boekafbeelding"]."></img><span>Productnummer: ".$row["boeksku"]. "</span><span>Boek: " .$row["boeknaam"]. "</span><span>Prijs: €" . $row["boekprijs"]."</span></div>";
+                ?>
+                <div class='artikel'>
+                <?php
+                echo "<img src=".$row["boekafbeelding"]."></img><span>Productnummer: ".$row["boeksku"]. "</span><span>Boek: " .$row["boeknaam"]. "</span><span>Prijs: €" . $row["boekprijs"]."</span>";
+                ?>
+                <form action="VekaBest.php">
+                  Aantal:<input type="text" name="aantal">
+                  <input type="image" src="stockvekafotos/winkelmand.png" width="25px" height="25px" border="0" alt="Submit"/>
+                </form>
+                </div>
+                <?php
               }
             }else{
               echo "0 resultaten";
