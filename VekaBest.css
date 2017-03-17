@@ -135,6 +135,11 @@ input[name="aantal"]{
   width: 20px !important;
 
 }
+button img{
+  background-image: url(stockvekafoto/trashcan.png);
+  height: 10px !important;
+  width: 10px !important;
+}
 .artikel{
   display: inline-block;
   margin:15px;
