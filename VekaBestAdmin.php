@@ -122,7 +122,6 @@
         <div id="BioGraphie" class="pagina">
           <p>HIER KOMT WAT ALLEEN WEET IK NOG NIET WAT</p>
         </div>
-
         <div id="WebShopAuto" class="pagina">
           <?php
 
@@ -143,13 +142,14 @@
                 <form action="VekaBest.php" method="$_POST">
                   <input type="image" src="stockvekafotos/trashcan.png" width="25px" height="25px" border="0" alt="Submit"/>
                 </form>
-                </div>
+              </div>
                 <?php
               }
             }else{
               echo "0 resultaten";
             }
             ?>
+        </div>
         <div id="WebShopBrommer" class="pagina">
           <?php
           $conn = new mysqli($host, $username, $password, $db_name);

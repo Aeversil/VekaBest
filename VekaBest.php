@@ -93,7 +93,7 @@
           $result = $conn->query($sql);
           if($result->num_rows > 0){
             while ($row = $result->fetch_assoc()){
-              echo "<div class='artikel'><img src=".$row["boekafbeelding"]."></img><span>Productnummer: ".$row["boeksku"]. "</span><span>Boek: " .$row["boeknaam"]. "</span><span>Prijs: €" . $row["boekprijs"]."</span></div>";
+                echo "<div class='artikel'><img src=".$row["boekafbeelding"]."></img><span>Productnummer: ".$row["boeksku"]. "</span><span>Boek: " .$row["boeknaam"]. "</span><span>Prijs: €" . $row["boekprijs"]."</span></div>";
             }
           }else{
             echo "Er zijn op dit moment geen artikelen";
