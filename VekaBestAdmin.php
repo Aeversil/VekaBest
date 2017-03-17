@@ -139,7 +139,6 @@
                 <form action="VekaBest.php" method="$_POST">
                   <input type="image" src="stockvekafotos/trashcan.png" width="25px" height="25px" border="0" alt="Submit"/>
                 </form>
-                </div>
                 <?php
               }
             }else{
