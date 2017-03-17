@@ -28,7 +28,23 @@
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
   <body>
-
+    <form class="form-horizontal" role="form" action="VekaBestAdmin.php" method="post" enctype="multipart/form-data">
+     Boekprijs: <input type="VALUES" name="boekprijs" placeholder="boekprijs">
+     <input type="hidden" name="size" value="3500000">
+     Foto upload: <input type="File" name="boekafbeelding" placeholder="boekprijs">
+     Boeknaam: <input type="text" name="boeknaam" placeholder="boeknaam">
+     Maak categorie keuze: <select name="boeksoort">
+     <option type="text" value="auto">auto</option>
+       <option type="text" value="brommer">brommer</option>
+       <option type="text" value="motor">motor</option>
+       <option type="text" value="vrachtwagen">vrachtwagen</option>
+       <option type="text" value="bus">bus</option>
+       <option type="text" value="spiegels">spiegels</option>
+     <!-- <input type="text" name="boeksoort" placeholder="boeksoort"> -->
+     </select>
+     Boeknummer: <input type="VALUES" name="boeksku" placeholder="boeksku">
+     <input type="submit" value="Upload">
+    </form>
     <?php
       // var_dump ();
       $conn = new mysqli($host, $username, $password, $db_name);
@@ -68,23 +84,7 @@
             mysqli_close($conn);
      ?>
      <!-- DATABASE UPLOAD FORM -->
-     <form class="form-horizontal" role="form" action="VekaBestAdmin.php" method="post" enctype="multipart/form-data">
-      Boekprijs: <input type="VALUES" name="boekprijs" placeholder="boekprijs">
-      <input type="hidden" name="size" value="3500000">
-      Foto upload: <input type="File" name="boekafbeelding" placeholder="boekprijs">
-      Boeknaam: <input type="text" name="boeknaam" placeholder="boeknaam">
-      Maak categorie keuze: <select name="boeksoort">
-      <option type="text" value="auto">auto</option>
-        <option type="text" value="brommer">brommer</option>
-        <option type="text" value="motor">motor</option>
-        <option type="text" value="vrachtwagen">vrachtwagen</option>
-        <option type="text" value="bus">bus</option>
-        <option type="text" value="spiegels">spiegels</option>
-      <!-- <input type="text" name="boeksoort" placeholder="boeksoort"> -->
-      </select>
-      Boeknummer: <input type="VALUES" name="boeksku" placeholder="boeksku">
-      <input type="submit" value="Upload">
-     </form>
+
 
     <div class="Fullpage">
       <!-- <div class="linkerbanner"><img src="stockvekafotos/stockbanner.jpg"></img></div> -->
@@ -134,7 +134,13 @@
             $result = $conn->query($sql);
             if($result->num_rows > 0){
               while ($row = $result->fetch_assoc()){
-                echo "<div class='artikel'><img src=".$row["boekafbeelding"]."></img><span>Productnummer: ".$row["boeksku"]. "</span><span>Boek: " .$row["boeknaam"]. "</span><span>Prijs: €" . $row["boekprijs"]."</span></div>";
+                echo "<div class='artikel'><img src=".$row["boekafbeelding"]."></img><span>Productnummer: ".$row["boeksku"]. "</span><span>Boek: " .$row["boeknaam"]. "</span><span>Prijs: €" . $row["boekprijs"]."</span>";
+                ?>
+                <form action="VekaBest.php" method="$_POST">
+                  <input type="image" src="stockvekafotos/trashcan.png" width="25px" height="25px" border="0" alt="Submit"/>
+                </form>
+                </div>
+                <?php
               }
             }else{
               echo "0 resultaten";
