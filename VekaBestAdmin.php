@@ -140,7 +140,7 @@
                 echo "<img src=".$row["boekafbeelding"]."></img><span>Productnummer: ".$row["boeksku"]. "</span><span>Boek: " .$row["boeknaam"]. "</span><span>Prijs: €" . $row["boekprijs"]."</span>";
                 ?>
                 <form action="VekaBestAdmin.php" method="$_POST">
-                  <button id="verwijder"><img src="stockvekafotos/trashcan.png"></button>
+                  <button class="verwijder"><img src="stockvekafotos/trashcan.png"></button>
                 </form>
               </div>
                 <?php

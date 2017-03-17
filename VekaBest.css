@@ -135,7 +135,7 @@ input[name="aantal"]{
   width: 20px !important;
 
 }
-button img{
+.verwijder img{
   background-image: url(stockvekafoto/trashcan.png);
   height: 10px !important;
   width: 10px !important;
