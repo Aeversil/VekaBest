@@ -134,18 +134,21 @@
             $result = $conn->query($sql);
             if($result->num_rows > 0){
               while ($row = $result->fetch_assoc()){
-                echo "<div class='artikel'><img src=".$row["boekafbeelding"]."></img><span>Productnummer: ".$row["boeksku"]. "</span><span>Boek: " .$row["boeknaam"]. "</span><span>Prijs: €" . $row["boekprijs"]."</span>";
+                ?>
+                <div class='artikel'>
+                <?php
+                echo "<img src=".$row["boekafbeelding"]."></img><span>Productnummer: ".$row["boeksku"]. "</span><span>Boek: " .$row["boeknaam"]. "</span><span>Prijs: €" . $row["boekprijs"]."</span>";
                 ?>
                 <form action="VekaBest.php" method="$_POST">
                   <input type="image" src="stockvekafotos/trashcan.png" width="25px" height="25px" border="0" alt="Submit"/>
                 </form>
+                </div>
                 <?php
               }
             }else{
               echo "0 resultaten";
             }
             ?>
-        </div>
         <div id="WebShopBrommer" class="pagina">
           <?php
           $conn = new mysqli($host, $username, $password, $db_name);
