@@ -122,6 +122,7 @@
         <div id="BioGraphie" class="pagina">
           <p>HIER KOMT WAT ALLEEN WEET IK NOG NIET WAT</p>
         </div>
+
         <div id="WebShopAuto" class="pagina">
           <?php
 
