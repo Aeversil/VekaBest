@@ -143,7 +143,7 @@
                   <button class="verwijder"><img src="stockvekafotos/trashcan.png">
                     <?php
                     if(isset($_POST['delete'])){
-                      mysql_query("DELETE FROM boeken WHERE boeksoort = '".$_POST['boeksoort']."'");
+                      mysqli_query("DELETE FROM boeken WHERE boeksku = '".$row['boeksku']."'");
                     }
                     ?>
                   </button>
