@@ -6,6 +6,7 @@ html,body{
 }
 #WebShopAuto{
   display: none;
+  background: #caf2f9;
 }
 #WebShopBrommer{
   display: none;
@@ -57,7 +58,11 @@ button:hover{
   color: black;
   font-weight: bold;
 }
-
+.artikel button {
+  background-color: white;
+  border-radius: 10px;
+  border: 1px solid;
+}
 .navigation{
   font-size: 0;
   margin: 20px;

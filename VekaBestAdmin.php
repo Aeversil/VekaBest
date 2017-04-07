@@ -140,7 +140,13 @@
                 echo "<img src=".$row["boekafbeelding"]."></img><span>Productnummer: ".$row["boeksku"]. "</span><span>Boek: " .$row["boeknaam"]. "</span><span>Prijs: €" . $row["boekprijs"]."</span>";
                 ?>
                 <form action="VekaBestAdmin.php" method="$_POST">
-                  <button class="verwijder"><img src="stockvekafotos/trashcan.png"></button>
+                  <button class="verwijder"><img src="stockvekafotos/trashcan.png">
+                    <?php
+                    if(isset($_POST['delete'])){
+                      mysql_query("DELETE FROM boeken WHERE boeksoort = '".$_POST['boeksoort']."'");
+                    }
+                    ?>
+                  </button>
                 </form>
               </div>
                 <?php
@@ -148,6 +154,7 @@
             }else{
               echo "0 resultaten";
             }
+
             ?>
         </div>
         <div id="WebShopBrommer" class="pagina">
