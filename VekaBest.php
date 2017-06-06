@@ -174,6 +174,7 @@
         </div>
         <div id="WinkelWagen" class="pagina">
           <p>Hier komt te staan wat mensen hebben bestelt </p>
+          <p>Kijken of we met cookies aan het werk moeten gaan, zodat we bestellingen vast kunnen zetten en kunnen dumpen naardat bestel compleet is.</p>
 
         </div>
         <?php

@@ -69,8 +69,6 @@
                   echo "Uploaden van artikel gelukt";
                 }else{
                   echo "kutzooi";
-
-
                 }
                 if ($conn->query($sql) === TRUE) {
                   // die();
@@ -84,8 +82,6 @@
             mysqli_close($conn);
      ?>
      <!-- DATABASE UPLOAD FORM -->
-
-
     <div class="Fullpage">
       <!-- <div class="linkerbanner"><img src="stockvekafotos/stockbanner.jpg"></img></div> -->
         <div class="banner"><img src="stockvekafotos/busbanner.jpg"></img></div>
@@ -116,11 +112,11 @@
 
         <!-- DEZE PAGINA'S WORDT MET JAVASCRIPT UITGEVOERT KIJK IN Teste.js OVER HOE EN WAT -->
         <div id="MainPage" class="pagina">
-          <p>VUL HIER TEKST IN</p>
+          <p>Lorem Ipsum is slechts een proeftekst uit het drukkerij- en zetterijwezen. Lorem Ipsum is de standaard proeftekst in deze bedrijfstak sinds de 16e eeuw, toen een onbekende drukker een zethaak met letters nam en ze door elkaar husselde om een font-catalogus te maken. Het heeft niet alleen vijf eeuwen overleefd maar is ook, vrijwel onveranderd, overgenomen in elektronische letterzetting. Het is in de jaren '60 populair geworden met de introductie van Letraset vellen met Lorem Ipsum passages en meer recentelijk door desktop publishing software zoals Aldus PageMaker die versies van Lorem Ipsum bevatten.</p>
           <p></p>
         </div>
         <div id="BioGraphie" class="pagina">
-          <p>HIER KOMT WAT ALLEEN WEET IK NOG NIET WAT</p>
+          <p>Lorem Ipsum is slechts een proeftekst uit het drukkerij- en zetterijwezen. Lorem Ipsum is de standaard proeftekst in deze bedrijfstak sinds de 16e eeuw, toen een onbekende drukker een zethaak met letters nam en ze door elkaar husselde om een font-catalogus te maken. Het heeft niet alleen vijf eeuwen overleefd maar is ook, vrijwel onveranderd, overgenomen in elektronische letterzetting. Het is in de jaren '60 populair geworden met de introductie van Letraset vellen met Lorem Ipsum passages en meer recentelijk door desktop publishing software zoals Aldus PageMaker die versies van Lorem Ipsum bevatten.</p>
         </div>
         <div id="WebShopAuto" class="pagina">
           <?php
@@ -139,22 +135,18 @@
                 <?php
                 echo "<img src=".$row["boekafbeelding"]."></img><span>Productnummer: ".$row["boeksku"]. "</span><span>Boek: " .$row["boeknaam"]. "</span><span>Prijs: €" . $row["boekprijs"]."</span>";
                 ?>
+                <!-- Verwijder knop -->
                 <form action="VekaBestAdmin.php" method="$_POST">
                   <button class="verwijder"><img src="stockvekafotos/trashcan.png">
-                    <?php
-                    if(isset($_POST['delete'])){
-                      mysqli_query("DELETE FROM boeken WHERE boeksku = '".$row['boeksku']."'");
-                    }
-                    ?>
+
                   </button>
                 </form>
               </div>
-                <?php
+            <?php
               }
-            }else{
-              echo "0 resultaten";
-            }
-
+                }else{
+                  echo "0 resultaten";
+                }
             ?>
         </div>
         <div id="WebShopBrommer" class="pagina">
@@ -248,7 +240,7 @@
           ?>
         </div>
         <div id="WinkelWagen" class="pagina">
-          <p>Hier komt te staan wat mensen hebben bestelt </p>
+          <p>Lorem Ipsum is slechts een proeftekst uit het drukkerij- en zetterijwezen. Lorem Ipsum is de standaard proeftekst in deze bedrijfstak sinds de 16e eeuw, toen een onbekende drukker een zethaak met letters nam en ze door elkaar husselde om een font-catalogus te maken. Het heeft niet alleen vijf eeuwen overleefd maar is ook, vrijwel onveranderd, overgenomen in elektronische letterzetting. Het is in de jaren '60 populair geworden met de introductie van Letraset vellen met Lorem Ipsum passages en meer recentelijk door desktop publishing software zoals Aldus PageMaker die versies van Lorem Ipsum bevatten.</p>
         </div>
         <?php
           $conn->close();
