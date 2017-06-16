@@ -1,7 +1,7 @@
 html,body{
   margin: 0;
 }
-#BioGraphie{
+#Contact{
   display: none;
 }
 #WebShopAuto{
@@ -29,7 +29,7 @@ html,body{
 .pagina{
   text-align: left;
   background: #caf2f9;
-  width: 50%;
+  width: 75%;
   height: 100%;
   margin: 0 auto;
   /*display: inline-block;*/
@@ -67,7 +67,7 @@ button:hover{
   font-size: 0;
   margin: 20px;
   color: black;
-  width: 50%;
+  width: 75%;
   margin: 0 auto;
   text-align: left;
 }

@@ -23,7 +23,7 @@
         <!-- NAVIGATIE BALK -->
         <div class="navigation">
           <button class="HomeButton"onclick="openPage('MainPage')">Home</buttons>
-          <button onclick="openPage('BioGraphie')">Biographie</button>
+          <button onclick="openPage('Contact')">Contact</button>
           <!-- DROPDOWN MENU MET EEN SCRIPT -->
           <div class="dropdown">
               <button onclick="dropdownmenu()" class="dropbtn">Webshop</button>
@@ -50,8 +50,8 @@
           <p>VUL HIER TEKST IN</p>
           <p></p>
         </div>
-        <div id="BioGraphie" class="pagina">
-          <p>HIER KOMT WAT ALLEEN WEET IK NOG NIET WAT</p>
+        <div id="Contact" class="pagina">
+          <p>CONTACT INFORMATIE</p>
         </div>
         <div id="WebShopAuto" class="pagina">
           <?php
