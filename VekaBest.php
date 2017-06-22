@@ -1,10 +1,5 @@
 <!-- MainPage van VekaBest -->
-<?php
-  $host="localhost";
-  $username="root";
-  $password="";
-  $db_name="vekabestwebsite";
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
