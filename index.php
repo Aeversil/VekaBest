@@ -75,7 +75,7 @@ $db_name = "vekabestwebsite";
       </div>
     </div>
 
-    <script>
+    <script type="text/javascript">
     var pages = ["user_home", "user_profile", "user_edit_profile", "user_contact", "user_webshop", "user_shopping_cart"];
 
     function showPage(pagename) {

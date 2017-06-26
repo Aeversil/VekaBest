@@ -1,19 +1,22 @@
 <div id="user_webshop" style="display: none">
   <?php
     // Create connection
-    $conn = new mysqli($db_name, $username, $password);
+    $conn = new Mysqli($host, $username, $password, $db_name);
     // Check connection
     if ($conn->connect_error) {
-      die("Connection failed: " . $conn->connect_error);
+      echo "Connection failed: " . $conn->connect_error;
     }
 
-    // Create database
-    $sql = "SELECT DISTINCT boeksoort FROM `boeken`  WHERE 1 ";
-    if ($conn->query($sql) === TRUE) {
-      $result = $conn->query($sql);
-    } else {
-      echo "Error creating database: " . $conn->error;
+
+    $sql = "SELECT DISTINCT boeksoort FROM `boeken` WHERE 1;";
+    $result = mysqli_query($conn, $sql);
+
+    while ($row = mysqli_fetch_row($result)) {
+      echo $row[0];
+      echo "<br>";
     }
+    mysqli_free_result($result);
+
 
     $conn->close();
   ?>
