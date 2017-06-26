@@ -1,31 +1,7 @@
 html,body{
   margin: 0;
 }
-#Contact{
-  display: none;
-}
-#WebShopAuto{
-  display: none;
-  background: #caf2f9;
-}
-#WebShopBrommer{
-  display: none;
-}
-#WebShopMotor{
-  display: none;
-}
-#WebShopVrachtwagen{
-  display: none;
-}
-#WebShopBus{
-  display: none;
-}
-#Spiegels{
-  display: none;
-}
-#WinkelWagen{
-  display: none;
-}
+
 .pagina{
   text-align: left;
   background: #caf2f9;
@@ -39,24 +15,6 @@ html,body{
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   border: 1px solid;
-}
-button:focus {
-    outline: none;
-}
-button{
-  border-radius: 10px;
-  align-items: center;
-  background: #caf2f9;
-  color: black;
-  border: none;
-  padding: 15px;
-  font-size: 16px;
-}
-button:hover{
-  border-radius: 10px;
-  background: gray !important;
-  color: black;
-  font-weight: bold;
 }
 .artikel button {
   background-color: white;
@@ -160,6 +118,33 @@ input[name="aantal"]{
   height: 250px;
 }
 .banner img{
-  width: 50%;
-  height: 100%;
+  width: 100%;
+}
+
+.button-navbar {
+  left: -25px;
+  margin-top: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.button-admin-navbar {
+  left: -45px;
+  margin-top: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.button-login {
+  margin-top: 10px;
+  margin-right: 10px;
+  float: right;
+  padding-top: 5px !important;
+  padding-bottom: 5px !important;
+  border: 1px solid black;
+  border-radius: 10px;
 }

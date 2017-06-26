@@ -42,41 +42,42 @@ $db_name = "vekabestwebsite";
       </div>
 
       <div class="col-md-2 col-md-offset-1">
-        <a href="user_login.php"><button class="btn-success panel-body panel-default button-login">Log in</button></a>
+        <a href="index.php"><button class="btn-danger panel-body panel-default button-login">Log uit</button></a>
       </div>
     </div>
 
     <div class="row">
-      <div class="col-md-offset-3 col-xs-offset-6">
-        <div onclick="showPage('user_home');" class="btn-info button-navbar col-md-2 panel-body panel-default">
+      <div class="col-md-offset-2 col-xs-offset-6">
+        <div onclick="showPage('admin_home');" class="btn-success button-admin-navbar col-md-2 panel-body panel-default">
           Home page
         </div>
-        <div onclick="showPage('user_contact');" class="btn-info button-navbar col-md-2 panel-body panel-default">
+        <div onclick="showPage('admin_contact');" class="btn-success button-admin-navbar col-md-2 panel-body panel-default">
           Contact
         </div>
-        <div onclick="showPage('user_webshop');" class="btn-info button-navbar col-md-2 panel-body panel-default">
-          Webshop
+        <div onclick="showPage('admin_inventory');" class="btn-success button-admin-navbar col-md-2 panel-body panel-default">
+          Inventaris
         </div>
-        <div onclick="showPage('user_shopping_cart');" class="btn-info button-navbar col-md-2 panel-body panel-default">
-          Winkelwagen
+        <div onclick="showPage('admin_users');" class="btn-success button-admin-navbar col-md-2 panel-body panel-default">
+          Gebruikers
+        </div>
+        <div onclick="showPage('admin_orders');" class="btn-success button-admin-navbar col-md-2 panel-body panel-default">
+          Bestellingen
         </div>
       </div>
     </div>
     <div class="row container">
-      <?php @include("user_home.php"); ?>
-      <?php @include("user_profile.php"); ?>
-      <?php @include("user_edit_profile.php"); ?>
-      <?php @include("user_contact.php"); ?>
-      <?php @include("user_webshop.php"); ?>
-      <?php @include("user_shopping_cart.php"); ?>
+      <?php @include("admin_home.php"); ?>
+      <?php @include("admin_contact.php"); ?>
+      <?php @include("admin_inventory.php"); ?>
+      <?php @include("admin_users.php"); ?>
+      <?php @include("admin_orders.php"); ?>
 
-      <!-- Show Javascript custom errors here. -->
       <div id="error-message" class="alert-danger col-md-12 col-md-offset-1" style="display: none;">
       </div>
     </div>
 
     <script>
-    var pages = ["user_home", "user_profile", "user_edit_profile", "user_contact", "user_webshop", "user_shopping_cart"];
+    var pages = ["admin_home", "admin_contact", "admin_inventory", "admin_users", "admin_orders"];
 
     function showPage(pagename) {
       for (var i = 0; i < pages.length; i++) {
@@ -84,9 +85,7 @@ $db_name = "vekabestwebsite";
           var page = document.getElementById(pages[i]);
           page.setAttribute("style", "display: none");}
         catch(err) {
-          document.getElementById("error-message").setAttribute("style", "display: block");
-          document.getElementById("error-message").innerHTML = '<h1 class="error-message">404 page not found.</h1>';
-        }
+          }
       }
       var showpage = document.getElementById(pagename);
       showpage.setAttribute("style", "display: block");
