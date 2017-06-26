@@ -62,7 +62,7 @@ $db_name = "vekabestwebsite";
         </div>
       </div>
     </div>
-    <div class="row container">
+    <div class="row">
       <?php @include("user_home.php"); ?>
       <?php @include("user_profile.php"); ?>
       <?php @include("user_edit_profile.php"); ?>
