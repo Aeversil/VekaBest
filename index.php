@@ -12,7 +12,7 @@
 <?php
 $host = "localhost";
 $username = "root";
-$password = "";
+$password = "root";
 $db_name = "vekabestwebsite";
 ?>
 
@@ -36,33 +36,30 @@ $db_name = "vekabestwebsite";
 
   </head>
   <body style="background-color: #f0f0f0;">
-    <div class="row">
-      <div class="banner col-md-6 col-md-offset-3">
+      <div class="row">
+      <div class="banner">
         <img src="stockvekafotos/busbanner.jpg" />
+        <div class="login">
+        <a href="user_login.php"><button>Log in</button></a>
+      </div>
       </div>
 
-      <div class="col-md-2 col-md-offset-1">
-        <a href="user_login.php"><button class="btn-success panel-body panel-default button-login">Log in</button></a>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-md-offset-3 col-xs-offset-6">
-        <div onclick="showPage('user_home');" class="btn-info button-navbar col-md-2 panel-body panel-default">
+    <div class="nav2">
+        <button onclick="showPage('user_home');">
           Home page
-        </div>
-        <div onclick="showPage('user_contact');" class="btn-info button-navbar col-md-2 panel-body panel-default">
+        </button>
+        <button onclick="showPage('user_contact');">
           Contact
-        </div>
-        <div onclick="showPage('user_webshop');" class="btn-info button-navbar col-md-2 panel-body panel-default">
+        </button>
+        <button onclick="showPage('user_webshop');">
           Webshop
-        </div>
-        <div onclick="showPage('user_shopping_cart');" class="btn-info button-navbar col-md-2 panel-body panel-default">
+        </button>
+        <button onclick="showPage('user_shopping_cart');"">
           Winkelwagen
-        </div>
-      </div>
+        </button>
     </div>
-    <div class="row container">
+
+    <div class="rowcontainer">
       <?php @include("user_home.php"); ?>
       <?php @include("user_profile.php"); ?>
       <?php @include("user_edit_profile.php"); ?>
@@ -74,7 +71,7 @@ $db_name = "vekabestwebsite";
       <div id="error-message" class="alert-danger col-md-12 col-md-offset-1" style="display: none;">
       </div>
     </div>
-
+    </div>
     <script>
     var pages = ["user_home", "user_profile", "user_edit_profile", "user_contact", "user_webshop", "user_shopping_cart"];
 
