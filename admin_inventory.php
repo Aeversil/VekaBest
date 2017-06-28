@@ -38,9 +38,7 @@ $sku=$_POST['sku'];
 mysql_query("INSERT INTO boeken VALUES('$id', '$prijs', '$afbeelding', '$boeknaam', '$categorie', '$sku')");
 ?>
 
-<center>
 <h1>Admin inventory edit page</h1>
-</center>
 <button onclick='Add()' id='add'><i class='fa fa-plus-circle fa-2x' aria-hidden='true'> </i></button>
 <table>
 	<thead>
