@@ -1,11 +1,11 @@
 html,body{
-  margin: 0;
+  margin-left:  0.8%;
 }
 
 .pagina{
   text-align: left;
   background: #caf2f9;
-  width: 75%;
+  width: 90%;
   height: 100%;
   margin: 0 auto;
   /*display: inline-block;*/
@@ -23,14 +23,50 @@ html,body{
 }
 .navigation{
   font-size: 0;
-  margin: 20px;
+  margin: 0px;
   color: black;
-  width: 75%;
+  width: 100%;
   margin: 0 auto;
   text-align: left;
 }
-.navigation button{
-  width: 25%;
+.nav button{
+  background: #31af1a;
+  color: white;
+  width: 19%;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  border: 1px solid;
+  border-radius: 10px;
+}
+.nav button:hover{
+  background: #43b12f;
+  color: white;
+  width: 19%;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  border: 1px solid;
+  border-radius: 10px;
+}
+
+.loguit button{
+  margin-top: -17%;
+/*  margin-left:85.5%;*/
+  background: red;
+  color: white;
+  width: 10%;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  border: 1px solid;
+  border-radius: 10px;
+}
+
+.loguit button:hover{
+  background: #ff4949;
+  color: white;
+  width: 10%;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -118,7 +154,7 @@ input[name="aantal"]{
   height: 250px;
 }
 .banner img{
-  width: 100%;
+  width: 99.2%;
 }
 
 .button-navbar {
@@ -147,4 +183,11 @@ input[name="aantal"]{
   padding-bottom: 5px !important;
   border: 1px solid black;
   border-radius: 10px;
+}
+button{
+  border-radius: 10px;
+  align-items: center;
+  border: none;
+  padding: 15px;
+  font-size: 16px;
 }
