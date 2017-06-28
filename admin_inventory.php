@@ -22,7 +22,7 @@ color: white;
 </style>
 
 <?php
-$con= mysqli_connect("localhost","root","root","vekabestwebsite");
+$con= mysqli_connect($host, $username, $password, $db_name);
 if (mysqli_connect_errno())
   {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
@@ -38,7 +38,6 @@ $sku=$_POST['sku'];
 mysql_query("INSERT INTO boeken VALUES('$id', '$prijs', '$afbeelding', '$boeknaam', '$categorie', '$sku')");
 ?>
 
-<h1>Admin inventory edit page</h1>
 <button onclick='Add()' id='add'><i class='fa fa-plus-circle fa-2x' aria-hidden='true'> </i></button>
 <table>
 	<thead>
