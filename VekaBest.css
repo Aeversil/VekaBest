@@ -227,98 +227,6 @@ input[name="aantal"]{
   border: 1px solid black;
   border-radius: 10px;
 }
-
-.categories {
-  border: 1px solid black !important;
-  text-align: center !important;
-}
-
-/* Menu Colors*/
-.edit-color {
-  background-color: #03a6f4;
-}
-
-.edit-color:hover {
-  background-color: #81d4fa !important;
-}
-
-.button-color-blue {
-  border-radius: 10px;
-  background-color: #03a6f4 !important;
-}
-
-.button-color-blue:hover {
-  background-color: #81d4fa !important;
-}
-
-.panel-color-blue {
-  border: 1px solid black;
-  border-radius: 10px;
-  background-color: #81d4fa !important;
-}
-
-.button-color-orange {
-  border-radius: 10px;
-  background-color: #ff9800 !important;
-}
-
-.button-color-orange:hover {
-  background-color: #efbf77 !important;
-}
-
-.panel-color-orange {
-  border: 1px solid black;
-  border-radius: 10px;
-  background-color: #ffe0ba !important;
-}
-
-.button-color-yellow {
-  border-radius: 10px;
-  background-color: #e4d232 !important;
-}
-
-.button-color-yellow:hover {
-  background-color: #efbf77 !important;
-}
-
-.panel-color-yellow {
-  border: 1px solid black;
-  border-radius: 10px;
-  background-color: #fff8bd !important;
-}
-
-.button-color-green {
-  border-radius: 10px;
-  background-color: #4caf50 !important;
-}
-
-.button-color-green:hover {
-  background-color: #66bb6a !important;
-}
-
-.panel-color-green {
-  border: 1px solid black;
-  border-radius: 10px;
-  background-color: #a5dba7 !important;
-}
-
-.button-color-darkblue {
-  border-radius: 10px;
-  background-color: #0d47a7 !important;
-}
-
-.button-color-darkblue:hover {
-  background-color: #448aff !important;
-}
-
-.panel-color-darkblue {
-  border: 1px solid black;
-  border-radius: 10px;
-  background-color: #82b1ff !important;
-}
-
-/*end Menu Colors*/
-
 button{
   border-radius: 10px;
   align-items: center;
@@ -332,4 +240,46 @@ h1{
 }
 .rowcontainer {
   margin-left: 0%;
+}
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 30%;
+}
+
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.forminvoer{
+  margin-left: 2%;
 }

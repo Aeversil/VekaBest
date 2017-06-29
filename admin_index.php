@@ -64,9 +64,7 @@ $db_name = "vekabestwebsite";
         </button>
       </div>
 
-
     <div class="rowcontainer">
-
       <?php @include("admin_home.php"); ?>
       <?php @include("admin_contact.php"); ?>
       <?php @include("admin_inventory.php"); ?>
