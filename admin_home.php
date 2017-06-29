@@ -1,8 +1,6 @@
+<div id="admin_home" style="display: none">
+
 <?php
-  $host="localhost";
-  $username="root";
-  $password="";
-  $db_name="vekabestwebsite";
  // MAKEN EN MOGELIJK Maken VAN HET UPLOADEN VAN FOTO'S \\
   $dir = dirname(__FILE__);
   $target = "fotouploads";
@@ -15,18 +13,7 @@
     // echo "<br>Directory already exists</br>";
   }
 ?>
-<!DOCTYPE html>
 
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>VekaBest</title>
-  <link href="VekaBest.css" rel="stylesheet">
-  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-</head>
-  <body>
     <form class="form-horizontal" role="form" action="VekaBestAdmin.php" method="post" enctype="multipart/form-data">
      Boekprijs: <input type="VALUES" name="boekprijs" placeholder="boekprijs"></br>
      <input type="hidden" name="size" value="3500000"></br>
@@ -117,4 +104,4 @@
       <button>Verzend</button>
 
     </div>
-</body>
+    </div>
