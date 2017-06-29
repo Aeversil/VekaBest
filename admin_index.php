@@ -36,36 +36,37 @@ $db_name = "vekabestwebsite";
 
   </head>
   <body style="background-color: #f0f0f0;">
+
     <div class="row">
-      <div class="banner col-md-6 col-md-offset-3">
+      <div class="banner">
         <img src="stockvekafotos/busbanner.jpg" />
+        <div class="loguit">
+        <a href="index.php"><button>Log uit</button></a>
+      </div>
       </div>
 
-      <div class="col-md-2 col-md-offset-1">
-        <a href="index.php"><button class="btn-danger panel-body panel-default button-login">Log uit</button></a>
-      </div>
-    </div>
 
-    <div class="row">
-      <div class="col-md-offset-2 col-xs-offset-6">
-        <div onclick="showPage('admin_home');" class="btn-success button-admin-navbar col-md-2 panel-body panel-default">
+    <div class="nav">
+        <button onclick="showPage('admin_home');">
           Home page
-        </div>
-        <div onclick="showPage('admin_contact');" class="btn-success button-admin-navbar col-md-2 panel-body panel-default">
+        </button>
+        <button onclick="showPage('admin_contact');">
           Contact
-        </div>
-        <div onclick="showPage('admin_inventory');" class="btn-success button-admin-navbar col-md-2 panel-body panel-default">
+        </button>
+        <button onclick="showPage('admin_inventory');">
           Inventaris
-        </div>
-        <div onclick="showPage('admin_users');" class="btn-success button-admin-navbar col-md-2 panel-body panel-default">
+        </button>
+        <button  onclick="showPage('admin_users');">
           Gebruikers
-        </div>
-        <div onclick="showPage('admin_orders');" class="btn-success button-admin-navbar col-md-2 panel-body panel-default">
+        </button>
+        <button onclick="showPage('admin_orders');">
           Bestellingen
-        </div>
+        </button>
       </div>
-    </div>
-    <div class="row container">
+
+
+    <div class="rowcontainer">
+
       <?php @include("admin_home.php"); ?>
       <?php @include("admin_contact.php"); ?>
       <?php @include("admin_inventory.php"); ?>
@@ -74,8 +75,6 @@ $db_name = "vekabestwebsite";
 
       <div id="error-message" class="alert-danger col-md-12 col-md-offset-1" style="display: none;">
       </div>
-    </div>
-
     <script>
     var pages = ["admin_home", "admin_contact", "admin_inventory", "admin_users", "admin_orders"];
 
@@ -90,6 +89,9 @@ $db_name = "vekabestwebsite";
       var showpage = document.getElementById(pagename);
       showpage.setAttribute("style", "display: block");
     }
+
     </script>
+    </div>
+    </div>
   </body>
 </html>

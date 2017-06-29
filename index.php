@@ -12,7 +12,7 @@
 <?php
 $host = "localhost";
 $username = "root";
-$password = "";
+$password = "root";
 $db_name = "vekabestwebsite";
 ?>
 
@@ -39,28 +39,29 @@ $db_name = "vekabestwebsite";
     <div class="row">
       <div class="banner">
         <img src="stockvekafotos/busbanner.jpg" />
+        <div class="login">
+        <a href="user_login.php"><button>Log in</button></a>
       </div>
+      </div>
+
+    <div class="nav2">
+        <button onclick="showPage('user_home');" class="edit-color">
+          Home page
+        </button>
+        <button onclick="showPage('user_contact');" class="edit-color">
+          Contact
+        </button>
+        <button onclick="showPage('user_webshop');" class="edit-color">
+          Webshop
+        </button>
+        <button onclick="showPage('user_shopping_cart');" class="edit-color">
+          Winkelwagen
+        </button>
     </div>
-    <div class="row">
-      <div onclick="showPage('user_home');" class="button-navbar col-md-offset-1 col-md-2 panel-body panel-default edit-color">
-        Home page
-      </div>
-      <div onclick="showPage('user_contact');" class="button-navbar col-md-2 panel-body panel-default edit-color">
-        Contact
-      </div>
-      <div onclick="showPage('user_webshop');" class="button-navbar col-md-2 panel-body panel-default edit-color">
-        Webshop
-      </div>
-      <div onclick="showPage('user_shopping_cart');" class="button-navbar col-md-2 panel-body panel-default edit-color">
-        Winkelwagen
-      </div>
-      <div class="col-md-1 col-md-offset-1 pull-right">
-        <a href="user_login.php"><button class="btn-success panel-body panel-default button-login">Log in</button></a>
-      </div>
-    </div>
+
     <div class="row" style="padding-top: 10px;">
       <div class="container">
-      <?php @include("user_home.php"); ?>
+              <?php @include("user_home.php"); ?>
       <?php @include("user_profile.php"); ?>
       <?php @include("user_edit_profile.php"); ?>
       <?php @include("user_contact.php"); ?>
