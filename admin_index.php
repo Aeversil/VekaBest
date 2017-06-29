@@ -12,7 +12,7 @@
 <?php
 $host = "localhost";
 $username = "root";
-$password = "";
+$password = "root";
 $db_name = "vekabestwebsite";
 ?>
 

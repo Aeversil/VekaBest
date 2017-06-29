@@ -22,40 +22,101 @@ color: white;
 </style>
 
 <?php
-
-$con= mysqli_connect($host, $username, $password, $db_name);
-
-
-if (mysqli_connect_errno())
-  {
-  echo "Failed to connect to MySQL: " . mysqli_connect_error();
+ // MAKEN EN MOGELIJK Maken VAN HET UPLOADEN VAN FOTO'S \
+  $dir = dirname(FILE);
+  $target = "fotouploads";
+  $path = $dir . "/" . $target . "/";
+  $dbpath = $target . "/";
+  // Create target folder if it doesn't exist yet
+  if(!is_dir($path)){
+    mkdir($path);
+  }else{
+    // echo "<br>Directory already exists</br>";
   }
-$query = "SELECT * FROM boeken ORDER BY boeksoort";
-
-$id=$_POST['id'];
-$boeknaam=$_POST['boeknaam'];
-$categorie=$_POST['categorie'];
-$afbeelding=$_POST['afbeelding'];
-$prijs=$_POST['prijs'];
-$sku=$_POST['sku'];
-
-// $sql("INSERT INTO boeken VALUES('1','3','j.jpg','t','auto','500')");
-// if(mysqli_query($con, $sql)){
-//     echo "Records added successfully.";
-// } else{
-//     echo "ERROR: Could not able to execute $sql. " . mysqli_error($con);
-// }
-
-mysql_query("INSERT INTO boeken VALUES('$id', '$prijs', '$afbeelding', '$boeknaam', '$categorie', '$sku')");
 ?>
+<button id='add'><i class='fa fa-plus-circle fa-2x' aria-hidden='true'> </i></button>
+<div id="myModal" class="modal">
 
+<!-- Modal content -->
+		<div class="modal-content">
+	    <span class="close">&times;</span>
+	    <link rel="stylesheet" type="text/css" href="">
+	    <div id="forminvoer">
+		    <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data">
+		     Boekprijs: 
+		     </br>
+		     <input type="VALUES" name="boekprijs" placeholder="boekprijs"></br>
+		     <input type="hidden" name="size" value="3500000">
+		     </br>
+		     Foto upload: 
+		     </br>
+		     <input type="File" name="boekafbeelding" placeholder="boekprijs">
+		     </br>
+		     Boeknaam:
+		     </br>
+		     <input type="text" name="boeknaam" placeholder="boeknaam">
+		     </br></br>
+		     Maak categorie keuze:
+		     </br>
+		    	<select name="boeksoort">
+		    	<option type="text" value="">-</option>
+		    	<option type="text" value="auto">auto</option>
+		    	<option type="text" value="brommer">brommer</option>
+		    	<option type="text" value="motor">motor</option>
+		    	<option type="text" value="vrachtwagen">vrachtwagen</option>
+		     	<option type="text" value="bus">bus</option>
+		    	<option type="text" value="spiegels">spiegels</option>
+		     	</select>
+		     	</br></br>
+		     Boeknummer:
+		     </br>
+		     <input type="VALUES" name="boeksku" placeholder="boeksku">
+		     </br></br>
+		     <input type="submit" value="Upload">
+		    </form>
+		</div>
+		</div>
+		</div>
+	<?php
+      // var_dump ();
+      $conn = new mysqli("localhost","root", "root", "vekabestwebsite");
+      if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+            }
+            if ($_SERVER['REQUEST_METHOD']== "POST"){
+              if (isset($_POST['boekprijs']) && ($_FILES['boekafbeelding']) && ($_POST['boeknaam']) && ($_POST['boeksoort']) && ($_POST['boeksku'])) {
 
+                $boekprijs = $_POST['boekprijs'];
+                $target =  $path . $_FILES['boekafbeelding']['name'];
+                $file = $_FILES['boekafbeelding'];
+                $dbtarget =  mysql_real_escape_string ($dbpath . $_FILES['boekafbeelding']['name']);
+                $boeknaam = $_POST['boeknaam'];
+                $boeksoort = $_POST['boeksoort'];
+                $boeksku = $_POST['boeksku'];
 
-<button onclick='Add()' id='add'><i class='fa fa-plus-circle fa-2x' aria-hidden='true'> </i></button>
+                file_put_contents($target, $file);
+                $escaped_target = mysql_real_escape_string($target);
+                $sql = "INSERT INTO boeken (boekprijs, boekafbeelding, boeknaam, boeksoort, boeksku) VALUES ($boekprijs, '$dbtarget', '$boeknaam', '$boeksoort', $boeksku)";
+                if (move_uploaded_file($_FILES['boekafbeelding']['tmp_name'], $target)){
+                  echo "Uploaden van artikel gelukt";
+                }else{
+                  echo "";
+                }
+                if ($conn->query($sql) === TRUE) {
+                  // die();
+                }
+              }
+            }
+mysqli_close($conn);
+$con = new mysqli("localhost","root", "root", "vekabestwebsite");
+      if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+            }
+$query = "SELECT * FROM boeken ORDER BY boeksoort";
+     ?>
 <table>
 	<thead>
 		<tr>
-			<th>ID </th>
 			<th>Boeknaam </th>
 			<th>Catergorie </th>
 			<th>Afbeelding </th>
@@ -66,50 +127,7 @@ mysql_query("INSERT INTO boeken VALUES('$id', '$prijs', '$afbeelding', '$boeknaa
 		</tr>
 	</thead>
 	<tbody>
-	<div id="myModal" class="modal">
-
-  <!-- Modal content -->
-	  <div class="modal-content">
-	    <span class="close">&times;</span>
-	    <!-- <link rel="stylesheet" type="text/css" href=""> -->
-	    <div id="forminvoer">
-		    <form method="post">
-			    ID :
-			    </br>
-			    <input id="input" name="id" value="" type="text">
-			    </br>
-			    BoekNaam :
-			    </br>
-			    <input id="input" name="boeknaam" value="" type="text">
-			    </br>
-			    Categorie :
-			    </br>
-			    <select>
-					<option value="categorie">Auto</option>
-					<option value="categorie">Brommer</option>
-					<option value="categorie">Bus</option>
-					<option value="categorie">Motor</option>
-					<option value="categorie">Spiegels</option>
-					<option value="categorie">Vrachtwagen</option>
-				</select>
-			    </br>
-			    Afbeelding :
-			    </br>
-			    <input id="input" name="afbeelding" value="" type="text">
-			    </br>
-			    Prijs :
-			    </br>
-			    <input id="input" name="prijs" value="" type="text">
-			    </br>
-			    Sku :
-			    </br>
-			    <input id="input" name="sku" value="" type="text">
-			    </br>
-			    </br>
-			    <button id="change2">Toevoegen</button>
-		    </form>
-	    </div>
-	  </div>
+	
 	</div>
 		<script>
 		// Get the modal
@@ -138,7 +156,6 @@ mysql_query("INSERT INTO boeken VALUES('$id', '$prijs', '$afbeelding', '$boeknaa
 		    }
 		}
 		</script>
-
 		<?php
 		// if (is_int($_GET["id"]) {
 		//     $query2 = "DELETE FROM boeken WHERE boekid =". $_GET["id"];
@@ -151,14 +168,13 @@ mysql_query("INSERT INTO boeken VALUES('$id', '$prijs', '$afbeelding', '$boeknaa
 		    {
 		    	$row['id'] = $row['0'];
 		    	printf("<tr>");
-		    	printf("<td>". $row['0'] ."</td>");
 		    	printf("<td>". $row['3'] ."</td>");
 		    	printf("<td>". $row['4'] ."</td>");
-		    	printf("<td>". $row['2'] ."</td>");
+		    	printf("<td><img src=". $row['2'] ." height='120' width='80'></td>");
 		    	printf("<td>". $row['1'] ."</td>");
 		    	printf("<td>". $row['5'] ."</td>");
-		    	printf("<td><button onclick='Change()' id='change'><i class='fa fa-pencil-square-o fa-2x' aria-hidden='true'> </i></button></td>");
-		    	printf("<td><button onclick='Delete()' id='change'><i class='fa fa-trash fa-2x' aria-hidden='true'></i></button></td>");
+		    	printf("<td><button id='change'><i class='fa fa-pencil-square-o fa-2x' aria-hidden='true'> </i></button></td>");
+		    	printf("<td><button  id='delete'><i class='fa fa-trash fa-2x' aria-hidden='true'></i></button></td>");
 		    	printf("</tr>");
 		    }
 		  // Free result set
