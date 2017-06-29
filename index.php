@@ -54,7 +54,7 @@ $db_name = "vekabestwebsite";
         <button onclick="showPage('user_webshop');">
           Webshop
         </button>
-        <button onclick="showPage('user_shopping_cart');"">
+        <button onclick="showPage('user_shopping_cart');">
           Winkelwagen
         </button>
     </div>
