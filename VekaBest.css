@@ -1,31 +1,7 @@
 html,body{
   margin: 0;
 }
-#Contact{
-  display: none;
-}
-#WebShopAuto{
-  display: none;
-  background: #caf2f9;
-}
-#WebShopBrommer{
-  display: none;
-}
-#WebShopMotor{
-  display: none;
-}
-#WebShopVrachtwagen{
-  display: none;
-}
-#WebShopBus{
-  display: none;
-}
-#Spiegels{
-  display: none;
-}
-#WinkelWagen{
-  display: none;
-}
+
 .pagina{
   text-align: left;
   background: #caf2f9;
@@ -39,24 +15,6 @@ html,body{
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   border: 1px solid;
-}
-button:focus {
-    outline: none;
-}
-button{
-  border-radius: 10px;
-  align-items: center;
-  background: #caf2f9;
-  color: black;
-  border: none;
-  padding: 15px;
-  font-size: 16px;
-}
-button:hover{
-  border-radius: 10px;
-  background: gray !important;
-  color: black;
-  font-weight: bold;
 }
 .artikel button {
   background-color: white;
@@ -160,6 +118,124 @@ input[name="aantal"]{
   height: 250px;
 }
 .banner img{
-  width: 50%;
-  height: 100%;
+  width: 100%;
 }
+
+.button-navbar {
+  left: -25px;
+  margin-top: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.button-admin-navbar {
+  left: -45px;
+  margin-top: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.button-login {
+  margin-top: 10px;
+  margin-right: 10px;
+  float: right;
+  padding-top: 5px !important;
+  padding-bottom: 5px !important;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.categories {
+  border: 1px solid black !important;
+  text-align: center !important;
+}
+
+/* Menu Colors*/
+.edit-color {
+  background-color: #03a6f4;
+}
+
+.edit-color:hover {
+  background-color: #81d4fa !important;
+}
+
+.button-color-blue {
+  border-radius: 10px;
+  background-color: #03a6f4 !important;
+}
+
+.button-color-blue:hover {
+  background-color: #81d4fa !important;
+}
+
+.panel-color-blue {
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: #81d4fa !important;
+}
+
+.button-color-orange {
+  border-radius: 10px;
+  background-color: #ff9800 !important;
+}
+
+.button-color-orange:hover {
+  background-color: #efbf77 !important;
+}
+
+.panel-color-orange {
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: #ffe0ba !important;
+}
+
+.button-color-yellow {
+  border-radius: 10px;
+  background-color: #e4d232 !important;
+}
+
+.button-color-yellow:hover {
+  background-color: #efbf77 !important;
+}
+
+.panel-color-yellow {
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: #fff8bd !important;
+}
+
+.button-color-green {
+  border-radius: 10px;
+  background-color: #4caf50 !important;
+}
+
+.button-color-green:hover {
+  background-color: #66bb6a !important;
+}
+
+.panel-color-green {
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: #a5dba7 !important;
+}
+
+.button-color-darkblue {
+  border-radius: 10px;
+  background-color: #0d47a7 !important;
+}
+
+.button-color-darkblue:hover {
+  background-color: #448aff !important;
+}
+
+.panel-color-darkblue {
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: #82b1ff !important;
+}
+
+/*end Menu Colors*/
