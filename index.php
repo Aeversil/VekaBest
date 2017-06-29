@@ -22,7 +22,7 @@ $db_name = "vekabestwebsite";
     <meta http-equiv="X-UA-Compatible" content="IE = edge">
     <meta name="viewport" content="width = device-width, initial-scale = 1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Novaict Afspraken</title>
+    <title>Website vader van Steffan</title>
     <link href="vekabest.css" rel="stylesheet" type="text/css">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
@@ -33,7 +33,6 @@ $db_name = "vekabestwebsite";
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-
   </head>
   <body id="index" style="background-color: #f0f0f0;">
     <div class="row">
@@ -42,26 +41,26 @@ $db_name = "vekabestwebsite";
         <div class="login">
         <a href="user_login.php"><button>Log in</button></a>
       </div>
-      </div>
+    </div>
 
     <div class="nav2">
-        <button onclick="showPage('user_home');" class="edit-color">
-          Home page
-        </button>
-        <button onclick="showPage('user_contact');" class="edit-color">
-          Contact
-        </button>
-        <button onclick="showPage('user_webshop');" class="edit-color">
-          Webshop
-        </button>
-        <button onclick="showPage('user_shopping_cart');" class="edit-color">
-          Winkelwagen
-        </button>
+      <button onclick="showPage('user_home');" class="edit-color">
+        Home page
+      </button>
+      <button onclick="showPage('user_contact');" class="edit-color">
+        Contact
+      </button>
+      <button onclick="showPage('user_webshop');" class="edit-color">
+        Webshop
+      </button>
+      <button onclick="showPage('user_shopping_cart');" class="edit-color">
+        Winkelwagen
+      </button>
     </div>
 
     <div class="row" style="padding-top: 10px;">
       <div class="container">
-              <?php @include("user_home.php"); ?>
+      <?php @include("user_home.php"); ?>
       <?php @include("user_profile.php"); ?>
       <?php @include("user_edit_profile.php"); ?>
       <?php @include("user_contact.php"); ?>
@@ -76,7 +75,7 @@ $db_name = "vekabestwebsite";
     </div>
   </div>
 
-    <script type="text/javascript">
+  <script type="text/javascript">
     var pages = ["user_home", "user_profile", "user_edit_profile", "user_contact", "user_webshop", "user_shopping_cart", "webshop_auto", "webshop_brommer", "webshop_motor", "webshop_vrachtwagen", "webshop_bus", "webshop_spiegel"];
 
     function showPage(pagename) {
