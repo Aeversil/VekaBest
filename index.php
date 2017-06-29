@@ -75,29 +75,30 @@ $db_name = "vekabestwebsite";
     </div>
   </div>
 
+
   <script type="text/javascript">
     var pages = ["user_home", "user_profile", "user_edit_profile", "user_contact", "user_webshop", "user_shopping_cart", "webshop_auto", "webshop_brommer", "webshop_motor", "webshop_vrachtwagen", "webshop_bus", "webshop_spiegel"];
-
+    // TODO: Zou chill zijn als de kleurtjes wat smoother overlopen.
     function showPage(pagename) {
       for (var i = 0; i < pages.length; i++) {
         try {
+          //Hide all pages.
           var page = document.getElementById(pages[i]);
           page.setAttribute("style", "display: none");}
         catch(err) {
         }
       }
+
+      // Show picked page.
       var showpage = document.getElementById(pagename);
       showpage.setAttribute("style", "display: block");
 
-
+      //See which buttons need to be changed of color.
       var edit = document.getElementsByClassName('edit-color');
       var aNode = edit[0];
       var arrFromList = Array.prototype.slice.call(edit);
 
-      var panel = document.getElementsByClassName('panel-color');
-      var aNode = panel[0];
-      var arrFromList = Array.prototype.slice.call(panel);
-
+      //Remove all colors from the buttons.
       for (var i = 0; i < edit.length; i++) {
         edit[i].classList.remove("button-color-blue");
         edit[i].classList.remove("button-color-orange");
@@ -106,14 +107,7 @@ $db_name = "vekabestwebsite";
         edit[i].classList.remove("button-color-darkblue");
       }
 
-      for (var i = 0; i < panel.length; i++) {
-        panel[i].classList.remove("panel-color-blue");
-        panel[i].classList.remove("panel-color-orange");
-        panel[i].classList.remove("panel-color-yellow");
-        panel[i].classList.remove("panel-color-green");
-        panel[i].classList.remove("panel-color-darkblue");
-      }
-
+      //Check what the chosen pagename is and change the colors accordingly.
       switch (pagename) {
         case "webshop_vrachtwagen":
           for (var i = 0; i < edit.length; i++) {
