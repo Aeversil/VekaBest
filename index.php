@@ -35,8 +35,8 @@ $db_name = "vekabestwebsite";
     <![endif]-->
 
   </head>
-  <body style="background-color: #f0f0f0;">
-      <div class="row">
+  <body id="index" style="background-color: #f0f0f0;">
+    <div class="row">
       <div class="banner">
         <img src="stockvekafotos/busbanner.jpg" />
         <div class="login">
@@ -45,35 +45,39 @@ $db_name = "vekabestwebsite";
       </div>
 
     <div class="nav2">
-        <button onclick="showPage('user_home');">
+        <button onclick="showPage('user_home');" class="edit-color">
           Home page
         </button>
-        <button onclick="showPage('user_contact');">
+        <button onclick="showPage('user_contact');" class="edit-color">
           Contact
         </button>
-        <button onclick="showPage('user_webshop');">
+        <button onclick="showPage('user_webshop');" class="edit-color">
           Webshop
         </button>
-        <button onclick="showPage('user_shopping_cart');">
+        <button onclick="showPage('user_shopping_cart');" class="edit-color">
           Winkelwagen
         </button>
     </div>
 
-    <div class="rowcontainer">
-      <?php @include("user_home.php"); ?>
+    <div class="row" style="padding-top: 10px;">
+      <div class="container">
+              <?php @include("user_home.php"); ?>
       <?php @include("user_profile.php"); ?>
       <?php @include("user_edit_profile.php"); ?>
       <?php @include("user_contact.php"); ?>
       <?php @include("user_webshop.php"); ?>
       <?php @include("user_shopping_cart.php"); ?>
+      <?php @include("webshop_auto.php"); ?>
+      <?php @include("webshop_brommer.php"); ?>
+      <?php @include("webshop_bus.php"); ?>
+      <?php @include("webshop_motor.php"); ?>
+      <?php @include("webshop_spiegel.php"); ?>
+      <?php @include("webshop_vrachtwagen.php"); ?>
+    </div>
+  </div>
 
-      <!-- Show Javascript custom errors here. -->
-      <div id="error-message" class="alert-danger col-md-12 col-md-offset-1" style="display: none;">
-      </div>
-    </div>
-    </div>
-    <script>
-    var pages = ["user_home", "user_profile", "user_edit_profile", "user_contact", "user_webshop", "user_shopping_cart"];
+    <script type="text/javascript">
+    var pages = ["user_home", "user_profile", "user_edit_profile", "user_contact", "user_webshop", "user_shopping_cart", "webshop_auto", "webshop_brommer", "webshop_motor", "webshop_vrachtwagen", "webshop_bus", "webshop_spiegel"];
 
     function showPage(pagename) {
       for (var i = 0; i < pages.length; i++) {
@@ -81,12 +85,70 @@ $db_name = "vekabestwebsite";
           var page = document.getElementById(pages[i]);
           page.setAttribute("style", "display: none");}
         catch(err) {
-          document.getElementById("error-message").setAttribute("style", "display: block");
-          document.getElementById("error-message").innerHTML = '<h1 class="error-message">404 page not found.</h1>';
         }
       }
       var showpage = document.getElementById(pagename);
       showpage.setAttribute("style", "display: block");
+
+
+      var edit = document.getElementsByClassName('edit-color');
+      var aNode = edit[0];
+      var arrFromList = Array.prototype.slice.call(edit);
+
+      var panel = document.getElementsByClassName('panel-color');
+      var aNode = panel[0];
+      var arrFromList = Array.prototype.slice.call(panel);
+
+      for (var i = 0; i < edit.length; i++) {
+        edit[i].classList.remove("button-color-blue");
+        edit[i].classList.remove("button-color-orange");
+        edit[i].classList.remove("button-color-yellow");
+        edit[i].classList.remove("button-color-green");
+        edit[i].classList.remove("button-color-darkblue");
+      }
+
+      for (var i = 0; i < panel.length; i++) {
+        panel[i].classList.remove("panel-color-blue");
+        panel[i].classList.remove("panel-color-orange");
+        panel[i].classList.remove("panel-color-yellow");
+        panel[i].classList.remove("panel-color-green");
+        panel[i].classList.remove("panel-color-darkblue");
+      }
+
+      switch (pagename) {
+        case "webshop_vrachtwagen":
+          for (var i = 0; i < edit.length; i++) {
+            edit[i].className += " " + "button-color-orange";
+            }
+          break;
+        case "webshop_bus":
+          for (var i = 0; i < edit.length; i++) {
+            edit[i].className += " " + "button-color-orange";
+          }
+          break;
+        case "webshop_brommer":
+          for (var i = 0; i < edit.length; i++) {
+            edit[i].className += " " + "button-color-yellow";
+          }
+          break;
+        case "webshop_motor":
+          for (var i = 0; i < edit.length; i++) {
+            edit[i].className += " " + "button-color-green";
+          }
+          break;
+        case "webshop_auto":
+          for (var i = 0; i < edit.length; i++) {
+            edit[i].className += " " + "button-color-darkblue";
+          }
+          break;
+        case "webshop_spiegel":
+          for (var i = 0; i < edit.length; i++) {
+            edit[i].className += " " + "button-color-blue";
+          }
+          break;
+        default:
+        break;
+      }
     }
     </script>
   </body>
