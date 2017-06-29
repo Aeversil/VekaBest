@@ -1,9 +1,8 @@
-<<<<<<< HEAD
 <?php
 $host = "localhost";
 $username = "root";
 $password = "";
-$db_name = "vekabest";
+$db_name = "vekabestwebsite";
 
 $Connect = mysqli_connect($host, $username, $password, $db_name);
 
@@ -64,9 +63,3 @@ if (mysqli_connect_errno()) {
         }
       }
  ?>
-=======
-<div id="user_login">
-  <h1>User login page</h1>
-  <a href="admin_index.php">go to admin home</a>
-</div>
->>>>>>> VB-08-webshop_page
