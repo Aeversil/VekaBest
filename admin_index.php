@@ -48,7 +48,7 @@ $db_name = "vekabestwebsite";
 
     <div class="nav">
         <button onclick="showPage('admin_home');">
-          Home page 
+          Home page
         </button>
         <button onclick="showPage('admin_contact');">
           Contact
@@ -63,10 +63,8 @@ $db_name = "vekabestwebsite";
           Bestellingen
         </button>
       </div>
-        
 
     <div class="rowcontainer">
-      
       <?php @include("admin_home.php"); ?>
       <?php @include("admin_contact.php"); ?>
       <?php @include("admin_inventory.php"); ?>
@@ -91,7 +89,7 @@ $db_name = "vekabestwebsite";
     }
 
     </script>
-    </div> 
-    </div>   
+    </div>
+    </div>
   </body>
 </html>

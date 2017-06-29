@@ -22,7 +22,10 @@ color: white;
 </style>
 
 <?php
-$con= mysqli_connect("localhost","root","root","vekabestwebsite");
+
+$con= mysqli_connect($host, $username, $password, $db_name);
+
+
 if (mysqli_connect_errno())
   {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
@@ -35,15 +38,19 @@ $categorie=$_POST['categorie'];
 $afbeelding=$_POST['afbeelding'];
 $prijs=$_POST['prijs'];
 $sku=$_POST['sku'];
+
 // $sql("INSERT INTO boeken VALUES('1','3','j.jpg','t','auto','500')");
 // if(mysqli_query($con, $sql)){
 //     echo "Records added successfully.";
 // } else{
 //     echo "ERROR: Could not able to execute $sql. " . mysqli_error($con);
 // }
+
+mysql_query("INSERT INTO boeken VALUES('$id', '$prijs', '$afbeelding', '$boeknaam', '$categorie', '$sku')");
 ?>
 
-<h1>Admin inventory edit page</h1>
+
+
 <button onclick='Add()' id='add'><i class='fa fa-plus-circle fa-2x' aria-hidden='true'> </i></button>
 <table>
 	<thead>
@@ -131,6 +138,7 @@ $sku=$_POST['sku'];
 		    }
 		}
 		</script>
+
 		<?php
 		// if (is_int($_GET["id"]) {
 		//     $query2 = "DELETE FROM boeken WHERE boekid =". $_GET["id"];
