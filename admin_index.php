@@ -37,7 +37,7 @@ $db_name = "vekabestwebsite";
   </head>
   <body style="background-color: #f0f0f0;">
 
-    <div class="row">
+    <!-- <div class="row"> -->
       <div class="banner">
         <img src="stockvekafotos/busbanner.jpg" />
         <div class="loguit">
@@ -64,7 +64,7 @@ $db_name = "vekabestwebsite";
         </button>
       </div>
 
-    <div class="rowcontainer">
+    <div class="row container">
       <?php @include("admin_home.php"); ?>
       <?php @include("admin_contact.php"); ?>
       <?php @include("admin_inventory.php"); ?>
@@ -90,6 +90,6 @@ $db_name = "vekabestwebsite";
 
     </script>
     </div>
-    </div>
+    <!-- </div> -->
   </body>
 </html>
