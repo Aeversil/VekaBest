@@ -16,7 +16,8 @@
           <?php
           echo "<img src=" . $row["boekafbeelding"] . "></img><span>Productnummer: " . $row["boeksku"] . "</span><span>Boek: " . $row["boeknaam"] . "</span><span>Prijs: €" . $row["boekprijs"] . "</span>";
           ?>
-        <form action="VekaBest.php" method="$_POST">
+        <!-- ACTION MOET WORDEN INGEVULD MET LATERE PHP PAGINA -->
+        <form action=".php" method="$_POST">
           Aantal:<input type="text" name="aantal">
           <input type="image" src="stockvekafotos/winkelmand.png" width="25px" height="25px" border="0" alt="Submit" value="aantal"/>
         </form>
