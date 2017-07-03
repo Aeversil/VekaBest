@@ -72,7 +72,7 @@ color: white;
 		     </br>
 		     <input type="VALUES" name="boeksku" placeholder="boeksku">
 		     </br></br>
-		     <input type="submit" value="Upload">
+		     <input type="submit" name="toevoegen" value="Toevoegen">
 		    </form>
 		</div>
 		</div>
@@ -98,9 +98,9 @@ color: white;
                 $escaped_target = mysql_real_escape_string($target);
                 $sql = "INSERT INTO boeken (boekprijs, boekafbeelding, boeknaam, boeksoort, boeksku) VALUES ($boekprijs, '$dbtarget', '$boeknaam', '$boeksoort', $boeksku)";
                 if (move_uploaded_file($_FILES['boekafbeelding']['tmp_name'], $target)){
-                  echo "Uploaden van artikel gelukt";
+                  //echo "Uploaden van artikel gelukt";
                 }else{
-                  echo "";
+                  //echo "";
                 }
                 if ($conn->query($sql) === TRUE) {
                   // die();
@@ -108,12 +108,56 @@ color: white;
               }
             }
 mysqli_close($conn);
+$con2 = new mysqli("localhost","root", "root", "vekabestwebsite");
+	if ($con2->connect_error) {
+		die("Connection failed: " . $con2->connect_error);
+	}
+	if ($_SERVER['REQUEST_METHOD']== "POST"){
+		$id = $_POST['id'];
+		$boekprijs = $_POST['boekprijs2'];
+		$target =  $path . $_FILES['boekafbeelding2']['name'];
+		$file = $_FILES['boekafbeelding2'];
+		$dbtarget =  mysql_real_escape_string ($dbpath . $_FILES['boekafbeelding2']['name']);
+		$boeknaam = $_POST['boeknaam2'];
+		$boeksoort = $_POST['boeksoort2'];
+		$boeksku = $_POST['boeksku2'];
+		$sql = "UPDATE boeken SET boekprijs = '".$_POST['boekprijs2']."', boekafbeelding = '".$dbtarget."' , boeknaam = '".$_POST['boeknaam2']."', boeksoort = '".$_POST['boeksoort2']."', boeksku = '".$_POST['boeksku2']."' WHERE boekid = '".$_POST['id']."'";
+		if ($con2->query($sql) === TRUE) {
+    		//echo "Record deleted successfully";
+		} else {
+    		//echo "";
+		}
+	}
+mysqli_close($con2);
+$con3 = new mysqli("localhost","root", "root", "vekabestwebsite");
+	if ($con3->connect_error) {
+		die("Connection failed: " . $con3->connect_error);
+	}
+	if ($_SERVER['REQUEST_METHOD']== "POST"){
+		$id = $_POST['id2'];
+		$sql = "DELETE FROM boeken WHERE boekid = $id";
+	if ($con3->query($sql) === TRUE) {
+    	//echo "Record deleted successfully";
+	} else {
+    	//echo "";
+	}
+}
+mysqli_close($con3);
 $con = new mysqli("localhost","root", "root", "vekabestwebsite");
-      if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-            }
-$query = "SELECT * FROM boeken ORDER BY boeksoort";
-     ?>
+	if ($con->connect_error) {
+		die("Connection failed: " . $con->connect_error);
+	}
+
+	$search = $_POST['search'];
+	$query = "SELECT * FROM boeken WHERE (boeksoort LIKE '%$search%')ORDER BY boeksoort ASC";
+//$query = "SELECT * FROM boeken ORDER BY boeksoort";
+?>
+<div id="zoeken">
+	<form  method="post" id="searchform"> 
+		<input type="text" id="input-search" name="search" value="">
+		<input type="submit" id="btn" name="test" value="Zoeken">
+	</form> 
+</div>
 <table>
 	<thead>
 		<tr>
@@ -157,30 +201,141 @@ $query = "SELECT * FROM boeken ORDER BY boeksoort";
 		}
 		</script>
 		<?php
-		// if (is_int($_GET["id"]) {
-		//     $query2 = "DELETE FROM boeken WHERE boekid =". $_GET["id"];
-		//     $result2 = mysqli_query($con, $query2);
-		// }
+		
 		if ($result=mysqli_query($con,$query))
 		{
 			  // Fetch one and one row
 		  while ($row=mysqli_fetch_row($result))
 		    {
-		    	$row['id'] = $row['0'];
+		    	$id = $row['0'];
+		    	$name = $row['3'];
+		    	$categorie = $row['4'];
+		    	$afbeelding = $row['2'];
+		    	$prijs = $row['1'];
+		    	$sku = $row['5'];
 		    	printf("<tr>");
 		    	printf("<td>". $row['3'] ."</td>");
 		    	printf("<td>". $row['4'] ."</td>");
 		    	printf("<td><img src=". $row['2'] ." height='120' width='80'></td>");
 		    	printf("<td>". $row['1'] ."</td>");
 		    	printf("<td>". $row['5'] ."</td>");
-		    	printf("<td><button id='change'><i class='fa fa-pencil-square-o fa-2x' aria-hidden='true'> </i></button></td>");
-		    	printf("<td><button  id='delete'><i class='fa fa-trash fa-2x' aria-hidden='true'></i></button></td>");
+		    	?>
+		    	<td><button id="myAboutBtn-<?=$id?>" onclick="myAboutBtn(<?=$id?>);"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i></button></td>
+
+		    	<td><button id="myDelBtn-<?=$id?>"><i class="fa fa-trash fa-2x" aria-hidden="true"></i></button></td>
+
+		    	<?php
 		    	printf("</tr>");
-		    }
-		  // Free result set
-		  mysqli_free_result($result);
+		    	?>
+<!-- 		    	$id = $row['0'];
+		    	$name = $row['3'];
+		    	$categorie = $row['4'];
+		    	$afbeelding = $row['2'];
+		    	$prijs = $row['1'];
+		    	$sku = $row['5']; -->
+		    	<div id="myAboutModal-<?=$id?>" class="myAboutModal">
+					<!-- Modal content -->
+					<div class="modal-content2">
+	    				<span id="close2 close2-<?=$id?>" class="close2-<?=$id?> close2">&times;</span>
+	    				<link rel="stylesheet" type="text/css" href="">
+	    				<div id="forminvoer">
+		    				<form class="form-horizontal" role="form" method="post" enctype="multipart/form-data">
+		     					Boekprijs: 
+		     					</br>
+		     					<input type="hidden" name="id" value="<?=$id?>">
+		     					<input type="VALUES" name="boekprijs2" value="<?=$prijs?>"></br>
+		     					<input type="hidden" name="size" value="3500000">
+		     					</br>
+				     			Foto upload: 
+				   			  	</br>
+				 			    <input type="File" name="boekafbeelding2" value="<?=$afbeelding?>">
+				     			</br>
+				     			Boeknaam:
+				     			</br>
+				     			<input type="text" name="boeknaam2" value="<?=$name?>">
+				     			</br></br>
+				     			Maak categorie keuze:
+				     			</br>
+				    			<select name="boeksoort2">
+				    				<option type="text" value="<?= $categorie ?>"><?= $categorie ?></option>
+				    				<option type="text" value="auto">auto</option>
+				    				<option type="text" value="brommer">brommer</option>
+				    				<option type="text" value="motor">motor</option>
+				    				<option type="text" value="vrachtwagen">vrachtwagen</option>
+				     				<option type="text" value="bus">bus</option>
+				    				<option type="text" value="spiegels">spiegels</option>
+		     					</select>
+				     			</br></br>
+				     			Boeknummer:
+				     			</br>
+				     			<input type="VALUES" name="boeksku2" value="<?=$sku?>">
+				     			</br></br>
+				     			<input type="submit" name="bewerken" value="Bewerken">
+		    				</form>
+						</div>
+					</div>
+				</div>
+				<script>
+				// Get the modal
+				//var myAboutModal = document.getElementById('myAboutModal-<?=$id?>');
+
+				// Get the button that opens the modal
+				var myAboutBtn = document.getElementById("myAboutBtn-<?=$id?>");
+
+				// Get the <span> element that closes the modal
+				var myAboutSpan = document.getElementsByClassName("close2-<?=$id?>")[0];
+
+				// When the user clicks the button, open the modal 
+				myAboutBtn.onclick = function() {
+				    document.getElementById('myAboutModal-<?=$id?>').style.display = "block";
+				}
+
+				// When the user clicks on <span> (x), close the modal
+				myAboutSpan.onclick = function() {
+				    document.getElementById('myAboutModal-<?=$id?>').style.display = "none";
+				}
+				</script>
+				<div id="myDelModal-<?=$id?>" class="myDelModal">
+				<!-- Modal content -->
+					<div class="modal-content3">
+						<span class="close3-<?=$id?> close3">&times;</span>
+					    <link rel="stylesheet" type="text/css" href="">
+					    <div id="forminvoer">
+						    <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data">
+							    <input type="text" name="id2" value="<?=$id?>">
+							    <h4>Wilt u echt het product verwijderen?</h4>
+							    </br>
+							    <input type="submit" name="verwijderen" value="Verwijderen">
+						    </form>
+						</div>
+					</div>
+				</div>
+				<script>
+				// Get the modal
+				//var myDelModal = document.getElementById('myDelModal-<?=$id?>');
+
+				// Get the button that opens the modal
+				var myDelBtn = document.getElementById("myDelBtn-<?=$id?>");
+
+				// Get the <span> element that closes the modal
+				var myDelSpan = document.getElementsByClassName("close3-<?=$id?>")[0];
+
+				// When the user clicks the button, open the modal 
+				myDelBtn.onclick = function() {
+				    document.getElementById('myDelModal-<?=$id?>').style.display = "block";
+				}
+
+				// When the user clicks on <span> (x), close the modal
+				myDelSpan.onclick = function() {
+				    document.getElementById('myDelModal-<?=$id?>').style.display = "none";
+				}
+				</script>
+				<?php
+		   	}
+			// Free result set
+			mysqli_free_result($result);
 		}
-		mysqli_close($con);
+		//mysqli_close($con);
 		?>
 	</tbody>
 </table>

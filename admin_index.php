@@ -9,11 +9,16 @@
 
 <!-- Can admins also login as regular users? -->
 
+
 <?php
 $host = "localhost";
 $username = "root";
 $password = "root";
 $db_name = "vekabestwebsite";
+
+
+
+
 ?>
 
 <html lang="en">
@@ -65,11 +70,11 @@ $db_name = "vekabestwebsite";
       </div>
 
     <div class="rowcontainer">
-      <?php @include("admin_home.php"); ?>
-      <?php @include("admin_contact.php"); ?>
-      <?php @include("admin_inventory.php"); ?>
-      <?php @include("admin_users.php"); ?>
-      <?php @include("admin_orders.php"); ?>
+      <?php include("admin_home.php"); ?>
+      <?php include("admin_contact.php"); ?>
+      <?php include("admin_inventory.php"); ?>
+      <?php include("admin_users.php"); ?>
+      <?php include("admin_orders.php"); ?>
 
       <div id="error-message" class="alert-danger col-md-12 col-md-offset-1" style="display: none;">
       </div>
@@ -89,7 +94,33 @@ $db_name = "vekabestwebsite";
     }
 
     </script>
+    <?php
+      if (isset($_POST['test'])) {
+        echo '<script type="text/javascript">
+                showPage("admin_inventory");
+              </script>';
+        }
+        if (isset($_POST['toevoegen'])) {
+        echo '<script type="text/javascript">
+                showPage("admin_inventory");
+              </script>';
+        }
+        if (isset($_POST['bewerken'])) {
+        echo '<script type="text/javascript">
+                showPage("admin_inventory");
+              </script>';
+        }
+        if (isset($_POST['verwijderen'])) {
+        echo '<script type="text/javascript">
+                showPage("admin_inventory");
+              </script>';
+        }
+    ?>
     </div>
     </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js%22%3E</script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
   </body>
 </html>
