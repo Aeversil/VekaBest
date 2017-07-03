@@ -1,7 +1,3 @@
-html,body{
-  margin-left:  0.8%;
-}
-
 .pagina{
   text-align: left;
   background: #caf2f9;
@@ -16,6 +12,11 @@ html,body{
   -webkit-box-sizing: border-box;
   border: 1px solid;
 }
+.webshopfoto{
+  width: 210px;
+  height: 300px;
+  margin: auto;
+}
 .artikel button {
   background-color: white;
   border-radius: 10px;
@@ -29,27 +30,6 @@ html,body{
   margin: 0 auto;
   text-align: left;
 }
-.nav button{
-  background: #31af1a;
-  color: white;
-  width: 19%;
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  border: 1px solid;
-  border-radius: 10px;
-}
-.nav button:hover{
-  background: #43b12f;
-  color: white;
-  width: 19%;
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  border: 1px solid;
-  border-radius: 10px;
-}
-
 .nav2 button{
   background: #00adff;
   color: white;
@@ -59,6 +39,7 @@ html,body{
   -webkit-box-sizing: border-box;
   border: 1px solid;
   border-radius: 10px;
+  margin-left: 5px;
 }
 .nav2 button:hover{
   background: #59caff;
@@ -116,72 +97,8 @@ html,body{
   border: 1px solid;
   border-radius: 10px;
 }
-.navigation div{
-  width: 25%;
-}
-.dropdown button{
-  width: 100%;
-}
-textarea{
-  width: 100%;
-  height: 500px;
-  border: 3px solid #cccccc;
-  padding: 5px;
-}
-.navigate{
-  width: 50%;
-  height: 25px;
-  margin: 0 auto;
-  text-align: left;
-}
-.Fullpage{
-  text-align: center;
-  width: 100%;
-}
-.dropdown{
-  display: inline-block;
-  position: relative;
-}
-.dropdown-content{
-  text-align: center;
-  display: none;
-  position: absolute;
-  background: #caf2f9;
-  color: black;
-  width: 250px;
-  font-size: 15px;
-  z-index: 1;
-  border-radius: 10px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  border: 1px solid;
-  border-radius: 10px;
-}
-.dropdown-content.show{
-  width: 100%;
-  text-align: center;
-}
-.dropdown-content a {
-  width: 100%;
-  color: black;
-  margin: 0 auto;
-  text-decoration: none;
-  display:block;
-  text-align: center;
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
-.dropdown-content a:hover {
-  background-color: gray;
-  border-radius: 10px;
-  color: black;
-  font-weight: bold;
-}
 input[name="aantal"]{
-  width: 20px !important;
-
+  width: 30px !important;
 }
 .verwijder img{
   background-image: url(stockvekafoto/trashcan.png);
@@ -189,8 +106,11 @@ input[name="aantal"]{
   width: 10px !important;
 }
 .artikel{
+  width: 200px;
   display: inline-block;
   margin:15px;
+  border: 1px solid black;
+  border-radius: 10px;
 }
 .artikel span{
   display: block;
@@ -199,11 +119,13 @@ input[name="aantal"]{
   display: block;
 }
 .artikel img{
+  display: block;
+  margin: auto;
   width: 150px;
   height: 250px;
 }
 .banner img{
-  width: 99.2%;
+  width: 100%;
 }
 
 .button-navbar {
@@ -244,6 +166,8 @@ input[name="aantal"]{
 }
 
 .button-color-blue {
+  margin: auto;
+  border: 1px solid black;
   border-radius: 10px;
   background-color: #03a6f4 !important;
 }
@@ -259,6 +183,7 @@ input[name="aantal"]{
 }
 
 .button-color-orange {
+  border: 1px solid black;
   border-radius: 10px;
   background-color: #ff9800 !important;
 }
@@ -274,6 +199,7 @@ input[name="aantal"]{
 }
 
 .button-color-yellow {
+  border: 1px solid black;
   border-radius: 10px;
   background-color: #e4d232 !important;
 }
@@ -289,6 +215,7 @@ input[name="aantal"]{
 }
 
 .button-color-green {
+  border: 1px solid black;
   border-radius: 10px;
   background-color: #4caf50 !important;
 }
@@ -304,6 +231,7 @@ input[name="aantal"]{
 }
 
 .button-color-darkblue {
+  border: 1px solid black;
   border-radius: 10px;
   background-color: #0d47a7 !important;
 }
