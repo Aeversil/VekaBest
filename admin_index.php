@@ -53,19 +53,11 @@ $db_name = "vekabestwebsite";
     </div>
 
     <div class="rowcontainer">
-<<<<<<< HEAD
-      <?php @include("admin_home.php"); ?>
-      <?php @include("admin_contact.php"); ?>
-      <?php @include("admin_inventory.php"); ?>
-      <?php @include("admin_users.php"); ?>
-      <?php @include("admin_orders.php"); ?>
-=======
       <?php include("admin_inventory.php"); ?>
       <?php include("admin_home.php"); ?>
       <?php include("admin_contact.php"); ?>
       <?php include("admin_users.php"); ?>
       <?php include("admin_orders.php"); ?>
->>>>>>> master
     </div>
     <script>
 
@@ -84,12 +76,7 @@ $db_name = "vekabestwebsite";
       }
 
     </script>
-<<<<<<< HEAD
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script src = "https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script src="js/bootstrap.min.js"></script>
-=======
+
     <?php
     if (isset($_POST['test'])) {
       echo '<script type="text/javascript">
@@ -112,6 +99,9 @@ $db_name = "vekabestwebsite";
               </script>';
     }
     ?>
->>>>>>> master
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
   </body>
 </html>
