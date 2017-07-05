@@ -1,24 +1,9 @@
-<!-- User starts on this page -->
-<!-- Clicks the Login button -->
-<!-- if user go back to user home -->
-<!-- Goes to shopping -->
-<!-- Goes to shopping cart -->
-<!-- if admin go to admin home -->
-<!-- can add/edit/delete admins and users -->
-<!-- can add/edit/delete items in the store -->
-
-<!-- Can admins also login as regular users? -->
-
-
 <?php
 $host = "localhost";
 $username = "root";
-$password = "root";
+$password = "";
 $db_name = "vekabestwebsite";
-
-
-
-
+//TODO: Check for admin, let him log in and else redirect away.
 ?>
 
 <html lang="en">
@@ -91,28 +76,26 @@ $db_name = "vekabestwebsite";
 
     </script>
     <?php
-      if (isset($_POST['test'])) {
-        echo '<script type="text/javascript">
+    if (isset($_POST['test'])) {
+      echo '<script type="text/javascript">
                 showPage("admin_inventory");
               </script>';
-        }
-        if (isset($_POST['toevoegen'])) {
-        echo '<script type="text/javascript">
+    }
+    if (isset($_POST['toevoegen'])) {
+      echo '<script type="text/javascript">
                 showPage("admin_inventory");
               </script>';
-        }
-        if (isset($_POST['bewerken'])) {
-        echo '<script type="text/javascript">
+    }
+    if (isset($_POST['bewerken'])) {
+      echo '<script type="text/javascript">
                 showPage("admin_inventory");
               </script>';
-        }
-        if (isset($_POST['verwijderen'])) {
-        echo '<script type="text/javascript">
+    }
+    if (isset($_POST['verwijderen'])) {
+      echo '<script type="text/javascript">
                 showPage("admin_inventory");
               </script>';
-        }
+    }
     ?>
-    </div>
-    </div>    
   </body>
 </html>

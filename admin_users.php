@@ -17,8 +17,6 @@
     $sql = 'DELETE FROM `users` WHERE `id` ' . $id;
     mysqli_query($con, $sql);
   }
-
-
   ?>
   <table style="width: 100%;">
     <thead>
