@@ -154,6 +154,7 @@ $con = new mysqli("localhost","root", "root", "vekabestwebsite");
 ?>
 <div id="zoeken">
 	<form  method="post" id="searchform"> 
+		<h4>Zoek op categorie:</h4>
 		<input type="text" id="input-search" name="search" value="">
 		<input type="submit" id="btn" name="test" value="Zoeken">
 	</form> 
@@ -302,7 +303,7 @@ $con = new mysqli("localhost","root", "root", "vekabestwebsite");
 					    <link rel="stylesheet" type="text/css" href="">
 					    <div id="forminvoer">
 						    <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data">
-							    <input type="text" name="id2" value="<?=$id?>">
+							    <input type="hidden" name="id2" value="<?=$id?>">
 							    <h4>Wilt u echt het product verwijderen?</h4>
 							    </br>
 							    <input type="submit" name="verwijderen" value="Verwijderen">
