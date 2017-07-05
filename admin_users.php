@@ -1,6 +1,19 @@
 <div id="admin_users" style="display: none">
-  <?php
-  $con = mysqli_connect($host, $username, $password, $db_name);
+  <button onclick='Add()' id='add'><i class='fa fa-plus-circle fa-2x' aria-hidden='true'> </i></button>
+  <table>
+  	<thead>
+  		<tr>
+  			<th>ID </th>
+  			<th>Gebruikersnaam </th>
+  			<th>Type </th>
+  			<th>Bewerken</th>
+  			<th></th>
+  		</tr>
+  	</thead>
+  	<tbody>
+
+    <?php
+    $con= mysqli_connect($host, $username, $password, $db_name);
 
   if (isset($_POST["EditUser"])) {
     $id = $_POST["editId"];

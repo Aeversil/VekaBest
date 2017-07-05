@@ -379,3 +379,8 @@ h1{
 .forminvoer{
   margin-left: 2%;
 }
+
+.orders-table:hover {
+    background-color: #c4c4c4 !important;
+    cursor: pointer !important;
+}
