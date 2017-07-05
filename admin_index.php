@@ -42,27 +42,27 @@ $db_name = "vekabestwebsite";
         <img src="stockvekafotos/busbanner.jpg" />
         <div class="loguit">
         <a href="index.php"><button>Log uit</button></a>
+        </div>
       </div>
-      </div>
-
+    </div>
 
     <div class="nav">
-        <button onclick="showPage('admin_home');">
-          Home page
-        </button>
-        <button onclick="showPage('admin_contact');">
-          Contact
-        </button>
-        <button onclick="showPage('admin_inventory');">
-          Inventaris
-        </button>
-        <button  onclick="showPage('admin_users');">
-          Gebruikers
-        </button>
-        <button onclick="showPage('admin_orders');">
-          Bestellingen
-        </button>
-      </div>
+      <button onclick="showPage('admin_home');">
+        Home page
+      </button>
+      <button onclick="showPage('admin_contact');">
+        Contact
+      </button>
+      <button onclick="showPage('admin_inventory');">
+        Inventaris
+      </button>
+      <button  onclick="showPage('admin_users');">
+        Gebruikers
+      </button>
+      <button onclick="showPage('admin_orders');">
+        Bestellingen
+      </button>
+    </div>
 
     <div class="rowcontainer">
       <?php @include("admin_home.php"); ?>
@@ -70,9 +70,7 @@ $db_name = "vekabestwebsite";
       <?php @include("admin_inventory.php"); ?>
       <?php @include("admin_users.php"); ?>
       <?php @include("admin_orders.php"); ?>
-
-      <div id="error-message" class="alert-danger col-md-12 col-md-offset-1" style="display: none;">
-      </div>
+    </div>
     <script>
     var pages = ["admin_home", "admin_contact", "admin_inventory", "admin_users", "admin_orders"];
 
@@ -89,7 +87,9 @@ $db_name = "vekabestwebsite";
     }
 
     </script>
-    </div>
-    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src = "https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="js/bootstrap.min.js"></script>
   </body>
 </html>

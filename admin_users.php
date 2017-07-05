@@ -11,6 +11,7 @@
   		</tr>
   	</thead>
   	<tbody>
+
     <?php
     $con= mysqli_connect($host, $username, $password, $db_name);
 
@@ -35,5 +36,6 @@
   		mysqli_close($con);
   		?>
   	</tbody>
+    
   </table>
 </div>

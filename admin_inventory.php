@@ -6,16 +6,16 @@ border-collapse: collapse;
 width: 100%;
 }
 
-th, td {
+.th-inv, .td-inv {
 text-align: left;
 padding: 8px;
 }
 
-tr:nth-child(even){
+.td-inv:nth-child(even){
 background-color: #f2f2f2
 }
 
-th {
+.th-inv {
 background-color: #00adff;
 color: white;
 }
@@ -42,13 +42,13 @@ mysql_query("INSERT INTO boeken VALUES('$id', '$prijs', '$afbeelding', '$boeknaa
 <table>
 	<thead>
 		<tr>
-			<th>ID </th>
-			<th>Boeknaam </th>
-			<th>Catergorie </th>
-			<th>Afbeelding </th>
-			<th>Prijs </th>
-			<th>Sku </th>
-			<th>Bewerken </th>
+			<th class="th-inv">ID </th>
+			<th class="th-inv">Boeknaam </th>
+			<th class="th-inv">Catergorie </th>
+			<th class="th-inv">Afbeelding </th>
+			<th class="th-inv">Prijs </th>
+			<th class="th-inv">Sku </th>
+			<th class="th-inv">Bewerken </th>
 			<th></th>
 		</tr>
 	</thead>
@@ -101,14 +101,14 @@ mysql_query("INSERT INTO boeken VALUES('$id', '$prijs', '$afbeelding', '$boeknaa
 		    {
 		    	$row['id'] = $row['0'];
 		    	printf("<tr>");
-		    	printf("<td>". $row['0'] ."</td>");
-		    	printf("<td>". $row['3'] ."</td>");
-		    	printf("<td>". $row['4'] ."</td>");
-		    	printf("<td>". $row['2'] ."</td>");
-		    	printf("<td>". $row['1'] ."</td>");
-		    	printf("<td>". $row['5'] ."</td>");
-		    	printf("<td><button onclick='Change()' id='change'><i class='fa fa-pencil-square-o fa-2x' aria-hidden='true'> </i></button></td>");
-		    	printf("<td><button onclick='Delete()' id='change'><i class='fa fa-trash fa-2x' aria-hidden='true'></i></button></td>");
+		    	printf("<td class='td-inv'>". $row['0'] ."</td>");
+		    	printf("<td class='td-inv'>". $row['3'] ."</td>");
+		    	printf("<td class='td-inv'>". $row['4'] ."</td>");
+		    	printf("<td class='td-inv'>". $row['2'] ."</td>");
+		    	printf("<td class='td-inv'>". $row['1'] ."</td>");
+		    	printf("<td class='td-inv'>". $row['5'] ."</td>");
+		    	printf("<td class='td-inv'><button onclick='Change()' id='change'><i class='fa fa-pencil-square-o fa-2x' aria-hidden='true'> </i></button></td>");
+		    	printf("<td class='td-inv'><button onclick='Delete()' id='change'><i class='fa fa-trash fa-2x' aria-hidden='true'></i></button></td>");
 		    	printf("</tr>");
 		    }
 		  // Free result set
