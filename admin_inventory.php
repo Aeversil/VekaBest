@@ -35,7 +35,6 @@
   ?>
   <button id='add'><i class='fa fa-plus-circle fa-2x' aria-hidden='true'> </i></button>
   <div id="myModal" class="modal">
-
     <!-- Modal content -->
     <div class="modal-content">
       <span class="close">&times;</span>

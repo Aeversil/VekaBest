@@ -4,6 +4,10 @@ $username = "root";
 $password = "";
 $db_name = "vekabestwebsite";
 //TODO: Check for admin, let him log in and else redirect away.
+
+if ($_SESSION["admin"] == false) {
+  header("location: user_login.php");
+}
 ?>
 
 <html lang="en">
@@ -59,7 +63,6 @@ $db_name = "vekabestwebsite";
       <?php include("admin_orders.php"); ?>
     </div>
     <script>
-
       var pages = ["admin_home", "admin_contact", "admin_inventory", "admin_users", "admin_orders"];
 
       function showPage(pagename) {

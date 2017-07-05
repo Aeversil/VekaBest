@@ -9,6 +9,8 @@ $Connect = mysqli_connect($host, $username, $password, $db_name);
 if (mysqli_connect_errno()) {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
+
+session_start();
 ?>
 <form action="user_login.php" method="post">
   <label>UserName</label>
@@ -44,7 +46,6 @@ if (isset($_POST['submit'])) {
 
     //check if the given password and the hashed password matches
     if (password_verify($password, $hashed_password)) {
-      echo "S U C C";
       //select everything with a search for the username
       $sql = "SELECT * FROM `users` WHERE username='$username'";
       $result = mysqli_query($Connect, $sql);
@@ -52,14 +53,19 @@ if (isset($_POST['submit'])) {
       $count = mysqli_num_rows($result);
 
       //if the result is one then go to the index.php
-      if ($count == 1) {
-        header("location: index.php");
-      } else {
-        echo "Username or password is incorrect";
-      }
-      mysqli_free_result($result);
-    } else
-      echo "Username or password is incorrect";
+      while ($row = mysqli_fetch_row($result)) {
+        if ($count == 1 && $row[3] == "user") {
+          header("location: index.php");
+        } else if ($count == 1 && $row[3] == "admin") {
+          $_SESSION["admin"] = true;
+          header("location: admin_index.php");
+        } else {
+          echo "Username or password is incorrect";
+        }
+        mysqli_free_result($result);
+    }
   }
 }
+}
+
 ?>

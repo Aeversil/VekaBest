@@ -17,6 +17,26 @@
   border-radius: 10px;
   border: 1px solid;
 }
+.nav button{
+  background: #31af1a;
+  color: white;
+  width: 19%;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  border: 1px solid;
+  border-radius: 10px;
+}
+.nav button:hover{
+  background: #43b12f;
+  color: white;
+  width: 19%;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  border: 1px solid;
+  border-radius: 10px;
+}
 .nav2 button{
   background: #00adff;
   color: white;
