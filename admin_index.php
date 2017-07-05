@@ -9,11 +9,16 @@
 
 <!-- Can admins also login as regular users? -->
 
+
 <?php
 $host = "localhost";
 $username = "root";
-$password = "";
+$password = "root";
 $db_name = "vekabestwebsite";
+
+
+
+
 ?>
 
 <html lang="en">
@@ -85,10 +90,29 @@ $db_name = "vekabestwebsite";
       }
 
     </script>
-
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
+    <?php
+      if (isset($_POST['test'])) {
+        echo '<script type="text/javascript">
+                showPage("admin_inventory");
+              </script>';
+        }
+        if (isset($_POST['toevoegen'])) {
+        echo '<script type="text/javascript">
+                showPage("admin_inventory");
+              </script>';
+        }
+        if (isset($_POST['bewerken'])) {
+        echo '<script type="text/javascript">
+                showPage("admin_inventory");
+              </script>';
+        }
+        if (isset($_POST['verwijderen'])) {
+        echo '<script type="text/javascript">
+                showPage("admin_inventory");
+              </script>';
+        }
+    ?>
+    </div>
+    </div>    
   </body>
 </html>
