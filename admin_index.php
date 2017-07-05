@@ -1,19 +1,9 @@
-<!-- User starts on this page -->
-  <!-- Clicks the Login button -->
-    <!-- if user go back to user home -->
-  <!-- Goes to shopping -->
-  <!-- Goes to shopping cart -->
-    <!-- if admin go to admin home -->
-      <!-- can add/edit/delete admins and users -->
-      <!-- can add/edit/delete items in the store -->
-
-<!-- Can admins also login as regular users? -->
-
 <?php
 $host = "localhost";
 $username = "root";
 $password = "";
 $db_name = "vekabestwebsite";
+//TODO: Check for admin, let him log in and else redirect away.
 ?>
 
 <html lang="en">
@@ -36,11 +26,9 @@ $db_name = "vekabestwebsite";
 
   </head>
   <body style="background-color: #f0f0f0;">
-
-    <div class="row">
-      <div class="banner">
-        <img src="stockvekafotos/busbanner.jpg" />
-        <div class="loguit">
+    <div class="banner">
+      <img src="stockvekafotos/busbanner.jpg" />
+      <div class="loguit">
         <a href="index.php"><button>Log uit</button></a>
         </div>
       </div>
@@ -65,31 +53,65 @@ $db_name = "vekabestwebsite";
     </div>
 
     <div class="rowcontainer">
+<<<<<<< HEAD
       <?php @include("admin_home.php"); ?>
       <?php @include("admin_contact.php"); ?>
       <?php @include("admin_inventory.php"); ?>
       <?php @include("admin_users.php"); ?>
       <?php @include("admin_orders.php"); ?>
+=======
+      <?php include("admin_inventory.php"); ?>
+      <?php include("admin_home.php"); ?>
+      <?php include("admin_contact.php"); ?>
+      <?php include("admin_users.php"); ?>
+      <?php include("admin_orders.php"); ?>
+>>>>>>> master
     </div>
     <script>
-    var pages = ["admin_home", "admin_contact", "admin_inventory", "admin_users", "admin_orders"];
 
-    function showPage(pagename) {
-      for (var i = 0; i < pages.length; i++) {
-        try {
-          var page = document.getElementById(pages[i]);
-          page.setAttribute("style", "display: none");}
-        catch(err) {
+      var pages = ["admin_home", "admin_contact", "admin_inventory", "admin_users", "admin_orders"];
+
+      function showPage(pagename) {
+        for (var i = 0; i < pages.length; i++) {
+          try {
+            var page = document.getElementById(pages[i]);
+            page.setAttribute("style", "display: none");
+          } catch (err) {
           }
+        }
+        var showpage = document.getElementById(pagename);
+        showpage.setAttribute("style", "display: block");
       }
-      var showpage = document.getElementById(pagename);
-      showpage.setAttribute("style", "display: block");
-    }
 
     </script>
+<<<<<<< HEAD
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src = "https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src="js/bootstrap.min.js"></script>
+=======
+    <?php
+    if (isset($_POST['test'])) {
+      echo '<script type="text/javascript">
+                showPage("admin_inventory");
+              </script>';
+    }
+    if (isset($_POST['toevoegen'])) {
+      echo '<script type="text/javascript">
+                showPage("admin_inventory");
+              </script>';
+    }
+    if (isset($_POST['bewerken'])) {
+      echo '<script type="text/javascript">
+                showPage("admin_inventory");
+              </script>';
+    }
+    if (isset($_POST['verwijderen'])) {
+      echo '<script type="text/javascript">
+                showPage("admin_inventory");
+              </script>';
+    }
+    ?>
+>>>>>>> master
   </body>
 </html>

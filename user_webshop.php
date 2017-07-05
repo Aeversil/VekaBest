@@ -1,28 +1,29 @@
 <div id="user_webshop" style="display: none">
-  <div class="col-md-8 col-md-offset-2 panel-color" >
-    <div onclick="showPage('webshop_auto')" class="col-md-4 panel-body categories button-color-darkblue">
-      Auto
-      <img value="Auto"/>
+  <!-- <div class="webshopbutton"> -->
+  <!-- <div class="col-xs-8 col-md-offset-2 panel-color"> -->
+    <div onclick="showPage('webshop_auto')" class="panel-body categories button-color-darkblue">
+      <!-- Auto -->
+      <img class="webshopfoto" src="stockvekafotos/theorieboek_B.jpg"/>
     </div>
-    <div onclick="showPage('webshop_brommer')" class="col-md-4 panel-body categories button-color-yellow">
-      Brommer
-      <img value="Brommer"/>
+    <div onclick="showPage('webshop_brommer')" class="panel-body categories button-color-yellow">
+      <!-- Brommer -->
+      <img class="webshopfoto" src="stockvekafotos/Brommer.jpg"/>
     </div>
-    <div onclick="showPage('webshop_motor')" class="col-md-4 panel-body categories button-color-green">
-      Motor
-      <img value="Motor"/>
+    <div onclick="showPage('webshop_motor')" class="panel-body categories button-color-green">
+      <!-- Motor -->
+      <img class="webshopfoto" src="stockvekafotos/motor.jpg"/>
     </div>
-    <div onclick="showPage('webshop_vrachtwagen')" class="col-md-4 panel-body categories button-color-orange">
-      Vrachtwagen
-      <img value="Vrachtwagen"/>
+    <div onclick="showPage('webshop_vrachtwagen')" class="panel-body categories button-color-orange">
+      <!-- Vrachtwagen -->
+      <img class="webshopfoto" src="stockvekafotos/vrachtwagen.jpg"/>
     </div>
-    <div onclick="showPage('webshop_bus')" class="col-md-4 panel-body categories button-color-orange">
-      Bus
-      <img value="Bus"/>
+    <div onclick="showPage('webshop_bus')" class=" panel-body categories button-color-orange">
+      <!-- Bus -->
+      <img class="webshopfoto" src="stockvekafotos/vrachtwagen.jpg"/>
     </div>
-    <div onclick="showPage('webshop_spiegel')" class="col-md-4 panel-body categories button-color-blue">
-      Spiegel
-      <img value="Spiegel"/>
+    <div onclick="showPage('webshop_spiegel')" class="panel-body categories button-color-blue">
+      <!-- Spiegel -->
+      <img class="webshopfoto" src="stockvekafotos/Lesspiegels-Rijschool-Verdoorn.jpg"/>
     </div>
-  </div>
+  <!-- </div> -->
 </div>
