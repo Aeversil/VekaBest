@@ -21,7 +21,7 @@
 
   <?php
   // MAKEN EN MOGELIJK Maken VAN HET UPLOADEN VAN FOTO'S \
-  $dir = dirname(FILE); //TODO: Error hier.
+  $dir = @dirname(FILE); //TODO: I suppressed an error here.
   $target = "fotouploads";
   $path = $dir . "/" . $target . "/";
   $dbpath = $target . "/";
@@ -80,28 +80,25 @@
   if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
   }
-  if ($_SERVER['REQUEST_METHOD'] == "POST") {
-    if (isset($_POST['boekprijs']) && ($_FILES['boekafbeelding']) && ($_POST['boeknaam']) && ($_POST['boeksoort']) && ($_POST['boeksku'])) {
+  if (isset($_POST["Zoeken"])) {
+    $boekprijs = $_POST['boekprijs'];
+    $target = $path . $_FILES['boekafbeelding']['name'];
+    $file = $_FILES['boekafbeelding'];
+    $dbtarget = mysql_real_escape_string($dbpath . $_FILES['boekafbeelding']['name']);
+    $boeknaam = $_POST['boeknaam'];
+    $boeksoort = $_POST['boeksoort'];
+    $boeksku = $_POST['boeksku'];
 
-      $boekprijs = $_POST['boekprijs'];
-      $target = $path . $_FILES['boekafbeelding']['name'];
-      $file = $_FILES['boekafbeelding'];
-      $dbtarget = mysql_real_escape_string($dbpath . $_FILES['boekafbeelding']['name']);
-      $boeknaam = $_POST['boeknaam'];
-      $boeksoort = $_POST['boeksoort'];
-      $boeksku = $_POST['boeksku'];
-
-      file_put_contents($target, $file);
-      $escaped_target = mysql_real_escape_string($target);
-      $sql = "INSERT INTO boeken (boekprijs, boekafbeelding, boeknaam, boeksoort, boeksku) VALUES ($boekprijs, '$dbtarget', '$boeknaam', '$boeksoort', $boeksku)";
-      if (move_uploaded_file($_FILES['boekafbeelding']['tmp_name'], $target)) {
-        //echo "Uploaden van artikel gelukt";
-      } else {
-        //echo "";
-      }
-      if ($conn->query($sql) === TRUE) {
-        // die();
-      }
+    file_put_contents($target, $file);
+    $escaped_target = mysql_real_escape_string($target);
+    $sql = "INSERT INTO boeken (boekprijs, boekafbeelding, boeknaam, boeksoort, boeksku) VALUES ($boekprijs, '$dbtarget', '$boeknaam', '$boeksoort', $boeksku)";
+    if (move_uploaded_file($_FILES['boekafbeelding']['tmp_name'], $target)) {
+      //echo "Uploaden van artikel gelukt";
+    } else {
+      //echo "";
+    }
+    if ($conn->query($sql) === TRUE) {
+      // die();
     }
   }
   mysqli_close($conn);
@@ -109,7 +106,7 @@
   if ($con2->connect_error) {
     die("Connection failed: " . $con2->connect_error);
   }
-  if ($_SERVER['REQUEST_METHOD'] == "POST") {
+  if (isset($_POST["Zoeken"])) {
     $id = $_POST['id'];
     $boekprijs = $_POST['boekprijs2'];
     $target = $path . $_FILES['boekafbeelding2']['name'];
@@ -130,7 +127,7 @@
   if ($con3->connect_error) {
     die("Connection failed: " . $con3->connect_error);
   }
-  if ($_SERVER['REQUEST_METHOD'] == "POST") {
+  if (isset($_POST["Zoeken"])) {
     $id = $_POST['id2'];
     $sql = "DELETE FROM boeken WHERE boekid = $id";
     if ($con3->query($sql) === TRUE) {
@@ -145,7 +142,7 @@
     die("Connection failed: " . $con->connect_error);
   }
 
-  $search = $_POST['search']; //TODO: Error hier.
+  $search = @$_POST['search']; //TODO: I suppressed an error here.
   $query = "SELECT * FROM boeken WHERE (boeksoort LIKE '%$search%')ORDER BY boeksoort ASC";
 //$query = "SELECT * FROM boeken ORDER BY boeksoort";
   ?>
@@ -153,7 +150,7 @@
     <form  method="post" id="searchform">
       <h4>Zoek op categorie:</h4>
       <input type="text" id="input-search" name="search" value="">
-      <input type="submit" id="btn" name="test" value="Zoeken">
+      <input type="submit" id="btn" name="Zoeken" value="Zoeken">
     </form>
   </div>
   <table>
@@ -219,9 +216,9 @@
 
         <td><button id="myDelBtn-<?= $id ?>"><i class="fa fa-trash fa-2x" aria-hidden="true"></i></button></td>
 
-    <?php
-    printf("</tr>");
-    ?>
+        <?php
+        printf("</tr>");
+        ?>
         <!-- 		    	$id = $row['0'];
                         $name = $row['3'];
                         $categorie = $row['4'];
@@ -325,13 +322,13 @@
             document.getElementById('myDelModal-<?= $id ?>').style.display = "none";
           }
         </script>
-    <?php
-  }
-  // Free result set
-  mysqli_free_result($result);
-}
+        <?php
+      }
+      // Free result set
+      mysqli_free_result($result);
+    }
 //mysqli_close($con);
-?>
+    ?>
     </tbody>
   </table>
 </div>

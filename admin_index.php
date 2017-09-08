@@ -1,4 +1,5 @@
 <?php
+session_start();
 $host = "localhost";
 $username = "root";
 $password = "";
@@ -34,7 +35,6 @@ if ($_SESSION["admin"] == false) {
       <img src="stockvekafotos/busbanner.jpg" />
       <div class="loguit">
         <a href="index.php"><button>Log uit</button></a>
-        </div>
       </div>
     </div>
 
