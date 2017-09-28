@@ -384,3 +384,9 @@ h1{
   background-color: #c4c4c4 !important;
   cursor: pointer !important;
 }
+.formulier {
+  background-color: blue;
+  width: 33%;
+  height: 100%;
+  align-items: center;
+}

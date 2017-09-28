@@ -78,7 +78,6 @@ $db_name = "vekabestwebsite";
 
     <script type="text/javascript">
       var pages = ["user_home", "user_profile", "user_edit_profile", "user_contact", "user_webshop", "user_shopping_cart", "webshop_auto", "webshop_brommer", "webshop_motor", "webshop_vrachtwagen", "webshop_bus", "webshop_spiegel"];
-      // TODO: Zou chill zijn als de kleurtjes wat smoother overlopen.
       function showPage(pagename) {
         for (var i = 0; i < pages.length; i++) {
           try {
