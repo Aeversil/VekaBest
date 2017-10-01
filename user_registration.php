@@ -26,35 +26,28 @@ if (mysqli_connect_errno()) {
 }
 ?>
 <div class="formulier">
-                      <form action="user_registration.php" method="post">
-                          <label>Email</label>
-                        <br>
-                          <input type="text" placeholder="Email" name="UsernameText"/>
-                        <br>
-                          <label>Wachtwoord</label>
-                        <br>
-                          <input type="password" placeholder="Wachtwoord" name="PasswordText" />
-                        <br>
-                          <label>Herhaal wachtwoord</label>
-                        <br>
-                          <input type="password" placeholder="Wachtwoord" name="ReEnterPasswordText" />
-                        <br>
-                          <label>Adres</label>
-                        <br>
-                          <input type="text" placeholder="Adres" name="Adres" />
-                          <input type="text" placeholder="Huisn." name="HuisNummer" />
-                        <br>
-                          <label>Postcode</label>
-                        <br>
-                          <input type="text" placeholder="Postcode" name="PostCode" />
-                        <br>
-                          <label>Telefoonnummer</label>
-                        <br>
-                          <input type="text" placeholder="Telefoonnummer" name="TelefoonNummer" />
-                        <br>
-                        <br>
-                          <input type="submit" value="Registreren" name="submit"/>
-                      </form>
+  <form action="user_registration.php" method="post">
+    <label>Email</label>
+    <input type="text" placeholder="Email" name="UsernameText"/>
+  <br>
+    <label>Wachtwoord</label>
+    <input type="password" placeholder="Wachtwoord" name="PasswordText" />
+  <br>
+    <label>Herhaal wachtwoord</label>
+    <input type="password" placeholder="Wachtwoord" name="ReEnterPasswordText" />
+  <br>
+    <label>Adres</label>
+    <input type="text" placeholder="Adres" name="Adres"/>
+    <input type="text" placeholder="Huisn." name="HuisNummer" />
+  <br>
+    <label>Postcode</label>
+    <input type="text" placeholder="Postcode" name="PostCode" />
+  <br>
+    <label>Telefoonnummer</label>
+    <input type="text" placeholder="Telefoonnummer" name="TelefoonNummer" />
+  <br>
+    <input type="submit" value="Registreren" name="submit"/>
+  </form>
 </div>
 <?php
   if (isset($_POST['submit'])) {
@@ -64,7 +57,7 @@ if (mysqli_connect_errno()) {
     }
     //if the password is empty
     elseif (empty($_POST['PasswordText'])) {
-      echo "Voer uw wachtwoord in";
+      echo "Voer een wachtwoord in";
     }
     //if the reentered password is empty
     elseif (empty($_POST['ReEnterPasswordText'])) {
