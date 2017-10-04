@@ -17,7 +17,7 @@ $db_name = "vekabestwebsite";
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
  </head>
 <body>
-
+<div class="opvulling">
 <?php
 $Connect = mysqli_connect($host, $username, $password, $db_name);
 
@@ -25,30 +25,46 @@ if (mysqli_connect_errno()) {
     echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
 ?>
-<div class="formulier">
-  <form action="user_registration.php" method="post">
-    <label>Email</label>
-    <input type="text" placeholder="Email" name="UsernameText"/>
-  <br>
-    <label>Wachtwoord</label>
-    <input type="password" placeholder="Wachtwoord" name="PasswordText" />
-  <br>
-    <label>Herhaal wachtwoord</label>
-    <input type="password" placeholder="Wachtwoord" name="ReEnterPasswordText" />
-  <br>
-    <label>Adres</label>
-    <input type="text" placeholder="Adres" name="Adres"/>
-    <input type="text" placeholder="Huisn." name="HuisNummer" />
-  <br>
-    <label>Postcode</label>
-    <input type="text" placeholder="Postcode" name="PostCode" />
-  <br>
-    <label>Telefoonnummer</label>
-    <input type="text" placeholder="Telefoonnummer" name="TelefoonNummer" />
-  <br>
-    <input type="submit" value="Registreren" name="submit"/>
-  </form>
-</div>
+
+  <div class="formulier">
+    <form action="user_registration.php" method="post">
+      <label>Voornaam</label>
+    <br>
+      <input type="text" placeholder="Voornaam" name="VoorNaam"/>
+    <br>
+      <label>Achternaam</label>
+    <br>
+      <input type="text" placeholder="Achternaam" name="AchterNaam"/>
+    <br>
+      <label>Email (Dit wordt uw inlog naam)</label>
+    <br>
+      <input type="text" placeholder="Email" name="UsernameText"/>
+    <br>
+      <label>Wachtwoord</label>
+    <br>
+      <input type="password" placeholder="Wachtwoord" name="PasswordText" />
+    <br>
+      <label>Herhaal wachtwoord</label>
+    <br>
+      <input type="password" placeholder="Wachtwoord" name="ReEnterPasswordText" />
+    <br>
+      <label>Adres</label>
+    <br>
+      <input type="text" placeholder="Adres" name="Adres"/>
+      <input type="text" placeholder="Huisn." name="HuisNummer" id="HuisNummer"/>
+    <br>
+      <label>Postcode</label>
+    <br>
+      <input type="text" placeholder="Postcode" name="PostCode" />
+    <br>
+      <label>Telefoonnummer</label>
+    <br>
+      <input type="text" placeholder="Telefoonnummer" name="TelefoonNummer" />
+    <br>
+      <input type="submit" value="Registreren" name="submit"/>
+    </form>
+  </div>
+
 <?php
   if (isset($_POST['submit'])) {
     //if the username is empty
@@ -79,7 +95,15 @@ if (mysqli_connect_errno()) {
     elseif (empty($_POST['TelefoonNummer'])) {
       echo "Voer uw Telefoonnummer in";
     }
+    elseif (empty($_POST['VoorNaam'])) {
+      echo "Voer uw voornaam in";
+    }
+    elseif (empty($_POST['AchterNaam'])) {
+      echo "Voer uw achternaam in";
+    }
       //initilize
+      $VoorNaam = $_POST['VoorNaam'];
+      $AchterNaam = $_POST['AchterNaam'];
       $Username = $_POST['UsernameText'];
       $Password = $_POST['PasswordText'];
       $RePassword = $_POST['ReEnterPasswordText'];
@@ -119,7 +143,7 @@ if (mysqli_connect_errno()) {
           //and insert it into the database
           $sql = "INSERT INTO `users`(`id`, `username`, `password`, `type`) VALUES ('$Id','$Username','$hash','user')";
           $result = mysqli_query($Connect, $sql);
-          $sql1 = "INSERT INTO `user_info`(`id`, `adres`, `huisnummer`, `postcode`, `telefoonnummer`) VALUES ('$Id','$Adres','$HuisNummer','$PostCode','$TelefoonNummer')";
+          $sql1 = "INSERT INTO `user_info`(`id`, `adres`, `huisnummer`, `postcode`, `telefoonnummer`, `voornaam`, `achternaam`) VALUES ('$Id','$Adres','$HuisNummer','$PostCode','$TelefoonNummer', '$VoorNaam', '$AchterNaam')";
           $result1 = mysqli_query($Connect, $sql1);
           header("location: index.php");
         }
@@ -129,5 +153,6 @@ if (mysqli_connect_errno()) {
 
   }
  ?>
+      </div>
     </body>
  </html>
