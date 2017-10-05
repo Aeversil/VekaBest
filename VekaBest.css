@@ -390,13 +390,14 @@ h1{
 /*Dit is de CSS voor het registratie formulier*/
 .formulier {
   background-color: lightblue;
-  /*margin-top: 5%;*/
   margin-left: 40%;
-  /*margin-right: 40%;*/
   border-radius: 5px;
   height: 100%;
 }
 /*CSS voor HuisNummer formulier breedt*/
 #HuisNummer{
   width: 50px;
+}
+#Adres{
+  width: 120px;
 }

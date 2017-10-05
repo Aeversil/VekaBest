@@ -17,7 +17,10 @@ $db_name = "vekabestwebsite";
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
  </head>
 <body>
+
 <div class="opvulling">
+
+<a href="http://localhost/VekaBest/index.php"><button type="button" class="btn"> <span class="glyphicon glyphicon-home"></span>Home</button></a>
 <?php
 $Connect = mysqli_connect($host, $username, $password, $db_name);
 
@@ -50,7 +53,7 @@ if (mysqli_connect_errno()) {
     <br>
       <label>Adres</label>
     <br>
-      <input type="text" placeholder="Adres" name="Adres"/>
+      <input type="text" placeholder="Adres" name="Adres" id="Adres"/>
       <input type="text" placeholder="Huisn." name="HuisNummer" id="HuisNummer"/>
     <br>
       <label>Postcode</label>
@@ -60,6 +63,7 @@ if (mysqli_connect_errno()) {
       <label>Telefoonnummer</label>
     <br>
       <input type="text" placeholder="Telefoonnummer" name="TelefoonNummer" />
+    <br>
     <br>
       <input type="submit" value="Registreren" name="submit"/>
     </form>
