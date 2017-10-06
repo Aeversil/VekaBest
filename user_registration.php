@@ -141,11 +141,11 @@ if (mysqli_connect_errno()) {
 
           //add 1 to the id so its unique
           $Id = $Id + 1;
-          echo $Id;
+          // echo $Id;
           //hash the password
-          $hash = password_hash($password, PASSWORD_DEFAULT);
+          // $hash = password_hash($password, PASSWORD_DEFAULT);
           //and insert it into the database
-          $sql = "INSERT INTO `users`(`id`, `username`, `password`, `type`) VALUES ('$Id','$Username','$hash','user')";
+          $sql = "INSERT INTO `users`(`id`, `username`, `password`, `type`) VALUES ('$Id','$Username','$Password','user')";
           $result = mysqli_query($Connect, $sql);
           $sql1 = "INSERT INTO `user_info`(`id`, `adres`, `huisnummer`, `postcode`, `telefoonnummer`, `voornaam`, `achternaam`) VALUES ('$Id','$Adres','$HuisNummer','$PostCode','$TelefoonNummer', '$VoorNaam', '$AchterNaam')";
           $result1 = mysqli_query($Connect, $sql1);
