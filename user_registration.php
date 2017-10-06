@@ -39,7 +39,7 @@ if (mysqli_connect_errno()) {
     <br>
       <input type="text" placeholder="Achternaam" name="AchterNaam"/>
     <br>
-      <label>Email (Dit wordt uw inlog naam)</label>
+      <label>Email (Dit wordt uw login naam)</label>
     <br>
       <input type="text" placeholder="Email" name="UsernameText"/>
     <br>
