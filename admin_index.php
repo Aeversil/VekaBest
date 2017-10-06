@@ -9,6 +9,9 @@ $db_name = "vekabestwebsite";
 if ($_SESSION["admin"] == false) {
   header("location: user_login.php");
 }
+if($_SERVER['REQUEST_METHOD'] == "POST") {
+  header('Location: admin_index.php');
+}
 ?>
 
 <html lang="en">

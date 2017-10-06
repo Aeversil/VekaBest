@@ -1,24 +1,22 @@
 <div id="admin_users" style="display: none">
-  <button onclick='Add()' id='add'><i class='fa fa-plus-circle fa-2x' aria-hidden='true'> </i></button> 
-
-    <?php
+  <?php
     $con= mysqli_connect($host, $username, $password, $db_name);
 
-  if (isset($_POST["EditUser"])) {
-    $id = $_POST["editId"];
-    $name = $_POST["editName"];
-    $type = $_POST["editType"];
+    if (isset($_POST["EditUser"])) {
+      $id = $_POST["editId"];
+      $name = $_POST["editName"];
+      $type = $_POST["editType"];
 
-    $sql = 'UPDATE `users` SET `id`=' . $id . ',`username`="' . $name . '",`type`="' . $type . '" WHERE 1';
-    mysqli_query($con, $sql);
-  }
+      $sql = 'UPDATE `users` SET `username`="' . $name . '",`type`="' . $type . '" WHERE `id`="' . $id . '"';
+      mysqli_query($con, $sql);
+    }
 
-  if (isset($_POST["DeleteUser"])) {
-    $id = $_POST["editId"];
+    if (isset($_POST["DeleteUser"])) {
+      $id = $_POST["editId"];
 
-    $sql = 'DELETE FROM `users` WHERE `id` ' . $id;
-    mysqli_query($con, $sql);
-  }
+      $sql = 'DELETE FROM `users` WHERE `id` ' . $id;
+      mysqli_query($con, $sql);
+    }
   ?>
   <table style="width: 100%;">
     <thead>
@@ -33,6 +31,7 @@
     <tbody>
       <?php
       $query = "SELECT * FROM users ORDER BY id";
+
       if ($result = mysqli_query($con, $query)) {
         // Fetch one and one row
         while ($row = mysqli_fetch_row($result)) {
@@ -99,6 +98,7 @@
       </form>
     </div>
   </table>
+  <!-- Made by Sander Nieuwenhuisen, Sander van Osch is a fraud -->
   <script type="text/javascript">
     function Edit(id, name, type) {
       document.getElementById("editId").setAttribute("value", id);

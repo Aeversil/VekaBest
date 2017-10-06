@@ -20,22 +20,21 @@
     <tbody>
       <?php
       $con = mysqli_connect($host, $username, $password, $db_name);
+      $query = "SELECT * FROM ((user_info INNER JOIN orders ON user_info.id = orders.userid) INNER JOIN boeken ON boeken.boekid = orders.boekid)";
 
-      $query = "SELECT * FROM orders ORDER BY ordernum";
       if ($result = mysqli_query($con, $query)) {
         // Fetch one and one row
         while ($row = mysqli_fetch_row($result)) {
-          $row['ordernum'] = $row['0'];
-          printf("<tr class=\"orders-table\" data-toggle=\"modal\" data-target=\"#AdressPopup-" . $row['0'] . "\" ");
-          printf("<td class='tr-inv'></td>");
-          printf("<td class='tr-inv'>" . $row['0'] . "</td>");
-          printf("<td class='tr-inv'>" . $row['1'] . "</td>");
-          printf("<td class='tr-inv'>" . $row['2'] . "</td>");
-          printf("<td class='tr-inv'>" . $row['3'] . "</td>");
-          printf("<td class='tr-inv'>" . $row['4'] . "</td>");
-          printf("<td class='tr-inv'>" . $row['5'] . "</td>");
-          printf("<td class='tr-inv'>" . $row['6'] . "</td>");
-          printf("</tr>");        
+          $row['ordernum'] = $row['7'];
+          printf("<tr onclick='Edit(" . $row["9"] . ", \"" . $row["1"] . "\", \"" . $row["2"] . "\", \"" . $row["3"] . "\", \"" . $row["4"] . "\", \"" . $row["5"] . "\", \"" . $row["6"] . "\", \"" . $row["17"] . "\", \"" . $row["18"] . "\",)' data-toggle='modal' data-target='#info' class='orders-table'>");
+          printf("<td class='tr-inv'>" . $row['7'] . "</td>");
+          printf("<td class='tr-inv'>" . $row['8'] . "</td>");
+          printf("<td class='tr-inv'>" . $row['9'] . "</td>");
+          printf("<td class='tr-inv'>" . $row['10'] . "</td>");
+          printf("<td class='tr-inv'>" . $row['11'] . "</td>");
+          printf("<td class='tr-inv'>" . $row['12'] . "</td>");
+          printf("<td class='tr-inv'>" . $row['13'] . "</td>");
+          printf("</tr>");
         }
         // Free result set
         mysqli_free_result($result);
@@ -44,4 +43,71 @@
       ?>
     </tbody>
   </table>
+  <div id="info" class="modal fade" role="dialog">
+    <form method="post" action="admin_index.php">
+      <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">User Info</h4>
+          </div>
+          <div class="modal-body" style="height: 300px;">
+            <div class="col-md-6" style="height: 24px; margin-left: -14px;">User Id:</div>
+            <div class="col-md-6" style="height: 24px;"></div>
+
+            <input readonly class="col-md-6" style="height: 24px;" type="text" id="IdOrder" value="id"/>
+            <div class="col-md-6" style="height: 24px;"></div>
+
+            <div class="col-md-6" style="height: 24px; margin-left: -14px;">Straat:</div>
+            <div class="col-md-2" style="height: 24px;">Huisnummer:</div>
+            <div class="col-md-4" style="height: 24px;"></div>
+
+            <input readonly class="col-md-6" style="height: 24px;" type="text" id="AdresOrder" value="Adres"/>
+            <input readonly class="col-md-6" type="text" id="HuisnumOrder" value="Huisnum" style="height: 24px; width: 50px; text-align: left;"/>
+
+            <div class="col-md-6" style="height: 24px; margin-left: -14px;">Postcode:</div>
+            <div class="col-md-6" style="height: 24px;"></div>
+
+            <input readonly class="col-md-6" style="height: 24px;" type="text" id="PostCOrder" value="Postcode" />
+            <div class="col-md-6" style="height: 24px;"></div>
+
+            <div class="col-md-6" style="height: 24px; margin-left: -14px;">Voornaam:</div>
+            <div class="col-md-6" style="height: 24px;">Achternaam:</div>
+
+            <input readonly class="col-md-6" style="height: 24px;" type="text" id="VoorNOrder" value="Voornaam" />
+            <input readonly class="col-md-6" style="height: 24px;" type="text" id="AchterNOrder" value="Achternaam" />
+
+            <div class="col-md-6" style="height: 24px; margin-left: -14px;">Telefoon nummer:</div>
+            <div class="col-md-6" style="height: 24px;"></div>
+
+            <input readonly class="col-md-6" style="height: 24px;" type="text" id="TeleOrder" value="Telefoon" />
+            <div class="col-md-6" style="height: 24px;"></div>
+
+            <div class="col-md-6" style="height: 24px; margin-left: -14px;">Boek:</div>
+            <div class="col-md-6" style="height: 24px;">Soort:  </div>
+            <input readonly class="col-md-6" style="height: 24px;" type="text" id="BoekNaam" value="Boeknaam" />
+            <input readonly class="col-md-6" style="height: 24px;" type="text" id="BoekSoort" value="Boeksoort" />
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Sluiten</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
 </div>
+
+<script type="text/javascript">
+  function Edit(id, adres, huisnum, postcode, telefoon, voornaam, achternaam, boeknaam, boeksoort) {
+    document.getElementById("IdOrder").setAttribute("value", id);
+    document.getElementById("AdresOrder").setAttribute("value", adres);
+    document.getElementById("HuisnumOrder").setAttribute("value", huisnum);
+    document.getElementById("PostCOrder").setAttribute("value", postcode);
+    document.getElementById("TeleOrder").setAttribute("value", telefoon);
+    document.getElementById("VoorNOrder").setAttribute("value", voornaam);
+    document.getElementById("AchterNOrder").setAttribute("value", achternaam);
+    document.getElementById("BoekNaam").setAttribute("value", boeknaam);
+    document.getElementById("BoekSoort").setAttribute("value", boeksoort);
+  }
+</script>
