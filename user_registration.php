@@ -143,7 +143,7 @@ if (mysqli_connect_errno()) {
           $Id = $Id + 1;
 
           //hash the password
-          $hash = password_hash($password, PASSWORD_DEFAULT);
+          $hash = password_hash($Password, PASSWORD_DEFAULT);
           //and insert it into the database
           $sql = "INSERT INTO `users`(`id`, `username`, `password`, `type`) VALUES ('$Id','$Username','$hash','user')";
           $result = mysqli_query($Connect, $sql);
