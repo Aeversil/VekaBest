@@ -386,13 +386,14 @@ h1{
 }
 .opvulling{
   background-color: lightblue;
+  height: 100%;
 }
 /*Dit is de CSS voor het registratie formulier*/
 .formulier {
   background-color: lightblue;
   margin-left: 40%;
   border-radius: 5px;
-  height: 100%;
+  height: 50%;
 }
 /*CSS voor HuisNummer formulier breedt*/
 #HuisNummer{
