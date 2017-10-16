@@ -35,6 +35,10 @@ $db_name = "vekabestwebsite";
     <![endif]-->
   </head>
   <body id="index" style="background-color: #f0f0f0;">
+    <div class="inlog">
+      <a href="user_registration.php"><button class="inlogknop">Registreren</button></a>
+      <a href="user_login.php"><button class="inlogknop">Inloggen</button></a>
+    </div>
       <div class="banner">
         <img src="stockvekafotos/busbanner.jpg" />
         <!-- Button temporary disabled -->

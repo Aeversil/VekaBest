@@ -379,7 +379,15 @@ h1{
 .forminvoer{
   margin-left: 2%;
 }
-
+.inlogknop{
+  float: right;
+  height: 30px;
+  font-size: 12px;
+  padding: 5px;
+  border-radius: 0px;
+  margin-left: 3px;
+  width: 120px;
+}
 .orders-table:hover {
   background-color: #c4c4c4 !important;
   cursor: pointer !important;
