@@ -42,10 +42,10 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
     </div>
 
     <div class="nav">
-      <button onclick="showPage('admin_home');">
+      <button onclick="showPage('admin_homeEdit');">
         Home page
       </button>
-      <button onclick="showPage('admin_contact');">
+      <button onclick="showPage('admin_contactEdit');">
         Contact
       </button>
       <button onclick="showPage('admin_inventory');">
@@ -61,13 +61,13 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
 
     <div class="rowcontainer">
       <?php include("admin_inventory.php"); ?>
-      <?php include("admin_home.php"); ?>
-      <?php include("admin_contact.php"); ?>
+      <?php include("admin_homeEdit.php"); ?>
+      <?php include("admin_contactEdit.php"); ?>
       <?php include("admin_users.php"); ?>
       <?php include("admin_orders.php"); ?>
     </div>
     <script>
-      var pages = ["admin_home", "admin_contact", "admin_inventory", "admin_users", "admin_orders"];
+      var pages = ["admin_homeEdit", "admin_contactEdit", "admin_inventory", "admin_users", "admin_orders"];
 
       function showPage(pagename) {
         for (var i = 0; i < pages.length; i++) {
