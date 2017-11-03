@@ -104,7 +104,7 @@
   }
   mysqli_close($conn);
   ?>
-  <!-- MODEL SCRIPT VOOR TOEVOEGEN ARTIKELEN  -->
+  <!-- MODAL SCRIPT VOOR TOEVOEGEN ARTIKELEN  -->
   <script>
     // Get the modal
     var modal = document.getElementById('myModal');
@@ -133,55 +133,18 @@
     }
   </script>
 
-
-
-
-
-
   <?php
-  $con2 = new mysqli($host, $username, $password, $db_name);
-  if ($con2->connect_error) {
-    die("Connection failed: " . $con2->connect_error);
-  }
-  if (isset($_POST["Zoeken"])) {
-    $id = $_POST['id'];
-    $boekprijs = $_POST['boekprijs2'];
-    $target = $path . $_FILES['boekafbeelding2']['name'];
-    $file = $_FILES['boekafbeelding2'];
-    $dbtarget = mysql_real_escape_string($dbpath . $_FILES['boekafbeelding2']['name']);
-    $boeknaam = $_POST['boeknaam2'];
-    $boeksoort = $_POST['boeksoort2'];
-    $boeksku = $_POST['boeksku2'];
-    $sql = "UPDATE boeken SET boekprijs = '" . $_POST['boekprijs2'] . "', boekafbeelding = '" . $dbtarget . "' , boeknaam = '" . $_POST['boeknaam2'] . "', boeksoort = '" . $_POST['boeksoort2'] . "', boeksku = '" . $_POST['boeksku2'] . "' WHERE boekid = '" . $_POST['id'] . "'";
-    if ($con2->query($sql) === TRUE) {
-      //echo "Record deleted successfully";
-    } else {
-      //echo "";
-    }
-  }
-  mysqli_close($con2);
-  $con3 = new mysqli($host, $username, $password, $db_name);
-  if ($con3->connect_error) {
-    die("Connection failed: " . $con3->connect_error);
-  }
-  if (isset($_POST["Zoeken"])) {
-    $id = $_POST['id2'];
-    $sql = "DELETE FROM boeken WHERE boekid = $id";
-    if ($con3->query($sql) === TRUE) {
-      //echo "Record deleted successfully";
-    } else {
-      //echo "";
-    }
-  }
-  mysqli_close($con3);
+
   $con = new mysqli($host, $username, $password, $db_name);
   if ($con->connect_error) {
     die("Connection failed: " . $con->connect_error);
   }
 
-  $search = @$_POST['search']; //TODO: I suppressed an error here.
-  $query = "SELECT * FROM boeken WHERE (boeksoort LIKE '%$search%')ORDER BY boeksoort ASC";
-//$query = "SELECT * FROM boeken ORDER BY boeksoort";
+  // $search = $_POST['search']; //TODO: I suppressed an error here.
+  $query = "SELECT * FROM boeken ORDER BY boeksoort ASC";
+  // --------NIET VERWIJDEREN-------
+  // WHERE (boeksoort LIKE '%$search%')
+  // --------NIET VERWIJDEREN-------
   ?>
   <div id="zoeken">
     <form  method="post" id="searchform">
@@ -190,6 +153,7 @@
       <input type="submit" id="btn" name="Zoeken" value="Zoeken">
     </form>
   </div>
+
   <table>
     <thead>
       <tr>
@@ -203,9 +167,9 @@
       </tr>
     </thead>
     <tbody>
-
       </div>
     <?php
+    // UITLEZEN VAN PRODUCTEN
     if ($result = mysqli_query($con, $query)) {
       // Fetch one and one row
       while ($row = mysqli_fetch_row($result)) {
@@ -229,12 +193,7 @@
         <?php
         printf("</tr>");
         ?>
-        <!-- 		    	$id = $row['0'];
-                        $name = $row['3'];
-                        $categorie = $row['4'];
-                        $afbeelding = $row['2'];
-                        $prijs = $row['1'];
-                        $sku = $row['5']; -->
+        <!-- AANPASSEN VAN PRODUCTEN -->
         <div id="myAboutModal-<?= $id ?>" class="myAboutModal">
           <!-- Modal content -->
           <div class="modal-content2">
@@ -297,6 +256,8 @@
             document.getElementById('myAboutModal-<?= $id ?>').style.display = "none";
           }
         </script>
+
+        <!-- DELETE SECTION -->
         <div id="myDelModal-<?= $id ?>" class="myDelModal">
           <!-- Modal content -->
           <div class="modal-content3">
@@ -307,14 +268,22 @@
                 <input type="hidden" name="id2" value="<?= $id ?>">
                 <h4>Wilt u echt het product verwijderen?</h4>
                 </br>
-                <input type="submit" name="verwijderen" value="Verwijderen">
+                <input
+                <?php
+                $conndelete = new mysqli ($host, $username, $password, $db_name);
+                if ($conndelete->connect_error){
+                  die ("Connection failed: " . $conn->connect_error);
+                }
+                  $sql = "DELETE FROM boeken WHERE boekid = $id"
+                ?>
+                 type="submit" name="verwijderen" value="Verwijderen">
               </form>
             </div>
           </div>
         </div>
         <script>
           // Get the modal
-          //var myDelModal = document.getElementById('myDelModal-<?= $id ?>');
+          // var myDelModal = document.getElementById('myDelModal-<?= $id ?>');
 
           // Get the button that opens the modal
           var myDelBtn = document.getElementById("myDelBtn-<?= $id ?>");
@@ -332,6 +301,7 @@
             document.getElementById('myDelModal-<?= $id ?>').style.display = "none";
           }
         </script>
+        <?php echo $id ?>
         <?php
       }
       // Free result set
