@@ -3,52 +3,122 @@ $host = "localhost";
 $username = "root";
 $password = "";
 $db_name = "vekabestwebsite";
+?>
 
+
+<html lang="en">
+ <head>
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE = edge">
+   <meta name="viewport" content="width = device-width, initial-scale = 1">
+   <title>Registratie</title>
+   <link href="vekabest.css" rel="stylesheet" type="text/css">
+   <link href="css/bootstrap.min.css" rel="stylesheet">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+ </head>
+<body>
+
+<div class="opvulling">
+
+<a href="http://localhost/VekaBest/index.php"><button type="button" class="btn"> <span class="glyphicon glyphicon-home"></span>Home</button></a>
+<?php
 $Connect = mysqli_connect($host, $username, $password, $db_name);
 
 if (mysqli_connect_errno()) {
     echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
 ?>
-<form action="user_registration.php" method="post">
-    <label>UserName</label>
-  <br>
-    <input type="text" placeholder="Username" name="UsernameText"/>
-  <br>
-    <label>Password</label>
-  <br>
-    <input type="password" name="PasswordText" />
-  <br>
-    <label>Reenter Password</label>
-  <br>
-    <input type="password" name="ReEnterPasswordText" />
-  <br>
-  <br>
-    <input type="submit" value="Login" name="submit"/>
-</form>
+
+  <div class="formulier">
+    <form action="user_registration.php" method="post">
+      <label>Voornaam</label>
+    <br>
+      <input type="text" placeholder="Voornaam" name="VoorNaam"/>
+    <br>
+      <label>Achternaam</label>
+    <br>
+      <input type="text" placeholder="Achternaam" name="AchterNaam"/>
+    <br>
+      <label>Email (Dit wordt uw login naam)</label>
+    <br>
+      <input type="text" placeholder="Email" name="UsernameText"/>
+    <br>
+      <label>Wachtwoord</label>
+    <br>
+      <input type="password" placeholder="Wachtwoord" name="PasswordText" />
+    <br>
+      <label>Herhaal wachtwoord</label>
+    <br>
+      <input type="password" placeholder="Wachtwoord" name="ReEnterPasswordText" />
+    <br>
+      <label>Adres</label>
+    <br>
+      <input type="text" placeholder="Adres" name="Adres" id="Adres"/>
+      <input type="text" placeholder="Huisn." name="HuisNummer" id="HuisNummer"/>
+    <br>
+      <label>Postcode</label>
+    <br>
+      <input type="text" placeholder="Postcode" name="PostCode" />
+    <br>
+      <label>Telefoonnummer</label>
+    <br>
+      <input type="text" placeholder="Telefoonnummer" name="TelefoonNummer" />
+    <br>
+    <br>
+      <input type="submit" value="Registreren" name="submit"/>
+    </form>
+  </div>
+
 <?php
   if (isset($_POST['submit'])) {
     //if the username is empty
     if (empty($_POST['UsernameText'])) {
-      echo "Please fill in a Username";
+      echo "Voer uw email adres in";
     }
     //if the password is empty
     elseif (empty($_POST['PasswordText'])) {
-      echo "Please fill in a Password";
+      echo "Voer een wachtwoord in";
     }
     //if the reentered password is empty
     elseif (empty($_POST['ReEnterPasswordText'])) {
-      echo "Please reenter your password";
+      echo "Voer uw wachtwoord opnieuw in";
     }
-    else {
+    //if the adres is left empty
+    elseif (empty($_POST['Adres'])) {
+      echo "Voer uw adres in";
+    }
+    //if field is left empty
+    elseif (empty($_POST['HuisNummer'])) {
+      echo "Voer uw huisnummer in";
+    }
+    //if field is left empty
+    elseif (empty($_POST['PostCode'])) {
+      echo "Voer uw postcode in";
+    }
+    //if field is left empty
+    elseif (empty($_POST['TelefoonNummer'])) {
+      echo "Voer uw Telefoonnummer in";
+    }
+    elseif (empty($_POST['VoorNaam'])) {
+      echo "Voer uw voornaam in";
+    }
+    elseif (empty($_POST['AchterNaam'])) {
+      echo "Voer uw achternaam in";
+    }
       //initilize
-      $username = $_POST['UsernameText'];
-      $password = $_POST['PasswordText'];
+      $VoorNaam = $_POST['VoorNaam'];
+      $AchterNaam = $_POST['AchterNaam'];
+      $Username = $_POST['UsernameText'];
+      $Password = $_POST['PasswordText'];
       $RePassword = $_POST['ReEnterPasswordText'];
-      //check if the password and the reentered password are the same
-      if($password === $RePassword) {
+      $Adres = $_POST['Adres'];
+      $HuisNummer = $_POST['HuisNummer'];
+      $PostCode = $_POST['PostCode'];
+      $TelefoonNummer = $_POST['TelefoonNummer'];
+      //check if the password and the reentered password are t he same
+      if($Password == $RePassword) {
         //search for a username in the db with the entered username
-        $sql =  "SELECT username FROM `users` WHERE username='$username'";
+        $sql =  "SELECT username FROM `users` WHERE username='$Username'";
 
         $result = mysqli_query($Connect, $sql);
         $count = mysqli_num_rows($result);
@@ -59,8 +129,9 @@ if (mysqli_connect_errno()) {
         } else {
           //select the last row of the db by id
           $sql =  "SELECT * FROM `users` ORDER BY `id` DESC LIMIT 1;";
-
           $result = mysqli_query($Connect, $sql);
+          $sql1 =  "SELECT * FROM `user_info` ORDER BY `id` DESC LIMIT 1 ;";
+          $result1 = mysqli_query($Connect, $sql1);
           $Id = "";
 
           //put the id in a var
@@ -72,15 +143,20 @@ if (mysqli_connect_errno()) {
           $Id = $Id + 1;
 
           //hash the password
-          $hash = password_hash($password, PASSWORD_DEFAULT);
+          $hash = password_hash($Password, PASSWORD_DEFAULT);
           //and insert it into the database
-          $sql = "INSERT INTO `users`(`id`, `username`, `password`, `type`) VALUES ('$Id','$username','$hash','user')";
+          $sql = "INSERT INTO `users`(`id`, `username`, `password`, `type`) VALUES ('$Id','$Username','$hash','user')";
           $result = mysqli_query($Connect, $sql);
+          $sql1 = "INSERT INTO `user_info`(`id`, `adres`, `huisnummer`, `postcode`, `telefoonnummer`, `voornaam`, `achternaam`) VALUES ('$Id','$Adres','$HuisNummer','$PostCode','$TelefoonNummer', '$VoorNaam', '$AchterNaam')";
+          $result1 = mysqli_query($Connect, $sql1);
           header("location: index.php");
         }
       } else {
         echo "Passwords are not the same";
       }
-    }
+
   }
  ?>
+      </div>
+    </body>
+ </html>

@@ -1,32 +1,32 @@
 <div id="webshop_auto" style="display: none">
   <div class="panel-color-darkblue">
     <h1>Webshop Auto</h1>
-    <?php
-    $conn = new mysqli($host, $username, $password, $db_name);
-
-    if ($conn->connect_error) {
-      die("Connection failed:" . $conn->connect_error);
-    }
-    $sql = "SELECT boeksoort, boeksku, boeknaam, boekafbeelding, boekprijs FROM boeken WHERE boeksoort LIKE 'auto' ORDER BY boeksoort";
-    $result = $conn->query($sql);
-    if ($result->num_rows > 0) {
-      while ($row = $result->fetch_assoc()) {
-    ?>
-      <div class='artikel'>
+      <div class="container" style="width:700px;">
           <?php
-          echo "<img src=" . $row["boekafbeelding"] . "></img><span>Productnummer: " . $row["boeksku"] . "</span><span>Boek: " . $row["boeknaam"] . "</span><span>Prijs: €" . $row["boekprijs"] . "</span>";
+          $query = "SELECT * FROM boeken ORDER BY boekid ASC";
+          $result = mysqli_query($connect, $query);
+          if(mysqli_num_rows($result) > 0)
+          {
+              while($row = mysqli_fetch_array($result))
+              {
+                  ?>
+                  <div class="col-md-4">
+                      <form method="post" action="index.php?action=add&id=<?php echo $row["boekid"]; ?>">
+                          <div style="border:1px solid #333; background-color:#f1f1f1; border-radius:5px; padding:16px;" align="center">
+                              <img src="<?php echo $row["boekafbeelding"]; ?>" class="img-responsive" /><br />
+                              <h4 class="text-info"><?php echo $row["boeknaam"]; ?></h4>
+                              <h4 class="text-danger">$ <?php echo $row["boekprijs"]; ?></h4>
+                              <input type="text" name="quantity" class="form-control" value="1" />
+                              <input type="hidden" name="hidden_name" value="<?php echo $row["boeknaam"]; ?>" />
+                              <input type="hidden" name="hidden_price" value="<?php echo $row["boekprijs"]; ?>" />
+                              <input type="submit" name="add_to_cart" style="margin-top:5px;" class="btn btn-success" value="Add to Cart" />
+                          </div>
+                      </form>
+                  </div>
+                  <?php
+              }
+          }
           ?>
-        <!-- ACTION MOET WORDEN INGEVULD MET LATERE PHP PAGINA -->
-        <form action=".php" method="$_POST">
-          Aantal:<input type="text" name="aantal">
-          <input type="image" src="stockvekafotos/winkelmand.png" width="25px" height="25px" border="0" alt="Submit" value="aantal"/>
-        </form>
       </div>
-      <?php
-    }
-  } else {
-    echo "0 resultaten";
-  }
-  ?>
   </div>
 </div>

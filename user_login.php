@@ -3,7 +3,24 @@ $host = "localhost";
 $username = "root";
 $password = "";
 $db_name = "vekabestwebsite";
+?>
+<html lang="en">
+ <head>
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE = edge">
+   <meta name="viewport" content="width = device-width, initial-scale = 1">
+   <title>login</title>
+   <link href="vekabest.css" rel="stylesheet" type="text/css">
+   <link href="css/bootstrap.min.css" rel="stylesheet">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+ </head>
+<body>
 
+<div class="opvulling">
+
+<a href="http://localhost/VekaBest/index.php"><button type="button" class="btn"> <span class="glyphicon glyphicon-home"></span>Home</button></a>
+
+<?php
 $Connect = mysqli_connect($host, $username, $password, $db_name);
 
 if (mysqli_connect_errno()) {
@@ -12,18 +29,20 @@ if (mysqli_connect_errno()) {
 
 session_start();
 ?>
-<form action="user_login.php" method="post">
-  <label>UserName</label>
-  <br>
-  <input type="text" placeholder="Username" name="UsernameText"/>
-  <br>
-  <label>Password</label>
-  <br>
-  <input type="password" name="PasswordText" />
-  <br>
-  <br>
-  <input type="submit" value="Login" name="submit"/>
-</form>
+<div class="formulier">
+  <form action="user_login.php" method="post">
+    <label>Email</label>
+    <br>
+    <input type="text" placeholder="Email" name="UsernameText"/>
+    <br>
+    <label>Wachtwoord</label>
+    <br>
+    <input type="password" placeholder="Wachtwoord" name="PasswordText" />
+    <br>
+    <br>
+    <input type="submit" value="Login" name="submit"/>
+  </form>
+</div>
 <?php
 if (isset($_POST['submit'])) {
   //If its empty say the Username or password is incorrect else go on
@@ -69,3 +88,6 @@ if (isset($_POST['submit'])) {
 }
 
 ?>
+    </div>
+  </body>
+</html>
