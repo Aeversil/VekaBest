@@ -1,3 +1,11 @@
+<!-- <?php session_start(); ?> -->
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "vekabestwebsite";
+
+ ?>
 <div id="admin_inventory" style="display: none">
   <style>
     table {
@@ -20,7 +28,7 @@
   </style>
 
   <?php
-  // MAKEN EN MOGELIJK Maken VAN HET UPLOADEN VAN FOTO'S \
+  // MAKEN EN MOGELIJK Maken VAN HET UPLOADEN VAN FOTO'S
   $dir = @dirname(FILE); //TODO: I suppressed an error here.
   $target = "fotouploads";
   $path = $dir . "/" . $target . "/";
@@ -34,7 +42,7 @@
   ?>
   <button id='add'><i class='fa fa-plus-circle fa-2x' aria-hidden='true'> </i></button>
   <div id="myModal" class="modal">
-    <!-- In dit deel van de code kan je artikelen  -->
+    <!-- TOEVOEGEN VAN ARTIKELEN  -->
     <!-- Modal content -->
     <div class="modal-content">
       <span class="close">&times;</span>
@@ -132,7 +140,6 @@
       }
     }
   </script>
-
   <?php
 
   $con = new mysqli($host, $username, $password, $db_name);
@@ -163,7 +170,7 @@
         <th>Prijs </th>
         <th>Sku </th>
         <th>Bewerken </th>
-        <th></th>
+        <th>Verwijderen</th>
       </tr>
     </thead>
     <tbody>
@@ -179,7 +186,8 @@
         $afbeelding = $row['2'];
         $prijs = $row['1'];
         $sku = $row['5'];
-        printf("<tr>");
+        printf("<tr data-id='". $row[0] . "'>");
+        // printf("<td>" . $row['0'] . "</td>");
         printf("<td>" . $row['3'] . "</td>");
         printf("<td>" . $row['4'] . "</td>");
         printf("<td><img src=" . $row['2'] . " height='120' width='80'></td>");
@@ -195,6 +203,35 @@
         ?>
         <!-- AANPASSEN VAN PRODUCTEN -->
         <div id="myAboutModal-<?= $id ?>" class="myAboutModal">
+          <?php
+
+          $conn = new mysqli($servername, $username, $password, $dbname);
+          if ($conn->connect_error) {
+              die("Connection failed: " . $conn->connect_error);
+          }
+
+            // ($_POST['boekid']) &&
+            // && ($_POST['boekafbeelding2'])
+            if (isset($_POST['boekprijs2']) && ($_POST['boeknaam2']) && ($_POST['boeksoort2']) && ($_POST['boeksku2'])) {
+
+             $boekprijs2 = $_POST['boekprijs2'];
+             //$boekafbeelding2 = $_POST['boekafbeelding2'];
+             $boeknaam2 = $_POST['boeknaam2'];
+             $boeksoort2 = $_POST['boeksoort2'];
+             $boeksku2 = $_POST['boeksku2'];
+             //echo $boekid;
+             $sql = "UPDATE boeken SET boekprijs=$boekprijs2, boeknaam='$boeknaam2', boeksoort='$boeksoort2', boeksku=$boeksku2 WHERE boekid='$id'";
+             //boekafbeelding='$boekafbeelding2',
+             if ($conn->query($sql) === TRUE){
+
+             }else {
+               echo "Error updating record: " . $conn->error;
+             }
+           }
+           echo $id;
+           echo "lala: " . $sql;
+          ?>
+
           <!-- Modal content -->
           <div class="modal-content2">
             <span id="close2 close2-<?= $id ?>" class="close2-<?= $id ?> close2">&times;</span>
@@ -256,7 +293,7 @@
             document.getElementById('myAboutModal-<?= $id ?>').style.display = "none";
           }
         </script>
-
+<?php echo $id; ?>
         <!-- DELETE SECTION -->
         <div id="myDelModal-<?= $id ?>" class="myDelModal">
           <!-- Modal content -->
@@ -301,9 +338,9 @@
             document.getElementById('myDelModal-<?= $id ?>').style.display = "none";
           }
         </script>
-        <?php echo $id ?>
         <?php
       }
+
       // Free result set
       mysqli_free_result($result);
     }
