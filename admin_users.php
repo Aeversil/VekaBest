@@ -1,6 +1,6 @@
 <div id="admin_users" style="display: none">
-  <button onclick='Add()' id='add'><i class='fa fa-plus-circle fa-2x' aria-hidden='true'> </i></button> 
-
+  <!-- <button onclick='Add()' id='add'><i class='fa fa-plus-circle fa-2x' aria-hidden='true'> </i></button> -->
+  <br></br>
     <?php
     $con= mysqli_connect($host, $username, $password, $db_name);
 
@@ -9,14 +9,20 @@
     $name = $_POST["editName"];
     $type = $_POST["editType"];
 
-    $sql = 'UPDATE `users` SET `id`=' . $id . ',`username`="' . $name . '",`type`="' . $type . '" WHERE 1';
+    $sql = "UPDATE users SET username='$name', type='$type' WHERE id='$id'";
     mysqli_query($con, $sql);
   }
 
   if (isset($_POST["DeleteUser"])) {
-    $id = $_POST["editId"];
+    $id = $_POST["deleteId"];
 
-    $sql = 'DELETE FROM `users` WHERE `id` ' . $id;
+    $sql = "DELETE FROM users WHERE id='$id'";
+    mysqli_query($con, $sql);
+  }
+  if (isset($_POST["DeleteUser"])) {
+    $id = $_POST["deleteId"];
+
+    $sql = "DELETE FROM user_info WHERE id='$id'";
     mysqli_query($con, $sql);
   }
   ?>
@@ -84,7 +90,7 @@
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h4 class="modal-title">Weet u zeker dat u <i id="deleteShowName">username</i> wilt verwijderen?</h4>
+              <h4 class="modal-title">Weet u zeker dat u de gebruiker <i id="deleteShowName">username</i> wilt verwijderen?</h4>
             </div>
             <div class="modal-body">
               <input type="text" id="deleteId" name="deleteId" readonly value="id" style="width: 25px; padding: 2px; text-align: center; color: gray; border: 1px solid gray; background-color: lightgray;"/>
