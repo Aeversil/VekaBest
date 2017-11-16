@@ -33,6 +33,7 @@
         <th>Gebruikersnaam </th>
         <th>Type </th>
         <th>Bewerken</th>
+        <th>Verwijderen</th>
         <th></th>
       </tr>
     </thead>
