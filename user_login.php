@@ -1,4 +1,5 @@
 <?php
+session_start();
 $host = "localhost";
 $username = "root";
 $password = "";
@@ -10,7 +11,7 @@ $db_name = "vekabestwebsite";
    <meta http-equiv="X-UA-Compatible" content="IE = edge">
    <meta name="viewport" content="width = device-width, initial-scale = 1">
    <title>login</title>
-   <link href="vekabest.css" rel="stylesheet" type="text/css">
+   <link href="VekaBest.css" rel="stylesheet" type="text/css">
    <link href="css/bootstrap.min.css" rel="stylesheet">
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
  </head>
@@ -26,8 +27,6 @@ $Connect = mysqli_connect($host, $username, $password, $db_name);
 if (mysqli_connect_errno()) {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
-
-session_start();
 ?>
 <div class="formulier">
   <form action="user_login.php" method="post">
@@ -74,8 +73,12 @@ if (isset($_POST['submit'])) {
       //if the result is one then go to the index.php
       while ($row = mysqli_fetch_row($result)) {
         if ($count == 1 && $row[3] == "user") {
+          $_SESSION["Username"] = $username;
+          $_SESSION["LoggedIn"] = true;
           header("location: index.php");
         } else if ($count == 1 && $row[3] == "admin") {
+          $_SESSION["LoggedIn"] = true;
+          $_SESSION["Username"] = $username;
           $_SESSION["admin"] = true;
           header("location: admin_index.php");
         } else {

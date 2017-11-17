@@ -12,7 +12,7 @@ $db_name = "vekabestwebsite";
    <meta http-equiv="X-UA-Compatible" content="IE = edge">
    <meta name="viewport" content="width = device-width, initial-scale = 1">
    <title>Registratie</title>
-   <link href="vekabest.css" rel="stylesheet" type="text/css">
+   <link href="VekaBest.css" rel="stylesheet" type="text/css">
    <link href="css/bootstrap.min.css" rel="stylesheet">
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
  </head>
@@ -60,6 +60,10 @@ if (mysqli_connect_errno()) {
     <br>
       <input type="text" placeholder="Postcode" name="PostCode" />
     <br>
+      <label>Plaatsnaam</label>
+    <br>
+      <input type="text" placeholder="PlaatsNaam" name="PlaatsNaam" />
+    <br>
       <label>Telefoonnummer</label>
     <br>
       <input type="text" placeholder="Telefoonnummer" name="TelefoonNummer" />
@@ -95,6 +99,9 @@ if (mysqli_connect_errno()) {
     elseif (empty($_POST['PostCode'])) {
       echo "Voer uw postcode in";
     }
+    elseif (empty($_POST['PlaatsNaam'])) {
+      echo "Voer uw pllatsnaam in";
+    }
     //if field is left empty
     elseif (empty($_POST['TelefoonNummer'])) {
       echo "Voer uw Telefoonnummer in";
@@ -113,6 +120,7 @@ if (mysqli_connect_errno()) {
       $RePassword = $_POST['ReEnterPasswordText'];
       $Adres = $_POST['Adres'];
       $HuisNummer = $_POST['HuisNummer'];
+      $PlaatsNaam = $_POST['PlaatsNaam'];
       $PostCode = $_POST['PostCode'];
       $TelefoonNummer = $_POST['TelefoonNummer'];
       //check if the password and the reentered password are t he same
@@ -147,7 +155,7 @@ if (mysqli_connect_errno()) {
           //and insert it into the database
           $sql = "INSERT INTO `users`(`id`, `username`, `password`, `type`) VALUES ('$Id','$Username','$hash','user')";
           $result = mysqli_query($Connect, $sql);
-          $sql1 = "INSERT INTO `user_info`(`id`, `adres`, `huisnummer`, `postcode`, `telefoonnummer`, `voornaam`, `achternaam`) VALUES ('$Id','$Adres','$HuisNummer','$PostCode','$TelefoonNummer', '$VoorNaam', '$AchterNaam')";
+          $sql1 = "INSERT INTO `user_info`(`id`, `adres`, `huisnummer`, `postcode`, `plaatsnaam`, `telefoon`, `voornaam`, `achternaam`) VALUES ('$Id','$Adres','$HuisNummer','$PostCode', '$PlaatsNaam', '$TelefoonNummer', '$VoorNaam', '$AchterNaam')";
           $result1 = mysqli_query($Connect, $sql1);
           header("location: index.php");
         }

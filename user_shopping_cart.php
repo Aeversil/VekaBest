@@ -1,5 +1,4 @@
 <?php
-session_start();
 $connect = mysqli_connect("localhost", "root", "", "vekabestwebsite");
 if (isset($_POST["add_to_cart"])) {
     if (isset($_SESSION["shopping_cart"])) {

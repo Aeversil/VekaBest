@@ -34,11 +34,10 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
 
   </head>
   <body style="background-color: #f0f0f0;">
+    <a href="index.php"><button class='inlogknop'>Home</button></a>
+    <a href=""><button class='inlogknop' onclick='toFalse();'>Uitloggen</button></a>
     <div class="banner">
       <img src="stockvekafotos/busbanner.jpg" />
-      <div class="loguit">
-        <a href="index.php"><button>Log uit</button></a>
-      </div>
     </div>
 
     <div class="nav">
@@ -81,6 +80,22 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
         showpage.setAttribute("style", "display: block");
       }
 
+      function toFalse() {
+          $.ajax({
+              type : 'GET',
+              url : 'index.php',
+              data: {
+                   bool : false,
+                    },
+              success : function(data){
+                window.location.href = "index.php";
+              },
+              error : function(XMLHttpRequest, textStatus, errorThrown)
+              {alert ("Error Occured");}
+                       });
+
+
+      }
     </script>
 
     <?php

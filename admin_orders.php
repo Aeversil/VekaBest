@@ -26,7 +26,7 @@
         // Fetch one and one row
         while ($row = mysqli_fetch_row($result)) {
           $row['ordernum'] = $row['7'];
-          printf("<tr onclick='Edit(" . $row["9"] . ", \"" . $row["1"] . "\", \"" . $row["2"] . "\", \"" . $row["3"] . "\", \"" . $row["4"] . "\", \"" . $row["5"] . "\", \"" . $row["6"] . "\", \"" . $row["17"] . "\", \"" . $row["18"] . "\",)' data-toggle='modal' data-target='#info' class='orders-table'>");
+          printf("<tr onclick='Edit(" . $row["9"] . ", \"" . $row["1"] . "\", \"" . $row["2"] . "\", \"" . $row["3"] . "\", \"" . $row["4"] . "\", \"" . $row["5"] . "\", \"" . $row["6"] . "\", \"" . $row["7"] . "\", \"" . $row["18"] . "\", \"" . $row["19"] . "\",)' data-toggle='modal' data-target='#info' class='orders-table'>");
           printf("<td class='tr-inv'>" . $row['7'] . "</td>");
           printf("<td class='tr-inv'>" . $row['8'] . "</td>");
           printf("<td class='tr-inv'>" . $row['9'] . "</td>");
@@ -67,10 +67,11 @@
             <input readonly class="col-md-6" type="text" id="HuisnumOrder" value="Huisnum" style="height: 24px; width: 50px; text-align: left;"/>
 
             <div class="col-md-6" style="height: 24px; margin-left: -14px;">Postcode:</div>
-            <div class="col-md-6" style="height: 24px;"></div>
+            <div class="col-md-2" style="height: 24px;">Plaatsnaam:</div>
+            <div class="col-md-4" style="height: 24px;"></div>
 
             <input readonly class="col-md-6" style="height: 24px;" type="text" id="PostCOrder" value="Postcode" />
-            <div class="col-md-6" style="height: 24px;"></div>
+            <input readonly class="col-md-6" style="height: 24px;" type="text" id="PlaatsN" value="Plaatsnaam"/>
 
             <div class="col-md-6" style="height: 24px; margin-left: -14px;">Voornaam:</div>
             <div class="col-md-6" style="height: 24px;">Achternaam:</div>
@@ -99,11 +100,12 @@
 </div>
 
 <script type="text/javascript">
-  function Edit(id, adres, huisnum, postcode, telefoon, voornaam, achternaam, boeknaam, boeksoort) {
+  function Edit(id, adres, huisnum, postcode, plaatsnaam, telefoon, voornaam, achternaam, boeknaam, boeksoort) {
     document.getElementById("IdOrder").setAttribute("value", id);
     document.getElementById("AdresOrder").setAttribute("value", adres);
     document.getElementById("HuisnumOrder").setAttribute("value", huisnum);
     document.getElementById("PostCOrder").setAttribute("value", postcode);
+    document.getElementById("PlaatsN").setAttribute("value", plaatsnaam);
     document.getElementById("TeleOrder").setAttribute("value", telefoon);
     document.getElementById("VoorNOrder").setAttribute("value", voornaam);
     document.getElementById("AchterNOrder").setAttribute("value", achternaam);

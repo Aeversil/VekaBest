@@ -10,10 +10,18 @@
 <!-- Can admins also login as regular users? -->
 
 <?php
+session_start();
 $host = "localhost";
 $username = "root";
 $password = "";
 $db_name = "vekabestwebsite";
+
+if (isset($_GET['bool'])) {
+  $_SESSION['LoggedIn']=$_GET['bool'];
+  $_SESSION['admin']=$_GET['bool'];
+}
+
+
 ?>
 
 <html lang="en">
@@ -23,15 +31,28 @@ $db_name = "vekabestwebsite";
     <meta name="viewport" content="width = device-width, initial-scale = 1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Website vader van Steffan</title>
-    <link href="vekabest.css" rel="stylesheet" type="text/css">
+    <link href="VekaBest.css" rel="stylesheet" type="text/css">
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
 </head>
 <body id="index" style="background-color: #f0f0f0;">
+  <div class="inlog">
+    <a href="user_registration.php"><button class="inlogknop">Registreren</button></a>
+    <?php
+      if($_SESSION["LoggedIn"] === true) {
+        echo "<a href=''><button class='inlogknop' onclick='toFalse();'>Uitloggen</button></a>";
+        if($_SESSION["admin"] === true) {
+          echo "<a href='admin_index.php'><button class='inlogknop'>Admin</button></a>";
+        }
+        echo "<span class='WelcomeText'> Welcome " . $_SESSION["Username"] . "!</span>";
+      } else {
+        echo "<a href='user_login.php'><button class='inlogknop'>Inloggen</button></a>";
+      }
+      ?>
+  </div>
 <div class="banner">
     <img src="stockvekafotos/busbanner.jpg"/>
     <!-- Button temporary disabled -->
@@ -139,6 +160,23 @@ $db_name = "vekabestwebsite";
             default:
                 break;
         }
+    }
+
+    function toFalse() {
+        $.ajax({
+            type : 'GET',
+            url : 'index.php',
+            data: {
+                 bool : false,
+                  },
+            success : function(data){
+              location.reload();
+            },
+            error : function(XMLHttpRequest, textStatus, errorThrown)
+            {alert ("Error Occured");}
+                     });
+
+
     }
 </script>
 <?php
