@@ -377,6 +377,7 @@ if (isset($_POST["change_quantity"])) {
 
             if (isset($_POST['order'])) {
 
+                
                 //$connect = mysqli_connect("localhost", "root", "", "vekabestwebsite");
 //                foreach ($_SESSION["shopping_cart"] as $keys => $values) {
 
