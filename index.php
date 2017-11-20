@@ -35,6 +35,9 @@ if (isset($_GET['bool'])) {
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
@@ -58,7 +61,6 @@ if (isset($_GET['bool'])) {
     <!-- Button temporary disabled -->
     <!-- <div class="login">
     <a href="user_login.php"><button>Log in</button></a> -->
-</div>
 </div>
 
 <div class="nav2">
@@ -90,9 +92,9 @@ if (isset($_GET['bool'])) {
         <?php include("webshop_motor.php"); ?>
         <?php include("webshop_spiegel.php"); ?>
         <?php include("webshop_vrachtwagen.php"); ?>
+
     </div>
 </div>
-
 
 <script type="text/javascript">
     var pages = ["user_home", "user_profile", "user_edit_profile", "user_contact", "user_webshop", "user_shopping_cart", "webshop_auto", "webshop_brommer", "webshop_motor", "webshop_vrachtwagen", "webshop_bus", "webshop_spiegel"];
@@ -187,5 +189,6 @@ if (isset($_POST["EditUser"]) || isset($_POST["DeleteUser"])) {
 }
 ?>
 
+<a href="logout.php"><button>uitloggen</button></a>
 </body>
 </html>

@@ -73,13 +73,15 @@ if (isset($_POST['submit'])) {
       //if the result is one then go to the index.php
       while ($row = mysqli_fetch_row($result)) {
         if ($count == 1 && $row[3] == "user") {
-          $_SESSION["Username"] = $username;
-          $_SESSION["LoggedIn"] = true;
+            $_SESSION["Userlogin"] = $username;
+            $_SESSION["Login"] = true;
+            $_SESSION["LoggedIn"] = true;
           header("location: index.php");
         } else if ($count == 1 && $row[3] == "admin") {
-          $_SESSION["LoggedIn"] = true;
-          $_SESSION["Username"] = $username;
-          $_SESSION["admin"] = true;
+            $_SESSION["Userlogin"] = $username;
+            $_SESSION["admin"] = true;
+            $_SESSION["Login"] = true;
+            $_SESSION["LoggedIn"] = true;
           header("location: admin_index.php");
         } else {
           echo "Username or password is incorrect";
