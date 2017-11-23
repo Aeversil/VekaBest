@@ -1,3 +1,11 @@
+<!-- <?php session_start(); ?> -->
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "vekabestwebsite";
+
+ ?>
 <div id="admin_inventory" style="display: none">
   <style>
     table {
@@ -128,7 +136,7 @@
         <th>Prijs </th>
         <th>Sku </th>
         <th>Bewerken </th>
-        <th></th>
+        <th>Verwijderen</th>
       </tr>
     </thead>
     <tbody>

@@ -393,20 +393,29 @@ h1{
 .forminvoer{
   margin-left: 2%;
 }
-
+.inlogknop{
+  float: right;
+  height: 30px;
+  font-size: 12px;
+  padding: 5px;
+  border-radius: 0px;
+  margin-left: 3px;
+  width: 120px;
+}
 .orders-table:hover {
   background-color: #c4c4c4 !important;
   cursor: pointer !important;
 }
 .opvulling{
   background-color: lightblue;
+  height: 100%;
 }
 /*Dit is de CSS voor het registratie formulier*/
 .formulier {
   background-color: lightblue;
   margin-left: 40%;
   border-radius: 5px;
-  height: 100%;
+  height: 50%;
 }
 /*CSS voor HuisNummer formulier breedt*/
 #HuisNummer{
