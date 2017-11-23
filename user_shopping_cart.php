@@ -397,7 +397,6 @@ if (isset($_POST["change_quantity"])) {
                     echo "ERROR: Could not able to execute $sql_insert. " . mysqli_error($connect);
                     echo '<script>("ERROR: Could not able to execute '.$sql_insert.' . " . mysqli_error($connect))';
                 }
-
             }
             ?>
         </div>
