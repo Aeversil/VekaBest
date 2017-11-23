@@ -50,7 +50,7 @@ if (isset($_GET['bool'])) {
         if($_SESSION["admin"] === true) {
           echo "<a href='admin_index.php'><button class='inlogknop'>Admin</button></a>";
         }
-        echo "<span class='WelcomeText'> Welcome " . $_SESSION["Username"] . "!</span>";
+        echo "<span class='WelcomeText'> Welcome " . $_SESSION["Userlogin"] . "!</span>";
       } else {
         echo "<a href='user_login.php'><button class='inlogknop'>Inloggen</button></a>";
       }
@@ -188,7 +188,5 @@ if (isset($_POST["EditUser"]) || isset($_POST["DeleteUser"])) {
             </script>';
 }
 ?>
-
-<a href="logout.php"><button>uitloggen</button></a>
 </body>
 </html>

@@ -4,6 +4,11 @@ $host = "localhost";
 $username = "root";
 $password = "";
 $db_name = "vekabestwebsite";
+
+$_SESSION["Userlogin"] = "Username";
+$_SESSION["Login"] = false;
+$_SESSION["LoggedIn"] = false;
+$_SESSION["admin"] = false;
 ?>
 <html lang="en">
  <head>
