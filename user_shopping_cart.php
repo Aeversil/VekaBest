@@ -1,6 +1,11 @@
 <?php
+// Starts session
+@session_start();
+// Connecting to database
 $connect = mysqli_connect("localhost", "root", "", "vekabestwebsite");
+// If button add to cart is pressed || button is located in the webshop_auto.php
 if (isset($_POST["add_to_cart"])) {
+// Add item_id to the shopping_cart session array
     if (isset($_SESSION["shopping_cart"])) {
         $item_array_id = array_column($_SESSION["shopping_cart"], "item_id");
         if (!in_array($_GET["id"], $item_array_id)) {
@@ -11,6 +16,7 @@ if (isset($_POST["add_to_cart"])) {
                 'item_price' => $_POST["hidden_price"],
                 'item_quantity' => $_POST["quantity"]
             );
+// Checks if item is already added
             $_SESSION["shopping_cart"][$count] = $item_array;
         } else {
             echo '<script>alert("Item Already Added")</script>';
@@ -26,6 +32,7 @@ if (isset($_POST["add_to_cart"])) {
         $_SESSION["shopping_cart"][0] = $item_array;
     }
 }
+// If button delete is pressed remove that item from cart
 if (isset($_GET["action"])) {
     if ($_GET["action"] == "delete") {
         foreach ($_SESSION["shopping_cart"] as $keys => $values) {
@@ -37,9 +44,9 @@ if (isset($_GET["action"])) {
         }
     }
 }
-
+// Change the quantity of item in cart
 if (isset($_POST["change_quantity"])) {
-    //updateCart($_POST["item_id"], $_POST["quantity"]);
+// UpdateCart($_POST["item_id"], $_POST["quantity"]);
     foreach ($_SESSION["shopping_cart"] as $keys => $values) {
         if ($values["item_id"] == $_POST["product_id"]) {
             $_SESSION["shopping_cart"][$keys]['item_quantity'] = $_POST["c_quantity"];
@@ -47,7 +54,7 @@ if (isset($_POST["change_quantity"])) {
     }
 }
 ?>
-
+<!--Create the shopping cart table-->
 <div id="user_shopping_cart" style="display: none">
     <h1>User shopping cart page</h1>
     <div style="clear:both"></div>
@@ -64,8 +71,10 @@ if (isset($_POST["change_quantity"])) {
 
             </tr>
             <?php
+// If SESSION shopping_cart is not empty sets total price to 0
             if (!empty($_SESSION["shopping_cart"])) {
                 $total = 0;
+// Fills the table with the products
                 foreach ($_SESSION["shopping_cart"] as $keys => $values) {
                     ?>
                     <tr>
@@ -92,9 +101,11 @@ if (isset($_POST["change_quantity"])) {
                         </td>
                     </tr>
                     <?php
+// Calculates the total price
                     $total = $total + ($values["item_quantity"] * $values["item_price"]);
                 }
                 ?>
+<!--Creates the total price and the order button                -->
                 <tr>
                     <td colspan="3" align="right">Total</td>
                     <td align="right">$ <?php echo number_format($total, 2); ?></td>
@@ -115,7 +126,7 @@ if (isset($_POST["change_quantity"])) {
         <div class="modal fade" id="bestelModal" tabindex="-1" role="dialog" aria-labelledby="bestelModal"
              aria-hidden="true">
             <?php
-
+// If user is logged in show the user info modal
             if (@$_SESSION["Login"] == true) {
                 $Username = $_SESSION['Userlogin'];
 
@@ -228,23 +239,18 @@ if (isset($_POST["change_quantity"])) {
                                         </div>
                                     </div>
                                     <?php
-//                                    if (isset($_POST['add_to_cart'])) {
-//                                        $orderedQuantity = $_POST['quantity'];
-//                                    }
+// Hidden inputs for the database insert
                                     $inserts_itemQuantity = $values['item_quantity'];
                                     $inserts_itemId = $values['item_id'];
-                                    echo "<pre>";
-                                    print_r($values);
-                                    echo "</pre>";
-
-                                    //                                    $inserts_itemPrice = $values['item_price'];
                                     $insert_total = $total;
+                                    $insert_uid = $row ['id'];
+
                                     ?>
-<!--                                    <input type="hidden" name="quantity" value="--><?//= $orderedQuantity ?><!--">-->
+
                                     <input type="hidden" name="insert_quantity" value="<?= $inserts_itemQuantity ?>">
                                     <input type="hidden" name="insert_id" value="<?= $inserts_itemId ?>">
-<!--                                    <input type="hidden" name="insert_price" value="--><?//= $inserts_itemPrice ?><!--">-->
                                     <input type="hidden" name="insert_total" value="<?= $insert_total ?>">
+                                    <input type="hidden" name="insert_uid" value="<?= $insert_uid ?>">
 
 
 
@@ -261,6 +267,7 @@ if (isset($_POST["change_quantity"])) {
 
 
                 }
+// If not logged in show login modal
             } else {
                 ?>
 
@@ -322,7 +329,7 @@ if (isset($_POST["change_quantity"])) {
 
                 <?php
 
-
+// Login modal script
             }
 
             if (isset($_POST['loginModal'])) {
@@ -372,23 +379,17 @@ if (isset($_POST["change_quantity"])) {
             }
 
 
-
+// If order button is pressed
             if (isset($_POST['order'])) {
 
 
-                //$connect = mysqli_connect("localhost", "root", "", "vekabestwebsite");
-//                foreach ($_SESSION["shopping_cart"] as $keys => $values) {
 
+// Insert cart in to database orders
                     $sql_insert = "
                     INSERT INTO orders(boekid, userid, aantal, totaal, orderstatus, datum)
-                    VALUES ('" . $_POST["insert_id"] . "','uid'," . $_POST["insert_quantity"] . "," . $_POST["insert_total"] . ",'inbehandeling',CURRENT_TIMESTAMP)
+                    VALUES ('" . $_POST["insert_id"] . "','".$_POST["insert_uid"]."'," . $_POST["insert_quantity"] . "," . $_POST["insert_total"] . ",'inbehandeling',CURRENT_TIMESTAMP)
                     ";
-//                    $sql_insert = "
-//                    INSERT INTO orders(boekid, userid, aantal, totaal, orderstatus, datum)
-//                    VALUES ('".$values["item_id"]."','uid',".$values["item_quantity"]."," . $_POST["insert_total"] . ",'inbehandeling',CURRENT_TIMESTAMP)
-//                    ";
-
-//                }
+// Debug alerts
                 if (mysqli_query($connect, $sql_insert)) {
                     echo "Records inserted successfully.";
                     echo '<script>("Records inserted successfully")</script>';
@@ -396,7 +397,6 @@ if (isset($_POST["change_quantity"])) {
                     echo "ERROR: Could not able to execute $sql_insert. " . mysqli_error($connect);
                     echo '<script>("ERROR: Could not able to execute '.$sql_insert.' . " . mysqli_error($connect))';
                 }
-
             }
             ?>
         </div>
